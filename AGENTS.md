@@ -58,9 +58,15 @@ _*.py / _*.mjs           历次整改的操作脚本（操作记录，可读可�
 
 npm 慢/不稳时用 `--registry=https://registry.npmmirror.com`。
 
-## 当前状态速查（截至移交）
+## 当前状态速查（M4 收尾完成，2026-09-12）
 
-- 基线 tag：`v5.4.1`（只读）；main 分支 ≈ commit 3db914d 之后
-- 已完成：M1 门禁 / M2 docs/v6 四层 / M3 Token 生成链 / M4 第一批（AppShell/Form/Feedback 链路）
-- 进行中/待办：M4 收尾（示例库/骨架对齐）→ CI 化 → M5 三项目试点 → M6 干净发布包
+- 基线 tag：`v5.4.1`（只读）；main 分支随 M4 收尾推进（HEAD 见 git log）
+- 已完成：M1 门禁 / M2 docs/v6 四层 / M3 Token 生成链 / M4 四链路 + **收尾六项**：
+  1. **CI 化**：`.github/workflows/design-gate.yml`——push 即跑 tokens:check + tokens:contrast + design:check（12 项）；首次绿勾 run 34691219270；运行结论回写 `.github/ci-state.json` 台账 + Run Summary
+  2. **示例库**：20-components 四链路代码级 ✅/❌ 对照（app-shell / data-table / form / feedback）
+  3. **骨架对齐**：Alpine/Static 支持矩阵按实绩核对重写，"未提供"逐项明示（USAGE.md 成熟度表同步）
+  4. **规则 ID 全覆盖**：`kit/tools/scan-rules.mjs`（`rules:build` / `rules:check`）扫全类型条款行（含表格行）；59 条注册、历史 ID 零变动、幂等零漂移
+  5. **success-bg 已登记 primitives**（advisory WARN 清零，值 = v5.4.1 修复值 #dff4f2）
+  6. **回归全绿**：design:check 12/12 + tokens:contrast 46 对 ALL PASS + tokens:check/rules:check 零漂移
+- 待办：M5 三项目试点 → M6 干净发布包与 v6.0 正式发布（细节见 HANDOVER §6）
 - 完整上下文：`HANDOVER.md`（起因/经过/专家两轮意见/环境/教训 F1-F15/移交清单）

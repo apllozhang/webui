@@ -88,6 +88,7 @@ jobs:
           git add .github/ci-state.json
           {
             git commit -m "ci: ${CONCLUSION} run ${{ github.run_id }} [skip ci]" &&
+            git checkout -- . && git clean -fdq -- kit spec-site &&
             git fetch origin main &&
             git rebase origin/main &&
             git push origin "HEAD:refs/heads/main"

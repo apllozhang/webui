@@ -131,11 +131,11 @@ cd ale-webui-kit/deploy && set DEPLOY_HOST=10.10.10.218&& set DEPLOY_PORT=8095&&
 
 ## 6. 未完成（按优先级排序）
 
-### 立即（M4 收尾，建议 1 周内）
-1. **CI 化**：把 design:check / tokens:check / tokens:contrast 挂 GitHub Actions（PR 即拦截；现在只在部署脚本里）
-2. **正确/错误示例库**：四链路各配 ✅/❌ 对照图（评审 §20-components 模板要求）
-3. **Alpine/Static 对齐四链路**：Alpine 表格补 Advanced 能力或明确写死 Core 上限；Static 补 App Shell 变体说明
-4. **规则 ID 全面覆盖**：当前自动注册只扫"必须/禁止"行，表格内条款有遗漏
+### 立即（M4 收尾）——✅ 2026-09-12 完成（接手方，提交 7b43362/9999335/4149af7/89b4997/5eb9390/e9d93ac）
+1. ✅ **CI 化**：`.github/workflows/design-gate.yml`——push 即跑 tokens:check + tokens:contrast + design:check（12 项）；首次绿勾 run 34691219270；运行结论回写 `.github/ci-state.json` + Run Summary
+2. ✅ **正确/错误示例库**：四链路代码级 ✅/❌ 对照入 20-components（面包屑≠步骤条 / 圆点+文字徽章 / 字段级错误 / Dialog→Toast→刷新链）
+3. ✅ **Alpine/Static 对齐四链路**：支持矩阵按实绩核对——Alpine 明确写死 Core 上限（Advanced 明示不支持），Static 各链路明示未提供；USAGE 成熟度表同步
+4. ✅ **规则 ID 全面覆盖**：`kit/tools/scan-rules.mjs` 扫全类型条款行（含表格行），59 条注册（46 条历史 ID 零变动），幂等零漂移；success-bg WARN 已清（primitives 登记 #dff4f2）
 
 ### 短期（M5，2–3 周）
 5. **三真实项目试点**：TSSKB/dan-cpl/nvci 各选 1–2 页用 v6 组件改造，记录迁移耗时/缺失令牌/例外——**这是 v6.0 发布的硬条件**（评审 §11 第 7 周）
