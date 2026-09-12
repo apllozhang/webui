@@ -187,7 +187,8 @@ Date Picker/Tree/Combobox、图表封装、Figma Variables 同步、五档截图
 - **网络**：github.com HTTPS 常被重置（SSH 22 可用，push 走 SSH）；api/codeload 可达。Noto 字体来自 npm（@fontsource/noto-sans-sc），已本地化进仓库。
 - **单点**：SSH key 在 Administrator 账户下，接手人需自行生成并加到 GitHub（或让原账号授权）。
 - **203/218 认知**：同一台机器，别当两台部署。
-- **品牌依赖**：官方品牌 PDF 与 Logo 在 X:\ 网络盘，接手人确认有权限。
+- **品牌依赖**：官方品牌 PDF 与 Logo 在 X:\ 网络盘（`Marketing Resources\ALE Brand\`），接手人确认有权限。**品牌资料移交策略**：日常开发零依赖（Logo 已嵌入骨架、色/字已令牌化）；仅换 Logo/对外发布/Doc-PPT 阶段需要原盘；内部同事给盘权限即可，外部人员只给最小集（两张 PNG + 指南 PDF + 法律 docx）并签使用约束。
+- **仓库品牌资产边界**：骨架 `assets/` 内嵌两张官方 Logo PNG 仅限**内部演示**使用；若仓库转公开或交外部承包商，应替换为占位图，Logo 走内部资产渠道分发（品牌资产不进公共 Git）。
 
 ## 10. 移交确认清单
 
