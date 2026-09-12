@@ -62,11 +62,12 @@ Pagination: 每页 N | 第 x–y 共 z | « ‹ 1 2 … n › »
 ✅ 数字列右对齐 + `tabular-nums`；空态给「清除筛选」行动入口。
 ❌ 一页两套分页；行内 checkbox 点击冒泡到整行选中（应 stopPropagation）。
 
-## 骨架支持矩阵
+## 骨架支持矩阵（按骨架实际交付，2026-09-12 核对）
 
 | 能力 | React | Alpine | Static |
 |---|---|---|---|
-| Core+Advanced | ✅ `components/DataTable.tsx` | Core（demo） | — |
+| Core | ✅ `components/DataTable.tsx` | ✅ demo（排序·防抖搜索·状态筛选·分页·空态） | —（未提供；内容站形态无数据表） |
+| Advanced（列宽拖动/批量/批量操作条） | ✅ | —（明确不支持，超出请升级 `skeleton-react`） | —（未提供） |
 | 虚拟化 | Backlog（TanStack virtual） | — | — |
 
 ## 自动化验收 ID

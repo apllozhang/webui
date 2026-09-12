@@ -77,13 +77,13 @@ Skip link → `#main`；`nav aria-label`；抽屉焦点圈闭/归还；页面唯
 
 ✅ 一页一个 H1、一个 Primary；❌ 侧栏嵌侧栏；页头两个 Primary。
 
-## 骨架支持矩阵
+## 骨架支持矩阵（按骨架实际交付，2026-09-12 核对）
 
 | 能力 | React | Alpine | Static |
 |---|---|---|---|
-| 工作台外壳 | ✅ `components/AppShell.tsx` | ✅ 简版 | — |
-| 内容站外壳 | ✅ | ✅ | ✅ `templates/base.html` |
-| 移动抽屉 | ✅ | ✅ | ✅ |
+| 工作台外壳（侧栏+面包屑+页头） | ✅ `components/AppShell.tsx` | ⚠️ 仅顶栏简版（无侧栏/面包屑/页头，见 demo） | —（未提供） |
+| 内容站外壳 | ✅ | ⚠️ 顶栏（主题/语言切换）可复用 | ✅ `templates/base.html`（顶栏+页脚法律声明+skip-link） |
+| 移动抽屉（≤980 侧栏转抽屉） | ✅ | —（未提供） | —（未提供，内容站顶栏无侧栏） |
 
 ## 自动化验收 ID
 

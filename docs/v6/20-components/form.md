@@ -71,13 +71,13 @@ ErrorSummary（提交失败时置顶：role=alert + 锚点跳各字段）
 ✅ 只读值用 `<p class="readonly-value">QUO-2026-2001</p>`。
 ❌ `<input disabled>`——语义是"不可用"而非"已定值"，且对比度不达标。
 
-## 骨架支持矩阵
+## 骨架支持矩阵（按骨架实际交付，2026-09-12 核对）
 
 | 能力 | React | Alpine | Static |
 |---|---|---|---|
-| Field/输入族/错误摘要 | ✅ `components/form/` | ✅ demo 区块 | 模板级 |
-| 未保存离开提示 | ✅ demo | ✅ demo | — |
-| Switch/Radio | ✅ | ✅ | — |
+| Field/输入族/错误摘要 | ✅ `components/form/` | ✅ demo 区块（Input + 错误摘要 role=alert） | —（未提供） |
+| 未保存离开提示（beforeunload） | ✅ demo | —（未提供） | —（未提供） |
+| Switch/Radio | ✅ `components/form/` | —（未提供；样式类可用，用 x-model 自实现） | —（未提供） |
 
 ## 自动化验收 ID
 

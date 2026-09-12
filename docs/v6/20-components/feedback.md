@@ -62,12 +62,15 @@ setData(prev => prev.filter(r => !ids.has(r.id)));
 ✅ 形状接近最终内容 + `aria-hidden="true"` + 更新区 `aria-busy`。
 ❌ 全屏转圈 spinner 盖住整个页面，内容布局在加载完成时跳变。
 
-## 骨架支持矩阵
+## 骨架支持矩阵（按骨架实际交付，2026-09-12 核对；样式类三骨架同源，"未提供"指无 demo/JS 封装）
 
 | 组件 | React | Alpine | Static |
 |---|---|---|---|
-| Toast / Dialog | ✅ | ✅ | 模式级 |
-| Alert / Skeleton / EmptyState / Drawer / Progress | ✅ `components/feedback/` | Alert/Toast ✅ | — |
+| Toast | ✅ `components/feedback/` | ✅ demo | —（样式类可用，无 JS 封装） |
+| Dialog | ✅ | —（未提供） | —（未提供） |
+| Alert | ✅ | ✅ demo（role=alert） | —（样式类可用） |
+| EmptyState | ✅ | ✅（表格空态） | —（样式类可用） |
+| Skeleton / Drawer / Progress | ✅ | —（未提供） | —（未提供） |
 
 ## 自动化验收 ID
 
