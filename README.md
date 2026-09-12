@@ -7,7 +7,8 @@ ALE 品牌下 B/S 系统的 WebUI 设计规范、演示站点与工程骨架。�
 ```text
 docs/
 ├─ UI专家评审汇报.md            ★ 评审入口：理念 / 方法论 / 业界对标 / 开放问题
-├─ ALE-WEBUI-设计规范-v5.2.md   ★ 评审主文档（38 章 + 附录 A–G）
+├─ ALE-WEBUI-设计规范-v5.3.md   ★ 评审主文档（v5.2 + M3 机制吸收 + Noto Sans SC 字体）
+├─ ALE-WEBUI-设计规范-v5.2.md     上一版（附录 A–G）
 ├─ ALE-WEBUI-设计规范-v5.1.md   上一版（对照 v5.2 变更）
 ├─ ALE-WEBUI-设计规范-v5.0.md   v5 系列（三形态锚定）
 ├─ ALE-WEBUI-设计规范-v4.1.md   上游通用版（历史）

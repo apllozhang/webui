@@ -12,8 +12,10 @@ body {
   margin: 0;
   color: var(--color-text-primary);
   background: var(--color-canvas);
-  font-family: "Trebuchet MS", "Noto Sans SC", "Microsoft YaHei UI",
-    "PingFang SC", "Segoe UI", Arial, sans-serif;
+  /* v5.3：中文主字体 = 自托管 Noto Sans SC（OFL 免费商用，fonts/noto.css）；
+     移除 Microsoft YaHei UI 声明（商业版权合规）；西文保持品牌字体 Trebuchet MS。 */
+  font-family: "Trebuchet MS", "Noto Sans SC",
+    "PingFang SC", sans-serif;
   font-size: 16px;
   line-height: 1.65;
 }

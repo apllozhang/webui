@@ -54,6 +54,7 @@ def render() -> None:
     shutil.copytree(STATIC / "assets", DIST / "assets", dirs_exist_ok=True)
     shutil.copytree(STATIC / "css", DIST / "css", dirs_exist_ok=True)
     shutil.copytree(STATIC / "js", DIST / "js", dirs_exist_ok=True)
+    shutil.copytree(STATIC / "fonts", DIST / "fonts", dirs_exist_ok=True)
 
     print(f"OK → {DIST}（{len(list(DIST.rglob('*')))} files）")
 

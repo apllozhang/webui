@@ -9,8 +9,10 @@ const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const jobs = [
   ["shared/css", "skeleton-alpine/assets/css"],
   ["shared/js", "skeleton-alpine/assets/js"],
+  ["shared/fonts", "skeleton-alpine/assets/fonts"],
   ["shared/css", "skeleton-static/static/css"],
   ["shared/js", "skeleton-static/static/js"],
+  ["shared/fonts", "skeleton-static/static/fonts"],
   ["shared/css/tokens.css", "skeleton-react/src/styles/tokens.css"],
   ["shared/tailwind.preset.js", "skeleton-react/tailwind.preset.js"],
 ];

@@ -23,7 +23,7 @@
       "a11y.home": "返回页面顶部",
       "skip": "跳到主要内容",
 
-      "hero.eyebrow": "ALE WEBUI · V5.1 标准版",
+      "hero.eyebrow": "ALE WEBUI · 标准版",
       "hero.h1": "清晰 · 可信 · 开放 · 高效",
       "hero.sub": "一套可跨 ALE Web 项目复用的界面语言：品牌基础、设计令牌、组件状态、数据表格功能包、动效与无障碍，全部基于 ALE Corporate Brand Guidelines（September 2025）。",
       "hero.cta1": "查看数据表格演示",
@@ -111,7 +111,7 @@
 
       "comp.title": "核心组件",
       "comp.sub": "所有控件覆盖六态；浮起-按压是全站统一的按钮语言。",
-      "comp.button.h": "按钮（11 章：hover -2px 浮起 / active 归零）",
+      "comp.button.h": "按钮（11 章：浮起-按压 + 状态层 8/10/12%）",
       "comp.button.primary": "主要操作",
       "comp.button.secondary": "次要操作",
       "comp.button.tertiary": "低强调",
@@ -239,7 +239,7 @@
       "a11y.home": "Back to top",
       "skip": "Skip to main content",
 
-      "hero.eyebrow": "ALE WEBUI · V5.1 STANDARD",
+      "hero.eyebrow": "ALE WEBUI · STANDARD",
       "hero.h1": "Clear · Trusted · Open · Efficient",
       "hero.sub": "A reusable interface language for ALE Web projects: brand basics, design tokens, component states, the data-table feature pack, motion and accessibility — all based on ALE Corporate Brand Guidelines (September 2025).",
       "hero.cta1": "Try the data table demo",
@@ -327,7 +327,7 @@
 
       "comp.title": "Core Components",
       "comp.sub": "Every control covers six states; lift-and-press is the unified button language.",
-      "comp.button.h": "Buttons (ch. 11: hover -2px lift / active settles)",
+      "comp.button.h": "Buttons (ch. 11: lift-press + state layers 8/10/12%)",
       "comp.button.primary": "Primary action",
       "comp.button.secondary": "Secondary",
       "comp.button.tertiary": "Tertiary",

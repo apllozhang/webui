@@ -37,6 +37,21 @@
 }
 @keyframes spin { to { transform: rotate(360deg); } }
 
+/* ── 状态层（v5.3 规范 11.1：on-* 前景色 × 固定透明度，M3 state layer 机制） ── */
+.button, .pg-btn { position: relative; }
+.button::after, .pg-btn::after {
+  content: ""; position: absolute; inset: 0;
+  background: currentColor;              /* 状态层取 on-* 前景色 */
+  border-radius: inherit;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--motion-fast) ease;
+}
+.button:hover::after, .pg-btn:hover::after { opacity: var(--state-layer-hover); }
+.button:focus-visible::after, .pg-btn:focus-visible::after { opacity: var(--state-layer-focus); }
+.button:active::after, .pg-btn:active::after { opacity: var(--state-layer-pressed); }
+.button:disabled::after, .pg-btn:disabled::after { opacity: 0; }
+
 /* ── 卡片（规范 12 章：浮动只给可交互元素） ── */
 .card {
   padding: var(--space-4);

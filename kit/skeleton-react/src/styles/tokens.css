@@ -62,11 +62,22 @@
   --shadow-hover: 0 10px 22px rgb(32 25 46 / 20%);
   --ring-soft: 0 0 0 3px rgb(107 72 157 / 15%);
 
-  /* Motion（规范 23 章四档） */
+  /* Motion（规范 23 章四档；v5.3 正名 emphasized 缓动） */
   --motion-fast: 160ms;
   --motion-panel: 240ms;
   --motion-enter: 560ms;
   --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --ease-emphasized: cubic-bezier(0.2, 0, 0, 1);   /* v5.3：对齐 M3 emphasized */
+
+  /* 状态层（v5.3 规范 11.1：on-* 色 × 固定透明度叠加） */
+  --state-layer-hover: 0.08;
+  --state-layer-focus: 0.10;
+  --state-layer-pressed: 0.12;
+
+  /* 前景色角色（v5.3 规范 3.3A：on-* roles） */
+  --color-on-action: var(--neutral-0);
+  --color-on-action-hover: var(--neutral-0);
+  --color-on-tint: var(--ale-purple-700);
 
   /* Radius / Spacing / Layout */
   --radius-sm: 8px;
@@ -92,6 +103,7 @@
   --color-link: #58b7e8;
   --color-heading-accent: var(--ale-purple-40);
   --color-purple-tint: rgb(107 72 157 / 24%);
+  --color-on-tint: var(--ale-purple-40);
 
   --status-neutral-graphic: #8d8a94;
   --status-neutral-text: #b5b1bf;

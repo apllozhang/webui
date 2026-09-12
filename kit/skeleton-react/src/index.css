@@ -57,6 +57,18 @@
   .btn:hover:not(:disabled) { transform: translateY(-2px); box-shadow: var(--shadow-hover); }
   .btn:active:not(:disabled) { transform: translateY(0); box-shadow: none; }
   .btn:disabled { opacity: .55; cursor: not-allowed; transform: none; box-shadow: none; }
+  /* 状态层（v5.3 规范 11.1：on-* 前景色 × 固定透明度） */
+  .btn, .pg-btn { position: relative; }
+  .btn::after, .pg-btn::after {
+    content: ""; position: absolute; inset: 0;
+    background: currentColor; border-radius: inherit;
+    opacity: 0; pointer-events: none;
+    transition: opacity var(--motion-fast) ease;
+  }
+  .btn:not(:disabled):hover::after, .pg-btn:hover::after { opacity: var(--state-layer-hover); }
+  .btn:focus-visible::after, .pg-btn:focus-visible::after { opacity: var(--state-layer-focus); }
+  .btn:not(:disabled):active::after, .pg-btn:active::after { opacity: var(--state-layer-pressed); }
+  .btn:disabled::after { opacity: 0; }
   .btn-primary { @apply text-white border-transparent; background: var(--color-action); }
   .btn-primary:hover:not(:disabled) { background: var(--color-action-hover); }
   .btn-secondary { @apply text-action border-border bg-surface; }

@@ -42,7 +42,7 @@ export default {
       },
       transitionDuration: { fast: "160ms", panel: "240ms", enter: "560ms" },
       fontFamily: {
-        sans: ['"Trebuchet MS"', '"Noto Sans SC"', '"Microsoft YaHei UI"', '"PingFang SC"', '"Segoe UI"', "Arial", "sans-serif"],
+        sans: ['"Trebuchet MS"', '"Noto Sans SC"', '"PingFang SC"', "sans-serif"],
         mono: ['"SFMono-Regular"', "Consolas", '"Liberation Mono"', "monospace"],
       },
       maxWidth: { content: "1180px" },
