@@ -1,0 +1,70 @@
+{
+  "$schema": "./schema/token.schema.json",
+  "meta": {
+    "domain": "typography"
+  },
+  "tokens": {
+    "font-sans": {
+      "value": "\"Trebuchet MS\", \"Noto Sans SC\", \"PingFang SC\", sans-serif",
+      "type": "fontStack"
+    },
+    "font-mono": {
+      "value": "\"SFMono-Regular\", Consolas, \"Liberation Mono\", \"Noto Sans SC\", monospace",
+      "type": "fontStack"
+    },
+    "size-display": {
+      "value": "44px",
+      "type": "dimension",
+      "description": "Display 桌面（移动 32）"
+    },
+    "size-page-title": {
+      "value": "32px",
+      "type": "dimension",
+      "description": "移动 26"
+    },
+    "size-section-title": {
+      "value": "24px",
+      "type": "dimension",
+      "description": "移动 21"
+    },
+    "size-subsection-title": {
+      "value": "19px",
+      "type": "dimension",
+      "description": "移动 18"
+    },
+    "size-card-title": {
+      "value": "16px",
+      "type": "dimension",
+      "description": "v5.4 角色表"
+    },
+    "size-body": {
+      "value": "16px",
+      "type": "dimension"
+    },
+    "size-compact": {
+      "value": "14px",
+      "type": "dimension"
+    },
+    "size-aux": {
+      "value": "13px",
+      "type": "dimension",
+      "description": "≥4.5:1 场景限定"
+    },
+    "line-height-body": {
+      "value": "1.65",
+      "type": "number"
+    },
+    "line-height-heading": {
+      "value": "1.25",
+      "type": "number"
+    },
+    "weight-bold": {
+      "value": "700",
+      "type": "number"
+    },
+    "weight-semibold": {
+      "value": "600",
+      "type": "number"
+    }
+  }
+}

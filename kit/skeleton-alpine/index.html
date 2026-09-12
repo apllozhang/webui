@@ -171,7 +171,32 @@
     <div class="toast-region" id="toasts" aria-live="polite"></div>
   </main>
 
-  <footer class="site-footer">
+      <!-- ═══ 表单模式（CMP-FORM 演示） ═══ -->
+    <section id="forms" x-data="formDemo()" x-init="init()" style="margin-bottom:48px">
+      <p class="eyebrow">CMP-FORM</p>
+      <h2 style="font-size:24px;margin-bottom:8px">表单模式</h2>
+      <p style="color:var(--color-text-muted);font-size:14px;margin:0 0 16px">
+        Field（标签+帮助+错误紧邻）· 失焦校验 · 错误摘要 · 只读/禁用 · 未保存离开提示。
+      </p>
+      <div class="card" style="padding:24px;max-width:560px">
+        <div class="field">
+          <label for="f-name"><span>名称</span> <span style="color:var(--status-danger-text)">*</span></label>
+          <input id="f-name" class="input" type="text" x-model="name" @blur="touched = true"
+                 :aria-invalid="showNameError ? 'true' : null" />
+          <p class="error" x-show="showNameError" x-cloak role="alert">请输入名称。</p>
+        </div>
+        <div class="field">
+          <label for="f-readonly">只读示例（用文本，不用禁用输入伪装）</label>
+          <p style="margin:0;font-size:14px;color:var(--color-text-secondary)">REC-2026-1001</p>
+        </div>
+        <div style="display:flex;gap:12px;margin-top:16px">
+          <button class="button primary" type="button" @click="submit()">提交</button>
+          <button class="button secondary" type="button" disabled>禁用示例</button>
+        </div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
     <img class="logo-color" src="assets/ale-logo.png" alt="Alcatel-Lucent Enterprise" />
     <p style="flex-basis:100%;margin:0">The Alcatel-Lucent name and logo are trademarks of Nokia used under license by ALE. www.al-enterprise.com</p>
     <p style="margin:0">© Copyright ALE International 2026 · ale-webui-kit · skeleton-alpine</p>

@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ALE WebUI Design Token",
+  "type": "object",
+  "required": ["meta", "tokens"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "meta": {
+      "type": "object",
+      "required": ["domain"],
+      "properties": {
+        "domain": { "type": "string", "enum": ["primitive", "semantic", "layout", "motion", "typography", "component"] },
+        "theme": { "type": "string", "enum": ["light", "dark"] },
+        "rule": { "type": "string" }
+      }
+    },
+    "tokens": {
+      "type": "object",
+      "patternProperties": {
+        "^[a-z][a-z0-9-]*$": {
+          "type": "object",
+          "required": ["value", "type"],
+          "properties": {
+            "value": { "type": ["string", "number", "array"] },
+            "type": { "type": "string", "enum": ["color", "dimension", "number", "fontStack", "duration", "easing", "opacity", "shadow", "reference", "list"] },
+            "description": { "type": "string" },
+            "deprecated": { "type": "boolean" },
+            "replaced-by": { "type": "string" }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

@@ -86,6 +86,30 @@ function demoApp() {
   };
 }
 
+
+/* 表单模式演示（CMP-FORM） */
+function formDemo() {
+  return {
+    name: "",
+    touched: false,
+    submitted: false,
+    init() {
+      const h = (e) => { if (this.dirty) { e.preventDefault(); e.returnValue = ""; } };
+      window.addEventListener("beforeunload", h);
+    },
+    get dirty() { return !!this.name; },
+    get showNameError() { return (this.touched || this.submitted) && !this.name.trim(); },
+    submit() {
+      this.submitted = true;
+      if (!this.name.trim()) return;
+      toast("success", "已创建：" + this.name);
+      this.name = "";
+      this.touched = false;
+      this.submitted = false;
+    },
+  };
+}
+
 /* Toast（规范 16.3） */
 function toast(type, msg) {
   var region = document.getElementById("toasts");

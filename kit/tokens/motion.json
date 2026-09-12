@@ -1,0 +1,41 @@
+{
+  "$schema": "./schema/token.schema.json",
+  "meta": {
+    "domain": "motion",
+    "rule": "ease-emphasized = M3 emphasized 曲线"
+  },
+  "tokens": {
+    "motion-fast": {
+      "value": "160ms",
+      "type": "duration"
+    },
+    "motion-panel": {
+      "value": "240ms",
+      "type": "duration"
+    },
+    "motion-enter": {
+      "value": "560ms",
+      "type": "duration"
+    },
+    "ease-standard": {
+      "value": "cubic-bezier(0.2, 0, 0, 1)",
+      "type": "easing"
+    },
+    "ease-emphasized": {
+      "value": "cubic-bezier(0.2, 0, 0, 1)",
+      "type": "easing"
+    },
+    "state-layer-hover": {
+      "value": "0.08",
+      "type": "opacity"
+    },
+    "state-layer-focus": {
+      "value": "0.10",
+      "type": "opacity"
+    },
+    "state-layer-pressed": {
+      "value": "0.12",
+      "type": "opacity"
+    }
+  }
+}

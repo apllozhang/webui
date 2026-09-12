@@ -1,0 +1,25 @@
+{
+  "$schema": "./schema/token.schema.json",
+  "meta": {
+    "domain": "component",
+    "rule": "仅组件需要独立控制时引用；值必须引用语义令牌"
+  },
+  "tokens": {
+    "button-primary-bg": {
+      "value": "var(--color-action)",
+      "type": "reference"
+    },
+    "button-primary-bg-hover": {
+      "value": "var(--color-action-hover)",
+      "type": "reference"
+    },
+    "input-border": {
+      "value": "var(--color-border)",
+      "type": "reference"
+    },
+    "card-bg": {
+      "value": "var(--color-surface)",
+      "type": "reference"
+    }
+  }
+}

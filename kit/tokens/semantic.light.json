@@ -1,0 +1,307 @@
+{
+  "$schema": "./schema/token.schema.json",
+  "meta": {
+    "domain": "semantic",
+    "theme": "light",
+    "rule": "语义层重映射；新字面色将记录为 WARN（primitives 为命名登记簿）"
+  },
+  "tokens": {
+    "ale-purple-700": {
+      "value": "#4f3478",
+      "type": "color"
+    },
+    "ale-purple-600": {
+      "value": "#6b489d",
+      "type": "color"
+    },
+    "ale-purple-500": {
+      "value": "#7e5cb4",
+      "type": "color"
+    },
+    "ale-purple-40": {
+      "value": "#e4d9f3",
+      "type": "color"
+    },
+    "ale-purple-100": {
+      "value": "#f1ecf7",
+      "type": "color"
+    },
+    "ale-blue": {
+      "value": "#0085ca",
+      "type": "color"
+    },
+    "ale-teal": {
+      "value": "#00b2a9",
+      "type": "color"
+    },
+    "ale-orange": {
+      "value": "#ff4500",
+      "type": "color"
+    },
+    "ale-red": {
+      "value": "#a50034",
+      "type": "color"
+    },
+    "neutral-0": {
+      "value": "#ffffff",
+      "type": "color"
+    },
+    "neutral-50": {
+      "value": "#f7f7f5",
+      "type": "color"
+    },
+    "neutral-150": {
+      "value": "#e9e8e4",
+      "type": "color"
+    },
+    "neutral-200": {
+      "value": "#d9d9d6",
+      "type": "color"
+    },
+    "neutral-500": {
+      "value": "#616467",
+      "type": "color"
+    },
+    "neutral-700": {
+      "value": "#4b4d50",
+      "type": "color"
+    },
+    "neutral-950": {
+      "value": "#1a1a1a",
+      "type": "color"
+    },
+    "color-canvas": {
+      "value": "var(--neutral-50)",
+      "type": "color"
+    },
+    "color-surface": {
+      "value": "var(--neutral-0)",
+      "type": "color"
+    },
+    "color-text-primary": {
+      "value": "var(--neutral-950)",
+      "type": "color"
+    },
+    "color-text-secondary": {
+      "value": "var(--neutral-700)",
+      "type": "color"
+    },
+    "color-text-muted": {
+      "value": "var(--neutral-500)",
+      "type": "color"
+    },
+    "color-border": {
+      "value": "var(--neutral-200)",
+      "type": "color"
+    },
+    "color-border-soft": {
+      "value": "var(--neutral-150)",
+      "type": "color"
+    },
+    "color-action": {
+      "value": "var(--ale-purple-600)",
+      "type": "color"
+    },
+    "color-action-hover": {
+      "value": "var(--ale-purple-700)",
+      "type": "color"
+    },
+    "color-link": {
+      "value": "#006aa2",
+      "type": "color"
+    },
+    "color-purple-tint": {
+      "value": "var(--ale-purple-100)",
+      "type": "color"
+    },
+    "color-heading-accent": {
+      "value": "var(--ale-purple-700)",
+      "type": "color"
+    },
+    "status-neutral-graphic": {
+      "value": "#b9b8b4",
+      "type": "color"
+    },
+    "status-neutral-text": {
+      "value": "#616467",
+      "type": "color"
+    },
+    "status-neutral-bg": {
+      "value": "#efeeec",
+      "type": "color"
+    },
+    "status-info-graphic": {
+      "value": "#0085ca",
+      "type": "color"
+    },
+    "status-info-text": {
+      "value": "#006aa2",
+      "type": "color"
+    },
+    "status-info-bg": {
+      "value": "#e3f1f9",
+      "type": "color"
+    },
+    "status-success-graphic": {
+      "value": "#00b2a9",
+      "type": "color"
+    },
+    "status-success-text": {
+      "value": "#007a73",
+      "type": "color"
+    },
+    "status-success-bg": {
+      "value": "#dff4f2",
+      "type": "color",
+      "description": "v5.4.1 contrast fix (4.498→4.554:1)"
+    },
+    "status-warning-graphic": {
+      "value": "#f59e0b",
+      "type": "color"
+    },
+    "status-warning-text": {
+      "value": "#9a4707",
+      "type": "color"
+    },
+    "status-warning-bg": {
+      "value": "#fceedd",
+      "type": "color"
+    },
+    "status-danger-graphic": {
+      "value": "#ff4500",
+      "type": "color"
+    },
+    "status-danger-text": {
+      "value": "#a50034",
+      "type": "color"
+    },
+    "status-danger-bg": {
+      "value": "#fce4e9",
+      "type": "color"
+    },
+    "shadow-sm": {
+      "value": "0 1px 3px rgb(32 25 46 / 8%)",
+      "type": "shadow"
+    },
+    "shadow-md": {
+      "value": "0 10px 30px rgb(50 36 76 / 14%)",
+      "type": "shadow"
+    },
+    "shadow-hover": {
+      "value": "0 10px 22px rgb(32 25 46 / 20%)",
+      "type": "shadow"
+    },
+    "ring-soft": {
+      "value": "0 0 0 3px rgb(107 72 157 / 15%)",
+      "type": "shadow"
+    },
+    "motion-fast": {
+      "value": "160ms",
+      "type": "color"
+    },
+    "motion-panel": {
+      "value": "240ms",
+      "type": "color"
+    },
+    "motion-enter": {
+      "value": "560ms",
+      "type": "color"
+    },
+    "ease-standard": {
+      "value": "cubic-bezier(0.2, 0, 0, 1)",
+      "type": "color"
+    },
+    "ease-emphasized": {
+      "value": "cubic-bezier(0.2, 0, 0, 1)",
+      "type": "color"
+    },
+    "state-layer-hover": {
+      "value": "0.08",
+      "type": "color"
+    },
+    "state-layer-focus": {
+      "value": "0.10",
+      "type": "color"
+    },
+    "state-layer-pressed": {
+      "value": "0.12",
+      "type": "color"
+    },
+    "color-on-action": {
+      "value": "var(--neutral-0)",
+      "type": "color"
+    },
+    "color-on-action-hover": {
+      "value": "var(--neutral-0)",
+      "type": "color"
+    },
+    "color-on-tint": {
+      "value": "var(--ale-purple-700)",
+      "type": "color"
+    },
+    "button-primary-bg": {
+      "value": "var(--color-action)",
+      "type": "color"
+    },
+    "button-primary-bg-hover": {
+      "value": "var(--color-action-hover)",
+      "type": "color"
+    },
+    "input-border": {
+      "value": "var(--color-border)",
+      "type": "color"
+    },
+    "card-bg": {
+      "value": "var(--color-surface)",
+      "type": "color"
+    },
+    "radius-sm": {
+      "value": "8px",
+      "type": "color"
+    },
+    "radius-md": {
+      "value": "12px",
+      "type": "color"
+    },
+    "radius-lg": {
+      "value": "16px",
+      "type": "color"
+    },
+    "space-1": {
+      "value": "4px",
+      "type": "color"
+    },
+    "space-2": {
+      "value": "8px",
+      "type": "color"
+    },
+    "space-3": {
+      "value": "12px",
+      "type": "color"
+    },
+    "space-4": {
+      "value": "16px",
+      "type": "color"
+    },
+    "space-5": {
+      "value": "24px",
+      "type": "color"
+    },
+    "space-6": {
+      "value": "32px",
+      "type": "color"
+    },
+    "space-7": {
+      "value": "48px",
+      "type": "color"
+    },
+    "content-max": {
+      "value": "1180px",
+      "type": "color"
+    },
+    "topbar-height": {
+      "value": "64px",
+      "type": "color"
+    }
+  }
+}

@@ -1,44 +1,62 @@
 ---
-title: Component：数据表格链路（14A 功能包）
+title: Component — Data Table（数据表格链路）
 id-prefix: CMP-TABLE
-source: ALE-WEBUI-设计规范-v5.4.md
-status: M2 迁移（内容 = v5.4.1 基线，未新增规则）
+source: M4 链路建设（v6.0）；前身 = v5.4 第 14/14A 章
+status: M4 第一批（Core/Advanced 已实现；虚拟化列 Advanced 待办）
 ---
-# Component：数据表格链路（14A 功能包）
+# Data Table（数据表格链路）
 
+## 能力分级（v6.0 起，按复杂度选档）
 
----
+| 级别 | 能力 | 适用 |
+|---|---|---|
+| **Core** | 语义表格、排序（aria-sort）、分页（10/20/50+折叠页码）、防抖搜索、空/错/加载态、文字换行 | 所有列表场景 |
+| **Advanced** | 列宽拖动（键盘可操作）、批量选择+危险确认、状态筛选、批量操作条 | 数据工作台 |
+| **Optional** | 亮暗主题、多语言 —— **应用级能力注入，不是每张表自身职责** | 应用整体 |
+| Backlog | 列显隐、持久化布局、虚拟化（>1 万行） | v6.1 |
 
-## 14. 表格与数据列表
+## Anatomy
 
-- 语义化 `table/thead/tbody/th`；数字右对齐（金额用 `tabular-nums`）、文本左对齐；排序表头为按钮并设 `aria-sort`。
-- 空态/加载态/错误态必备；行操作靠近行末，低频动作收进菜单；批量操作仅选中行后出现并显示数量。
-- 响应式策略：横向滚动 / 优先级隐藏 / 卡片化。
-- **对比矩阵（形态 C，参照 nvci-lite）**：分组行 × 产品列；三态判定用"圆点+文字"而非纯颜色；人工核对用模态框并保留判定依据；支持导出。
+```
+Toolbar: 搜索(防抖300ms+清除) | 状态筛选
+BatchBar: 已选 N 条 | 清除 | 危险操作（选中才出现）
+Table: thead(排序按钮+aria-sort+列宽手柄) tbody(换行单元格)
+Pagination: 每页 N | 第 x–y 共 z | « ‹ 1 2 … n › »
+```
 
-### 14A. 数据表格交互功能包（形态 B 标配，必须）
+## 令牌与尺寸
 
-源自 ale-dan-cpl-system 实测实现（`useTableFeatures.tsx` / `TablePagination.tsx` / `QuotationList.tsx` / `ThemeContext.tsx` / `i18n/`），采纳时按本节无障碍要求强化：
+表头 tint 底 + `--color-heading-accent`；单元格 13px、`--color-border-soft` 分隔；金额 `tabular-nums` 右对齐；行 hover tint；`table-layout: fixed` + 显式列宽。
 
-**14A.1 排序**：表头内放 `<button>`，三态图标——未排序灰色双三角、正序紫色上三角、倒序紫色下三角；当前列设 `aria-sort="ascending|descending"`；再次点击切换方向；数值列按数值比较、文本按 `localeCompare`。
+## 交互行为（必须）
 
-**14A.2 列宽拖动**：表头右缘 1.5px 手柄，hover 显紫色；拖动最小列宽 50px；表格 `table-layout: fixed` + 像素宽度。复杂档推荐用 TanStack Table 实现（`header.getResizeHandler()` + `setColumnSizing`，注意 v8 API 在 header 而非 column 上），手写实现仅限轻量档。**无障碍强化**：手柄加 `role="separator"` + `aria-valuenow`（当前宽）+ `tabindex="0"`，左右方向键 ±10px（Shift+方向键 ±1px 精调）。
+- 排序：表头**按钮**（非 th onclick）+ `aria-sort`；三态图标（无/升/降）；
+- 列宽：手柄 `role="separator"` + `tabindex=0` + 方向键 ±10（Shift ±1）；控件必须 `position:relative`（F13 铁律）；
+- 搜索：300ms 防抖、清除按钮、变更重置页码；
+- 批量：全选/行选 stopPropagation；删除走危险确认（写明数量与后果）；
+- 换行：`overflow-wrap: break-word`，长编号不断表。
 
-**14A.3 文字换行**：单元格内容容器 `overflow-wrap: break-word; white-space: normal;`，长单号/URL/名称不断表。
+## 键盘与读屏
 
-**14A.4 分页**：页大小 Select（10/20/50，切换回第 1 页）+ "第 x–y 条，共 N 条"（数字千分位）+ 首页/上一页/页码组/下一页/末页；页码 >7 自动折叠为省略号；首末页按钮禁用态清晰。
+表头可 Tab 到达；方向键调列宽；`aria-sort`/`aria-selected`/禁用态清晰；空态含行动按钮。
 
-**14A.5 搜索**：输入防抖 ≤300ms；有内容时显示清除按钮；搜索/筛选变化自动重置页码与勾选；搜索中可显示加载指示。
+## 正确 / 错误示例
 
-**14A.6 批量操作**：表头全选 + 行复选（行内点击需 `stopPropagation` 避免触发行跳转）；选中 ≥1 出现批量动作，≥2 可出现对比；批量删除必须走危险确认弹窗，写明数量与后果。
+✅ 数字右对齐 tabular-nums；空态给「清除筛选」。
+❌ 纯色点表达状态（用圆点+文字徽章）；一页塞两套分页；行内 checkbox 不拦冒泡。
 
-**14A.7 亮/暗主题**：`ThemeProvider` + 根节点 `.dark` class + localStorage 持久化 + ≤300ms 过渡；暗色只在语义令牌映射层实现（第 6 章），暗色值仍从官方色板五档取值，ALE Purple 在暗底上用作按钮底色时验证对比度 ≥4.5:1；支持 `switchable=false` 锁定（对外品牌站可禁用暗色）。
+## 骨架支持矩阵
 
-**14A.8 多语言**：i18next 模式，语言选择持久化 localStorage；切换时同步 `<html lang>`；键名用"模块.键"（如 `quotation.status`）；缺失键回退默认语言（zh）；六语言基线 zh/zh-TW/en/ja/es/fr；语言切换器用地球图标 + `aria-label`。
+| 能力 | React | Alpine | Static |
+|---|---|---|---|
+| Core+Advanced | ✅ `components/DataTable.tsx` | Core（demo） | — |
+| 虚拟化 | Backlog（TanStack virtual） | — | — |
 
-## 规则 ID 注册表（本文件 Must 条款）
+## 自动化验收 ID
 
-| ID | 条款（摘录） |
+| ID | 检查 |
 |---|---|
-| CMP-TABLE-001 | ### 14A. 数据表格交互功能包（形态 B 标配，必须） |
-| CMP-TABLE-002 | **14A.6 批量操作**：表头全选 + 行复选（行内点击需 `stopPropagation` 避免触发行跳转）；选中 ≥1 出现批量动作，≥2 可出现对比；批量删除必须走危险确认弹窗，写明数量与 |
+| TABLE-SORT-001 | 表头按钮 + aria-sort |
+| TABLE-HIT-001 | 排序/分页/复选框热区 ≥44px |
+| TABLE-STATE-001 | 空/加载/错误态存在 |
+| TABLE-OVF-001 | 表格横向滚动限制在容器内 |
