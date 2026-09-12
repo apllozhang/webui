@@ -189,10 +189,11 @@ export function DataTable({ data, onDelete }: { data: DemoRow[]; onDelete?: (row
 
       <div className="rounded-[12px] border border-border bg-surface" style={{ boxShadow: "var(--shadow-sm)" }}>
         <div className="overflow-x-auto">
+          {/* 宽度模式：userSized=false 填满容器（filler 列吸收余量）；拖动后精确像素（Σ列宽，只有目标列变，F14） */}
           <table className="data w-full"
                  style={userSized
-                   ? { width: table.getTotalSize(), minWidth: 0 }   // 精确模式：总宽=Σ列宽，只有目标列变
-                   : { minWidth: "100%" }}>                          // 初始：filler 列吸收余量填满容器
+                   ? { width: table.getTotalSize(), minWidth: 0 }
+                   : { minWidth: "100%" }}>
             <thead>
               {table.getHeaderGroups().map((hg) => (
                 <tr key={hg.id}>
