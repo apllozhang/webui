@@ -73,25 +73,42 @@ jobs:
           path: kit/tools/design-check/artifacts/
           retention-days: 14
 
-      - name: Report run conclusion（回写 ci-state.json）
+      - name: Report run conclusion（回写 ci-state.json；本步骤永不红，红只由门禁决定）
         if: always()
         run: |
+          set +e
           CONCLUSION="${{ job.status }}"
           RUN_URL="https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
-          git config user.name "ale-webui-ci"
-          git config user.email "ci@users.noreply.github.com"
           mkdir -p .github
           printf '{\n  "run_id": %s,\n  "conclusion": "%s",\n  "sha": "%s",\n  "event": "%s",\n  "time": "%s",\n  "url": "%s"\n}\n' \
             "${{ github.run_id }}" "$CONCLUSION" "${{ github.sha }}" "${{ github.event_name }}" \
             "$(date -u +%Y-%m-%dT%H:%M:%SZ)" "$RUN_URL" > .github/ci-state.json
+          git config user.name "ale-webui-ci"
+          git config user.email "ci@users.noreply.github.com"
           git add .github/ci-state.json
-          git commit -m "ci: ${CONCLUSION} run ${{ github.run_id }} [skip ci]" || echo "nothing to commit"
-          for i in 1 2 3; do
-            git fetch origin main
-            if git rebase origin/main; then
-              git push origin HEAD:main && break
-            else
-              git rebase --abort
-              sleep $((i * 5))
-            fi
-          done
+          {
+            git commit -m "ci: ${CONCLUSION} run ${{ github.run_id }} [skip ci]" &&
+            git fetch origin main &&
+            git rebase origin/main &&
+            git push origin "HEAD:refs/heads/main"
+          } > /tmp/push.log 2>&1
+          RC=$?
+          {
+            echo "## design-gate 运行结论"
+            echo ""
+            echo "- 结论：**${CONCLUSION}**"
+            echo "- run：${RUN_URL}"
+            echo "- ci-state.json 回写：$([ "$RC" -eq 0 ] && echo 成功 || echo "失败（RC=$RC，见下方日志）")"
+            echo ""
+            echo "<details><summary>回写日志（git 原始输出）</summary>"
+            echo ""
+            echo '```'
+            cat /tmp/push.log
+            echo '```'
+            echo "</details>"
+            echo ""
+            echo '```json'
+            cat .github/ci-state.json
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+          exit 0
