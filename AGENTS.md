@@ -28,7 +28,7 @@ _*.py / _*.mjs           历次整改的操作脚本（操作记录，可读可�
 - git 在 `C:\Program Files\Git\cmd\git.exe`（PATH 里没有）；commit 需带身份参数
 - GitHub 走 SSH（HTTPS 443 被墙，22 通）；SSH key 在 `C:\Users\Administrator\.ssh\id_ed25519`（若换了机器需重建并加到 GitHub）
 - github.com:443 超时是常态，push 失败先 `python _probe.py` 测通道
-- 部署目标 10.10.10.218 ≡ 10.20.30.203（同一台机），SSH `alec`，密码见 `D:\AIWork\10.20.30.203.txt`；容器 ale-webui-spec:8091 / ale-webui-kit:8095
+- 部署目标 10.10.10.218 ≡ 10.20.30.203（同一台机），SSH `alec`，密码见 `D:\AIWork\10.20.30.203.txt`；容器 ale-webui-spec:8091 / ale-webui-kit:8095（密码也硬编码在 deploy 脚本内——仓库 Private 是前提，已由负责人拍板接受；永不转 Public）
 - 品牌资料在 `X:\BP 目录\Marketing Resources\`（网络盘）
 - 本机有 Edge/Chrome，puppeteer-core 门禁可用（node_modules 已装在 ale-webui-kit/tools）
 
@@ -43,6 +43,20 @@ _*.py / _*.mjs           历次整改的操作脚本（操作记录，可读可�
 7. **npm run design:check + tokens:contrast 全绿才算完成**；verify 脚本在 kit/tools
 8. JSX 标签内禁止行内 `//` 注释（会被当文本渲染，F15）；按钮类必须 `font: inherit`（F11）
 9. 320px 网格列写法：`minmax(min(Npx,100%),1fr)`（F10）
+
+## 环境差异（多机协作记录，v6.0 移交复核时确认）
+
+接手方（Git Bash / C:\Users\tinal）与原工作区（cmd / C:\Users\Administrator）环境不同，以下按机器记录：
+
+| 项 | 原工作区 (Administrator) | 接手方 (tinal) |
+|---|---|---|
+| shell | cmd | Git Bash |
+| SSH key | C:\Users\Administrator\.ssh\id_ed25519 | C:\Users\tinal\.ssh\id_ed25519（同一账号 apllozhang） |
+| node | D:\Program Files\nodejs（PATH 内） | D:\Tools\nodejs 便携版（需手动 PATH） |
+| 内网站点 | 218 可达 / 203 亦可达 | 218 不可达，用 203 |
+| 仓库结构 | 旧模式：工作区 + _repo_stage 双副本 | **新模式（移交后标准）：直接克隆 webui 仓库开发，单一真源；双副本规则已废止** |
+
+npm 慢/不稳时用 `--registry=https://registry.npmmirror.com`。
 
 ## 当前状态速查（截至移交）
 
