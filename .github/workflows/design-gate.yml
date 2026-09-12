@@ -1,0 +1,95 @@
+# ALE WebUI 设计门禁（M4 收尾 · CI 化）
+# push 即跑：tokens:check（零漂移）+ tokens:contrast（46 对断言）+ design:check（12 项浏览器门禁）
+# 浏览器：runner 预装 Chrome 优先，缺失则用 @puppeteer/browsers 下载（check.mjs 读 CHROME_PATH）
+# 运行结论回写 .github/ci-state.json（[skip ci] 防循环）——私有仓库无 API token 时，git log 即运行台账
+name: design-gate
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: design-gate-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: kit/tools/package-lock.json
+
+      - name: Locate Chrome（缺失则下载）
+        run: |
+          B="$(command -v google-chrome-stable || command -v google-chrome || command -v chromium || command -v chromium-browser || true)"
+          if [ -z "$B" ]; then
+            npx -y @puppeteer/browsers install chrome@stable --path "$HOME/.cache/pw-chrome" > /dev/null
+            B="$(find "$HOME/.cache/pw-chrome" -type f -name chrome | head -1)"
+          fi
+          echo "CHROME_PATH=$B" >> "$GITHUB_ENV"
+          echo "browser: $B"
+
+      - name: Install tools deps
+        working-directory: kit/tools
+        run: npm ci --no-audit --no-fund
+
+      - name: Serve spec-site (127.0.0.1:8765)
+        run: |
+          python3 -m http.server 8765 --directory spec-site > /dev/null 2>&1 &
+          for i in $(seq 1 20); do
+            curl -fsS -o /dev/null http://127.0.0.1:8765/ && break || sleep 1
+          done
+          curl -fsS -o /dev/null http://127.0.0.1:8765/ || { echo "spec-site 服务未就绪"; exit 1; }
+
+      - name: tokens:check（零漂移）
+        working-directory: kit/tools
+        run: npm run tokens:check
+
+      - name: tokens:contrast（46 对断言）
+        working-directory: kit/tools
+        run: npm run tokens:contrast
+
+      - name: design:check（12 项浏览器门禁）
+        working-directory: kit/tools
+        run: npm run design:check -- --url http://127.0.0.1:8765/
+
+      - name: Upload gate artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: design-check-artifacts
+          path: kit/tools/design-check/artifacts/
+          retention-days: 14
+
+      - name: Report run conclusion（回写 ci-state.json）
+        if: always()
+        run: |
+          CONCLUSION="${{ job.status }}"
+          RUN_URL="https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          git config user.name "ale-webui-ci"
+          git config user.email "ci@users.noreply.github.com"
+          mkdir -p .github
+          printf '{\n  "run_id": %s,\n  "conclusion": "%s",\n  "sha": "%s",\n  "event": "%s",\n  "time": "%s",\n  "url": "%s"\n}\n' \
+            "${{ github.run_id }}" "$CONCLUSION" "${{ github.sha }}" "${{ github.event_name }}" \
+            "$(date -u +%Y-%m-%dT%H:%M:%SZ)" "$RUN_URL" > .github/ci-state.json
+          git add .github/ci-state.json
+          git commit -m "ci: ${CONCLUSION} run ${{ github.run_id }} [skip ci]" || echo "nothing to commit"
+          for i in 1 2 3; do
+            git fetch origin main
+            if git rebase origin/main; then
+              git push origin main && break
+            else
+              git rebase --abort
+              sleep $((i * 5))
+            fi
+          done
