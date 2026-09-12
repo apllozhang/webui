@@ -189,7 +189,7 @@ Date Picker/Tree/Combobox、图表封装、Figma Variables 同步、五档截图
 
 - **网络**：github.com HTTPS 常被重置（SSH 22 可用，push 走 SSH）；api/codeload 可达。Noto 字体来自 npm（@fontsource/noto-sans-sc），已本地化进仓库。
 - **单点**：SSH key 在 Administrator 账户下，接手人需自行生成并加到 GitHub（或让原账号授权）。
-- **安全决策记录（负责人已拍板，选 A；约束②已于 M5-0.2 执行）**：仓库保持 **Private**；~~服务器密码硬编码在 `deploy/*/deploy*.js`~~ 密码已外置（deploy 脚本改读不入库的 `deploy.secret.json`，仓库内不再含任何口令）。前提与约束：①仓库永不转 Public、不给外部承包商访问；②~~若未来需要公开或扩大访问面，先执行"密码外置"改造~~ 已执行；③服务器密码现同步存于 `deploy.secret.json` 与 `D:\AIWork\10.20.30.203.txt`（及 Z 盘镜像），改动密码需这些位置一起换。
+- **安全决策记录（负责人已拍板，选 A；约束②已于 M5-0.2 执行，服务器密码已于 M5-0.3 轮换——2026-09-12，旧口令失效，新口令在 secret/两处 txt）**：仓库保持 **Private**；~~服务器密码硬编码在 `deploy/*/deploy*.js`~~ 密码已外置（deploy 脚本改读不入库的 `deploy.secret.json`，仓库内不再含任何口令）。前提与约束：①仓库永不转 Public、不给外部承包商访问；②~~若未来需要公开或扩大访问面，先执行"密码外置"改造~~ 已执行；③服务器密码现同步存于 `deploy.secret.json` 与 `D:\AIWork\10.20.30.203.txt`（及 Z 盘镜像），改动密码需这些位置一起换。
 - **203/218 认知**：同一台机器，别当两台部署。
 - **品牌依赖**：官方品牌 PDF 与 Logo 在 X:\ 网络盘（`Marketing Resources\ALE Brand\`），接手人确认有权限。**品牌资料移交策略**：日常开发零依赖（Logo 已嵌入骨架、色/字已令牌化）；仅换 Logo/对外发布/Doc-PPT 阶段需要原盘；内部同事给盘权限即可，外部人员只给最小集（两张 PNG + 指南 PDF + 法律 docx）并签使用约束。
 - **仓库品牌资产边界**：骨架 `assets/` 内嵌两张官方 Logo PNG 仅限**内部演示**使用；若仓库转公开或交外部承包商，应替换为占位图，Logo 走内部资产渠道分发（品牌资产不进公共 Git）。
