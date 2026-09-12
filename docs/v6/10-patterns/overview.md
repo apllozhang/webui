@@ -1,0 +1,86 @@
+---
+title: 交互模式总览与页面骨架
+id-prefix: PAT-OVER
+source: ALE-WEBUI-设计规范-v5.4.md
+status: M2 迁移（内容 = v5.4.1 基线，未新增规则）
+---
+# 交互模式总览与页面骨架
+产品家族（2）× 交互模式（4）的完整定义见 index.md 术语表；本章是各模式的布局骨架。
+
+
+---
+
+## 8. 页面布局（三形态骨架）
+
+### 8.1 形态 A：内容/门户型（参照 TSSKB）
+
+```text
+顶部栏(64px, sticky)：Logo | 主导航 | 用户区          ← 底部 3px 品牌紫边条 + 半透明模糊
+内容区(≤1180px)：可选侧栏(300px, sticky) | 页面标题、正文、相关内容、下一步
+```
+
+### 8.2 形态 B：应用/工作台型（参照 dan-cpl-system）
+
+```text
+顶部栏(60–64px)：Logo | 页面标题 | 全局工具(语言/主题/全屏) | 用户区
+主体：主导航 | 页面标题 + 记录数徽标 | 搜索 + 筛选 + 主动作 | 数据表格 | 分页栏
+```
+
+### 8.3 形态 C：向导/流程型（参照 nvci-lite）
+
+```text
+顶部栏(60–64px)：Logo | 产品名称 | 全局操作
+步骤条：步骤 1 选型号 → 2 采集 → 3 对比 → 4 报告（当前步紫色高亮，已完成可点回退，未到步禁用）
+工作区：每步一个主任务 + 主按钮位于步骤条右端；跨步数据在切步时保持
+```
+
+### 8.4 独立登录页（参照 dan-cpl-system）
+
+- 左右分栏或居中卡片：左侧品牌区（反白 Logo 于品牌紫渐变底 `linear-gradient(118deg, #4F3478, #6B489D 55%, #7E5CB4)` + 一句产品定位），右侧登录表单。
+- 表单仅保留必要字段，标签在控件上方，错误紧邻控件。
+- 登录按钮 Primary 紫色实心、占满表单宽度、含加载态。
+- 页脚放法律声明；登录失败提示不泄露内部细节，保留已输入账号。
+
+### 8.5 通用布局约束
+
+- 内容最大宽度 1180–1280px，高密度应用可放宽；文字阅读区不无限拉宽。
+- 面包屑只表示层级，不作步骤进度；步骤进度必须用步骤条组件。
+- 主按钮放标题区右侧，小屏移到标题下方。
+
+---
+
+## A. 最小页面骨架（形态 A，TSSKB 风格）
+
+```html
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>页面标题 | 产品名称 | ALE</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">跳到主要内容</a>
+    <header class="topbar">
+      <a href="/" class="brand" aria-label="产品名称首页">
+        <img src="/assets/ale-primary-logo-horizontal.png" alt="Alcatel-Lucent Enterprise" />
+      </a>
+      <nav class="primary-nav" aria-label="主导航">
+        <a href="/" aria-current="page">首页</a>
+      </nav>
+    </header>
+    <main id="main" tabindex="-1">
+      <header class="page-header">
+        <h1>页面标题</h1>
+        <button type="button" class="button button--primary">创建内容</button>
+      </header>
+    </main>
+  </body>
+</html>
+```
+
+## 规则 ID 注册表（本文件 Must 条款）
+
+| ID | 条款（摘录） |
+|---|---|
+| PAT-OVER-001 | - 面包屑只表示层级，不作步骤进度；步骤进度必须用步骤条组件。 |
