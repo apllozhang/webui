@@ -404,7 +404,9 @@ font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;  /* 代�
 .button:disabled::after,        .pg-btn:disabled::after        { opacity: 0; }
 ```
 
-适用范围：`.button` 全部变体、`.pg-btn` 分页按钮；卡片/导航沿用浮起与 tint 底表达，不叠加（避免与 border 变色双重反馈）。`--ease-standard` 正名：该曲线即 M3 emphasized 曲线（cubic-bezier(0.2,0,0,1)），令牌别名 `--ease-emphasized` 同值并存的语义名。
+适用范围：`.button` 全部变体、`.pg-btn` 分页按钮；卡片/导航沿用浮起与 tint 底表达，不叠加（避免与 border 变色双重反馈）。
+
+**前置条件（必须）**：使用 `::before/::after` 做热区扩展或状态层的控件必须显式 `position: relative`，否则伪元素将相对更外层定位祖先（如 sticky topbar）铺满，造成全区域点击串扰（见附录 F13）。发布前以 `elementFromPoint` 对导航/控件中心做 hit-test 抽查。`--ease-standard` 正名：该曲线即 M3 emphasized 曲线（cubic-bezier(0.2,0,0,1)），令牌别名 `--ease-emphasized` 同值并存的语义名。
 
 ## 12. 卡片与浮动效果
 
@@ -775,6 +777,7 @@ ale-webui-kit/
 | F10 | 320px 视口页面级溢出 10px（根节点 330px） | 令牌区网格 `minmax(320px,1fr)` 强制最小列宽 > 可视宽 | 网格列一律 `minmax(min(Npx,100%),1fr)` 钳制；表格外层 `min-width:0; max-width:100%`；320px 纳入发布检查 |
 | F11 | 页面元素字体命中 Times New Roman / Arial（评审实测） | BUTTON 等替换元素不继承字体，`.icon-btn` 未写 `font:inherit` | 所有按钮类必须 `font:inherit`；等宽栈补 `"Noto Sans SC"` 中文回退；纳入抽查 |
 | F12 | 演示站 title 为 v5.1、README 称 v5.2，文档已 v5.3 | 版本号手工散布多处，无单一真源 | P0-1：`design-system.version.json` + 发布一致性检查（治理章） |
+| F13 | **点击导航链接实际触发主题/语言切换（上线后用户发现）** | 热区扩展 `.icon-btn::before { position:absolute; inset:0 }` 时控件缺 `position:relative`，伪元素相对定位祖先 `.topbar` 铺满整个顶栏，形成全栏透明热区层 | **铁律：任何用伪元素做热区/状态层的控件，必须同时显式声明 `position:relative`**（已补入 9 章/11.1 实现代码）；发布前 hit-test 抽查：`elementFromPoint(链接中心)` 必须命中链接自身 |
 
 ## 附录 G：量化自查数据（WCAG 对比度实测，白底/亮色主题）
 

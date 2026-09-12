@@ -37,6 +37,7 @@
   :root.dark .topbar { background: rgb(23 20 32 / 96%); }
   .icon-btn {
     display: inline-grid; place-items: center;
+    position: relative;   /* v5.4 热区伪元素定位基准 */
     width: 40px; height: 40px;
     color: var(--color-text-secondary);
     background: transparent;

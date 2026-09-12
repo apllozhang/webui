@@ -57,6 +57,7 @@
 .topbar-tools { display: flex; align-items: center; gap: .4rem; }
 .icon-btn {
   display: inline-grid; place-items: center;
+  position: relative;   /* v5.4 热区伪元素定位基准（缺失会铺满 topbar，点击串扰） */
   font: inherit;
   width: 40px; height: 40px;
   color: var(--color-text-secondary);
