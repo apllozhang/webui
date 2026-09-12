@@ -13,7 +13,21 @@ const TARGZ = path.join(__dirname, "site.tgz");
 const REMOTE_DIR = "/home/alec/ale-webui-spec";
 const PORT = process.env.DEPLOY_PORT || "8080";
 
+// v5.4 治理：发布前版本一致性检查（version.json ←→ index.html title）
+function checkVersion(siteDir) {
+  const vj = JSON.parse(fs.readFileSync(path.join(siteDir, "design-system.version.json"), "utf8"));
+  const html = fs.readFileSync(path.join(siteDir, "index.html"), "utf8");
+  const expected = vj.sites["spec-site"].title; // "ALE WebUI 设计规范 v5.4"
+  const okTitle = html.includes(`<title>${expected}</title>`);
+  if (!okTitle) {
+    console.error(`VERSION MISMATCH: version.json expects "${expected}"`);
+    process.exit(1);
+  }
+  console.log("version check OK:", expected);
+}
+
 function pack() {
+  checkVersion(path.join(SITE, "."));
   execSync(
     `tar -czf "${TARGZ}" -C "${SITE}" index.html css js assets Dockerfile nginx.conf`,
     { stdio: "inherit" }
