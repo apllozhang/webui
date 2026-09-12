@@ -1,0 +1,110 @@
+/* ============================================================
+   ALE WebUI Kit — shared/css/layout.css
+   通用骨架：跳转链接 / 顶栏(3px 品牌紫底条) / 容器 / 页脚 / 响应式
+   内容型页面默认底条；工具型可加 .topbar--plain 改为 1px 中性边线。
+   ============================================================ */
+.skip-link {
+  position: fixed; left: 1rem; top: -10rem; z-index: 900;
+  padding: .65rem 1rem;
+  color: #fff; background: var(--ale-purple-700);
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  transition: top var(--motion-fast) ease;
+}
+.skip-link:focus { top: 1rem; color: #fff; }
+
+.topbar {
+  position: sticky; top: 0; z-index: 100;
+  min-height: var(--topbar-height);
+  display: flex; align-items: center; gap: 1.5rem;
+  padding: 0 max(1rem, calc((100vw - var(--content-max)) / 2));
+  background: rgb(255 255 255 / 96%);
+  backdrop-filter: blur(10px);
+  border-bottom: 3px solid var(--ale-purple-600);
+}
+:root.dark .topbar { background: rgb(23 20 32 / 96%); }
+.topbar--plain { border-bottom: 1px solid var(--color-border); }
+
+.brand {
+  display: flex; align-items: center; gap: .85rem;
+  color: var(--color-heading-accent);
+  font-weight: 700; text-decoration: none; white-space: nowrap;
+}
+.brand img { width: auto; height: 34px; display: block; }
+.brand .divider { width: 1px; height: 22px; background: var(--color-border); }
+.brand .logo-white { display: none; }
+:root.dark .brand .logo-color { display: none; }
+:root.dark .brand .logo-white { display: block; }
+
+.primary-nav { display: flex; align-items: stretch; align-self: stretch; gap: .1rem; margin-left: auto; }
+.primary-nav a {
+  display: flex; align-items: center;
+  padding: 0 .72rem;
+  color: var(--color-text-primary);
+  font-size: .84rem; text-decoration: none;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -3px;
+  transition: background-color var(--motion-fast) ease, color var(--motion-fast) ease;
+}
+.primary-nav a:hover,
+.primary-nav a[aria-current="page"],
+.primary-nav a[aria-current="true"] {
+  color: var(--color-heading-accent);
+  background: var(--color-purple-tint);
+  border-bottom-color: var(--ale-purple-600);
+}
+
+.topbar-tools { display: flex; align-items: center; gap: .4rem; }
+.icon-btn {
+  display: inline-grid; place-items: center;
+  width: 40px; height: 40px;
+  color: var(--color-text-secondary);
+  background: transparent;
+  border: 1px solid transparent; border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background-color var(--motion-fast) ease, color var(--motion-fast) ease;
+}
+.icon-btn:hover { color: var(--color-heading-accent); background: var(--color-purple-tint); }
+.icon-btn svg { width: 20px; height: 20px; }
+
+.page-shell {
+  width: min(calc(100% - 2rem), var(--content-max));
+  margin: 0 auto;
+  padding: 2rem 0 4rem;
+}
+section[id] { scroll-margin-top: calc(var(--topbar-height) + 12px); }
+
+.site-footer {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 1rem;
+  min-height: 90px; padding: 1.5rem;
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  color: var(--color-text-muted); font-size: .8rem; text-align: center;
+}
+.site-footer img { width: auto; height: 26px; }
+
+@media (max-width: 1100px) {
+  .topbar { padding-inline: 1rem; }
+  .brand span:not(.divider) { display: none; }
+}
+@media (max-width: 980px) {
+  .primary-nav {
+    display: none;
+    position: absolute; top: var(--topbar-height); left: 0; right: 0;
+    padding: .5rem 1rem;
+    background: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+    box-shadow: var(--shadow-md);
+    flex-wrap: wrap;
+  }
+  .primary-nav.open { display: flex; }
+  .primary-nav a { min-height: 42px; flex: 1 0 30%; justify-content: center; border: 0; margin: 0; border-radius: var(--radius-sm); }
+  .nav-toggle { display: inline-grid; margin-left: auto; }
+}
+@media (max-width: 860px) {
+  :root { --topbar-height: 58px; }
+}
+@media (max-width: 560px) {
+  .primary-nav a { flex-basis: 50%; }
+  .page-shell { width: min(calc(100% - 1.25rem), var(--content-max)); }
+}

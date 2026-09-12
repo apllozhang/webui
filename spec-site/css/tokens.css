@@ -1,0 +1,121 @@
+/* ============================================================
+   ALE WebUI Design Spec v5.1 — tokens.css
+   该文件即规范第 6 章的实现，令牌名称与取值与规范一致。
+   ============================================================ */
+:root {
+  /* ── Primitive：品牌紫档位（规范 3.2） ── */
+  --ale-purple-700: #4f3478;   /* 80% 深紫：悬停/标题强调 */
+  --ale-purple-600: #6b489d;   /* 100% 主紫 */
+  --ale-purple-500: #7e5cb4;   /* 60% 浅紫 */
+  --ale-purple-40:  #e4d9f3;   /* 40% */
+  --ale-purple-100: #f1ecf7;   /* 20% 极浅紫 */
+  --ale-blue: #0085ca;
+  --ale-teal: #00b2a9;
+  --ale-orange: #ff4500;
+  --ale-red: #a50034;
+
+  /* Neutral */
+  --neutral-0: #ffffff;
+  --neutral-50: #f7f7f5;
+  --neutral-150: #e9e8e4;
+  --neutral-200: #d9d9d6;
+  --neutral-500: #616467;   /* v5.2：辅助文字对比度修正（原 #75787b 白底 4.44:1） */
+  --neutral-700: #4b4d50;
+  --neutral-950: #1a1a1a;
+
+  /* Semantic */
+  --color-canvas: var(--neutral-50);
+  --color-surface: var(--neutral-0);
+  --color-text-primary: var(--neutral-950);
+  --color-text-secondary: var(--neutral-700);
+  --color-text-muted: var(--neutral-500);
+  --color-border: var(--neutral-200);
+  --color-border-soft: var(--neutral-150);
+  --color-action: var(--ale-purple-600);
+  --color-action-hover: var(--ale-purple-700);
+  --color-link: #006aa2;
+  --color-purple-tint: var(--ale-purple-100);
+  --color-heading-accent: var(--ale-purple-700);
+
+  /* Status（图形亮色 + 文字深色派生，规范 15 章） */
+  --status-neutral-graphic: #b9b8b4;
+  --status-neutral-text: #616467;
+  --status-neutral-bg: #efeeec;
+  --status-info-graphic: #0085ca;
+  --status-info-text: #006aa2;
+  --status-info-bg: #e3f1f9;
+  --status-success-graphic: #00b2a9;
+  --status-success-text: #007a73;
+  --status-success-bg: #dcf3f1;
+  --status-warning-graphic: #f59e0b;
+  --status-warning-text: #9a4707;
+  --status-warning-bg: #fceedd;
+  --status-danger-graphic: #ff4500;
+  --status-danger-text: #a50034;
+  --status-danger-bg: #fce4e9;
+
+  /* Elevation（紫灰基调，规范 6/7 章） */
+  --shadow-sm: 0 1px 3px rgb(32 25 46 / 8%);
+  --shadow-md: 0 10px 30px rgb(50 36 76 / 14%);
+  --shadow-hover: 0 10px 22px rgb(32 25 46 / 20%);
+  --ring-soft: 0 0 0 3px rgb(107 72 157 / 15%);
+
+  /* Motion（规范 23 章） */
+  --motion-fast: 160ms;
+  --motion-panel: 240ms;
+  --motion-enter: 560ms;
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+
+  /* Component */
+  --button-primary-bg: var(--color-action);
+  --button-primary-bg-hover: var(--color-action-hover);
+  --input-border: var(--color-border);
+  --card-bg: var(--color-surface);
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+
+  --space-1: 4px;  --space-2: 8px;  --space-3: 12px;
+  --space-4: 16px; --space-5: 24px; --space-6: 32px; --space-7: 48px;
+
+  --content-max: 1180px;
+  --topbar-height: 64px;
+}
+
+/* ── 暗色主题（规范 14A.7：仅语义层映射，色值取自品牌色板体系） ── */
+:root.dark {
+  --color-canvas: #171420;
+  --color-surface: #211d2c;
+  --color-text-primary: #efedf4;
+  --color-text-secondary: #c6c2d1;
+  --color-text-muted: #9b96ab;
+  --color-border: #3d3750;
+  --color-border-soft: #2e2939;
+  --color-action: var(--ale-purple-600);
+  --color-action-hover: var(--ale-purple-500);
+  --color-link: #58b7e8;
+  --color-heading-accent: var(--ale-purple-40);
+  --color-purple-tint: rgb(107 72 157 / 24%);
+
+  --status-neutral-graphic: #8d8a94;
+  --status-neutral-text: #b5b1bf;
+  --status-neutral-bg: rgb(185 184 180 / 14%);
+  --status-info-graphic: #0085ca;
+  --status-info-text: #58b7e8;
+  --status-info-bg: rgb(0 133 202 / 16%);
+  --status-success-graphic: #00b2a9;
+  --status-success-text: #35c9bf;
+  --status-success-bg: rgb(0 178 169 / 14%);
+  --status-warning-graphic: #f59e0b;
+  --status-warning-text: #f5b04d;
+  --status-warning-bg: rgb(245 158 11 / 14%);
+  --status-danger-graphic: #ff4500;
+  --status-danger-text: #ff7a91;
+  --status-danger-bg: rgb(255 69 0 / 15%);
+
+  --shadow-sm: 0 1px 3px rgb(0 0 0 / 40%);
+  --shadow-md: 0 10px 30px rgb(0 0 0 / 45%);
+  --shadow-hover: 0 10px 22px rgb(0 0 0 / 50%);
+  --ring-soft: 0 0 0 3px rgb(126 92 180 / 35%);
+}

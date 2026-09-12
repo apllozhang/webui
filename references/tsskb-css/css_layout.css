@@ -1,0 +1,50 @@
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; color: var(--ink-900); background: var(--surface-soft); font-family: var(--font-sans); line-height: 1.7; }
+img { max-width: 100%; }
+a { color: var(--ale-purple-600); text-decoration-thickness: .08em; text-underline-offset: .18em; }
+a:hover { color: var(--ale-purple-700); }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+.skip-link { position: fixed; left: 1rem; top: -10rem; z-index: 200; padding: .65rem 1rem; color: white; background: var(--ale-purple-700); border-radius: var(--radius-sm); }
+.skip-link:focus { top: 1rem; }
+.topbar { position: sticky; top: 0; z-index: 100; min-height: 64px; display: flex; align-items: center; gap: 1.5rem; padding: 0 max(1rem, calc((100vw - var(--content-width)) / 2)); background: rgb(255 255 255 / 96%); border-bottom: 3px solid var(--ale-purple-600); backdrop-filter: blur(10px); }
+.brand { display: flex; align-items: center; gap: .85rem; color: var(--ale-purple-700); font-weight: 700; text-decoration: none; white-space: nowrap; }
+.brand img { width: auto; height: 34px; }
+.primary-nav { display: flex; align-items: stretch; align-self: stretch; gap: .1rem; margin-left: auto; }
+.primary-nav a { display: flex; align-items: center; padding: 0 .72rem; color: var(--ink-900); font-size: .84rem; text-decoration: none; border-bottom: 3px solid transparent; margin-bottom: -3px; }
+.primary-nav a:hover, .primary-nav a[aria-current="page"] { color: var(--ale-purple-700); background: var(--ale-purple-100); border-bottom-color: var(--ale-purple-600); }
+.nav-toggle { display: none; margin-left: auto; border: 0; background: transparent; color: var(--ale-purple-700); font-size: 1.35rem; }
+.page-shell { width: min(calc(100% - 2rem), var(--content-width)); margin: 0 auto; padding: 2rem 0 4rem; }
+.home-shell { padding-top: 2.5rem; }
+.page-intro { max-width: 760px; margin: 1rem 0 2.25rem; }
+.page-intro.compact { margin-bottom: 1.5rem; }
+.page-intro h1 { margin: .15rem 0 .5rem; color: var(--ale-purple-700); font-size: clamp(2rem, 4vw, 3rem); line-height: 1.12; }
+.page-intro p:last-child { color: var(--ink-500); font-size: 1.06rem; }
+.course-layout { display: grid; grid-template-columns: 300px minmax(0, 1fr); width: min(100%, 1600px); min-height: calc(100vh - 67px); margin: 0 auto; }
+.course-sidebar { position: sticky; top: 67px; height: calc(100vh - 67px); overflow-y: auto; padding: 1.35rem 1rem 2rem; background: var(--surface); border-right: 1px solid var(--line); }
+.course-main { width: min(100%, 1120px); padding: 2rem clamp(1.2rem, 4vw, 4rem) 4rem; justify-self: center; min-width: 0; }
+.breadcrumbs { display: flex; flex-wrap: wrap; gap: .45rem; margin-bottom: 1.6rem; color: var(--ink-500); font-size: .78rem; }
+.breadcrumbs a { color: var(--ink-700); }
+.site-footer { display: flex; align-items: center; justify-content: center; gap: 1rem; min-height: 90px; padding: 1.5rem; background: var(--surface); border-top: 1px solid var(--line); color: var(--ink-500); font-size: .8rem; }
+.site-footer img { width: auto; height: 26px; }
+.content-footer { margin-top: 3rem; padding-top: 1.25rem; color: var(--ink-500); border-top: 1px solid var(--line); font-size: .78rem; text-align: center; }
+@media (max-width: 1100px) {
+  .topbar { padding-inline: 1rem; }
+  .brand span { display: none; }
+  .primary-nav a { padding-inline: .55rem; }
+}
+@media (max-width: 860px) {
+  .topbar { min-height: 58px; }
+  .nav-toggle { display: block; }
+  .primary-nav { display: none; position: absolute; inset: 58px 0 auto; height: auto; padding: .5rem; background: var(--surface); border-bottom: 1px solid var(--line); box-shadow: var(--shadow-md); flex-wrap: wrap; }
+  .primary-nav.open { display: flex; }
+  .primary-nav a { min-height: 42px; flex: 1 0 25%; justify-content: center; border: 0; margin: 0; border-radius: var(--radius-sm); }
+  .course-layout { grid-template-columns: 1fr; }
+  .course-sidebar { position: static; height: auto; max-height: 48vh; border: 0; border-bottom: 1px solid var(--line); }
+  .course-sidebar.collapsed .course-nav, .course-sidebar.collapsed .search { display: none; }
+  .course-main { padding-inline: 1rem; }
+}
+@media (max-width: 560px) {
+  .primary-nav a { flex-basis: 50%; }
+  .page-shell { width: min(calc(100% - 1.25rem), var(--content-width)); }
+}

@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ALE WebUI Kit · 骨架导航</title>
+  <link rel="icon" href="alpine/assets/ale-logo.png" />
+  <link rel="stylesheet" href="alpine/assets/css/tokens.css" />
+  <link rel="stylesheet" href="alpine/assets/css/base.css" />
+  <link rel="stylesheet" href="alpine/assets/css/layout.css" />
+  <link rel="stylesheet" href="alpine/assets/css/components.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="index.html">
+      <img class="logo-color" src="alpine/assets/ale-logo.png" alt="Alcatel-Lucent Enterprise" />
+      <img class="logo-white" src="alpine/assets/ale-logo-white.png" alt="Alcatel-Lucent Enterprise" />
+      <span class="divider" aria-hidden="true"></span>
+      <span>ALE WebUI Kit</span>
+    </a>
+  </header>
+
+  <main class="page-shell">
+    <p class="eyebrow">SKELETONS</p>
+    <h1 style="font-size:28px">三个骨架，一套规范</h1>
+    <p style="color:var(--color-text-muted);font-size:14px;margin:0 0 24px">
+      全部按《ALE-WEBUI-设计规范 v5.1》构建，品牌令牌同源（shared/css/tokens.css）。规范演示站点见
+      <a href="http://10.10.10.218:8091/">:8091</a>。
+    </p>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px">
+      <a class="card card--interactive" href="react/">
+        <h3 style="font-size:1rem;margin:0 0 6px">React 复杂档</h3>
+        <p style="margin:0;color:var(--color-text-muted);font-size:.82rem">
+          Vite + TS + Tailwind + TanStack Table。14A 全功能：排序 / 列宽拖动(键盘) / 分页 / 防抖搜索 / 批量 / 暗色 / 中英。
+        </p>
+      </a>
+      <a class="card card--interactive" href="alpine/">
+        <h3 style="font-size:1rem;margin:0 0 6px">Alpine 轻量档</h3>
+        <p style="margin:0;color:var(--color-text-muted);font-size:.82rem">
+          vanilla + Alpine（本地化）。14A 轻量表格 + 三步向导。内网工具首选，超阈值升 React。
+        </p>
+      </a>
+      <a class="card card--interactive" href="static/">
+        <h3 style="font-size:1rem;margin:0 0 6px">静态档（Jinja2）</h3>
+        <p style="margin:0;color:var(--color-text-muted);font-size:.82rem">
+          内容门户：渐变 Hero、卡片入口、长文阅读、主题切换。Pagefind 搜索就绪。
+        </p>
+      </a>
+    </div>
+
+    <div class="card" style="margin-top:24px">
+      <h3 style="font-size:.95rem;margin:0 0 6px">铁律</h3>
+      <p style="margin:0;color:var(--color-text-muted);font-size:.82rem">
+        品牌值只存在于 shared/css/tokens.css；组件 API 暴露语义不暴露视觉；框架默认主题不是 ALE 品牌。
+      </p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <img class="logo-color" src="alpine/assets/ale-logo.png" alt="Alcatel-Lucent Enterprise" />
+    <p style="flex-basis:100%;margin:0">The Alcatel-Lucent name and logo are trademarks of Nokia used under license by ALE. www.al-enterprise.com</p>
+    <p style="margin:0">© Copyright ALE International 2026 · ale-webui-kit</p>
+  </footer>
+
+  <script src="alpine/assets/js/theme.js"></script>
+  <script>ALETheme.init();</script>
+</body>
+</html>

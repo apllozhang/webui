@@ -1,0 +1,24 @@
+:root {
+  --ale-purple-700: #4f3478;
+  --ale-purple-600: #6b489d;
+  --ale-purple-500: #7e5cb4;
+  --ale-purple-100: #f1ecf7;
+  --ale-blue: #0085ca;
+  --ale-teal: #00b2a9;
+  --ale-orange: #ff4500;
+  --ale-red: #a50034;
+  --ink-900: #1a1a1a;
+  --ink-700: #4b4d50;
+  --ink-500: #75787b;
+  --surface: #fff;
+  --surface-soft: #f7f7f5;
+  --line: #d9d9d6;
+  --line-soft: #e9e8e4;
+  --shadow-sm: 0 1px 3px rgb(32 25 46 / 8%);
+  --shadow-md: 0 10px 30px rgb(50 36 76 / 14%);
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --content-width: 1180px;
+  --font-sans: "Trebuchet MS", "Noto Sans SC", "Microsoft YaHei", sans-serif;
+}

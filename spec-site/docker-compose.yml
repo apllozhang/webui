@@ -1,0 +1,8 @@
+services:
+  ale-webui-spec:
+    build: .
+    image: ale-webui-spec:latest
+    container_name: ale-webui-spec
+    ports:
+      - "8080:80"
+    restart: unless-stopped

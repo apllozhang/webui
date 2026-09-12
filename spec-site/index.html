@@ -1,0 +1,547 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ALE WebUI 设计规范 v5.1</title>
+  <meta name="description" content="ALE WebUI 设计规范 v5.1：品牌基础、设计令牌、核心组件、数据表格功能包、动效与无障碍。" />
+  <link rel="icon" href="assets/ale-logo.png" />
+  <link rel="stylesheet" href="css/tokens.css?v=20260912" />
+  <link rel="stylesheet" href="css/base.css?v=20260912" />
+  <link rel="stylesheet" href="css/layout.css?v=20260912" />
+  <link rel="stylesheet" href="css/components.css?v=20260912" />
+  <link rel="stylesheet" href="css/content.css?v=20260912" />
+</head>
+<body data-i18n-title="meta.title">
+  <a class="skip-link" href="#main" data-i18n="skip">跳到主要内容</a>
+
+  <!-- 顶栏：3px 品牌紫底条 + 半透明模糊（规范 10 章） -->
+  <header class="topbar">
+    <a class="brand" href="#top" data-i18n-aria="a11y.home">
+      <img class="logo-color" src="assets/ale-logo.png" alt="Alcatel-Lucent Enterprise" />
+      <img class="logo-white" src="assets/ale-logo-white.png" alt="Alcatel-Lucent Enterprise" />
+      <span class="divider" aria-hidden="true"></span>
+      <span data-i18n="brand.spec">WebUI 设计规范</span>
+    </a>
+    <nav class="primary-nav" id="primary-nav" aria-label="主导航">
+      <a href="#brand" aria-current="true" data-i18n="nav.brand">品牌</a>
+      <a href="#type" aria-current="false" data-i18n="nav.type">排版</a>
+      <a href="#tokens" aria-current="false" data-i18n="nav.tokens">令牌</a>
+      <a href="#components" aria-current="false" data-i18n="nav.components">组件</a>
+      <a href="#table" aria-current="false" data-i18n="nav.table">数据表格</a>
+      <a href="#motion" aria-current="false" data-i18n="nav.motion">动效</a>
+      <a href="#accept" aria-current="false" data-i18n="nav.accept">验收</a>
+    </nav>
+    <div class="topbar-tools">
+      <div class="lang-menu">
+        <button class="icon-btn" id="lang-btn" type="button" aria-haspopup="menu" aria-expanded="false" data-i18n-aria="a11y.lang">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.9 5.6 3.9 9S14.5 18.4 12 21c-2.5-2.6-3.9-5.6-3.9-9S9.5 5.6 12 3Z"/></svg>
+        </button>
+        <div class="lang-menu-list" id="lang-menu" role="menu"></div>
+      </div>
+      <button class="icon-btn" id="theme-toggle" type="button" data-i18n-aria="a11y.theme">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+        <svg class="icon-sun" style="display:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+      <button class="icon-btn nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" data-i18n-aria="a11y.menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <span id="top"></span>
+
+    <!-- Hero：品牌紫渐变 + 一次性入场（规范 8.4/23 章） -->
+    <section class="hero" aria-label="Intro">
+      <div class="hero-inner">
+        <div class="hero-copy">
+          <p class="eyebrow" data-i18n="hero.eyebrow">ALE WEBUI · V5.1 标准版</p>
+          <h1 data-i18n="hero.h1">清晰 · 可信 · 开放 · 高效</h1>
+          <p class="hero-sub" data-i18n="hero.sub">一套可跨 ALE Web 项目复用的界面语言：品牌基础、设计令牌、组件状态、数据表格功能包、动效与无障碍，全部基于 ALE Corporate Brand Guidelines（September 2025）。</p>
+          <div class="hero-actions">
+            <a class="button primary" href="#table" data-i18n="hero.cta1">查看数据表格演示</a>
+            <a class="button ghost-on-brand" href="#components" data-i18n="hero.cta2">查看组件与动效</a>
+          </div>
+          <div class="hero-stats">
+            <div><strong>3</strong><span data-i18n="hero.s1">产品形态</span></div>
+            <div><strong>8</strong><span data-i18n="hero.s2">表格功能项</span></div>
+            <div><strong>4</strong><span data-i18n="hero.s3">动效时长档</span></div>
+            <div><strong>AA</strong><span data-i18n="hero.s4">无障碍基线</span></div>
+          </div>
+        </div>
+        <figure class="hero-visual" style="margin:0">
+          <img src="assets/ale-logo.png" alt="" aria-hidden="true" style="background:rgb(255 255 255 / 94%);padding:36px" />
+        </figure>
+      </div>
+      <svg class="hero-wave" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true"><path d="M0 50 C240 90 480 20 720 40 C960 60 1200 90 1440 50 L1440 90 L0 90 Z"/></svg>
+    </section>
+
+    <!-- 快捷入口卡：叠压 + 浮起（规范 12 章） -->
+    <div class="task-cards">
+      <a class="card" href="#brand"><div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/></svg></div><h3 data-i18n="task.color">色彩系统</h3><p data-i18n="task.color.d">品牌紫五档 + Web 语义色</p></a>
+      <a class="card" href="#type"><div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20 14 4M4 4h10M9 20h10"/></svg></div><h3 data-i18n="task.type">字体排版</h3><p data-i18n="task.type.d">Trebuchet 字体栈与字号行高</p></a>
+      <a class="card" href="#components"><div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="8" height="8" rx="2"/><rect x="13" y="3" width="8" height="8" rx="2"/><rect x="3" y="13" width="8" height="8" rx="2"/><rect x="13" y="13" width="8" height="8" rx="2"/></svg></div><h3 data-i18n="task.comp">核心组件</h3><p data-i18n="task.comp.d">按钮浮起 · 卡片浮动 · 模态 Toast</p></a>
+      <a class="card" href="#table"><div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M9 10v10M15 10v10"/></svg></div><h3 data-i18n="task.table">数据表格功能包</h3><p data-i18n="task.table.d">排序 · 列宽 · 分页 · 搜索 · 主题 · 多语言</p></a>
+      <a class="card" href="#motion"><div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z"/></svg></div><h3 data-i18n="task.motion">动效规范</h3><p data-i18n="task.motion.d">四档时长 · 三个统一动效语言</p></a>
+      <a class="card" href="#accept"><div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></div><h3 data-i18n="task.accept">验收清单</h3><p data-i18n="task.accept.d">品牌 · 交互 · 无障碍 · 数据</p></a>
+      <a class="card" href="http://10.10.10.218:8095/" target="_blank" rel="noopener"><div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><path d="M14 17.5h7M17.5 14v7"/></svg></div><h3 data-i18n="task.kit">工程骨架 Kit ↗</h3><p data-i18n="task.kit.d">React / Alpine / 静态三档模板</p></a>
+    </div>
+
+    <div class="page-shell">
+
+      <!-- 设计气质 -->
+      <section class="section" id="quality">
+        <header class="section-head">
+          <p class="eyebrow">Character</p>
+          <h2 data-i18n="qc.title">设计气质</h2>
+          <p data-i18n="qc.sub">清爽感的四个来源（TSSKB 实测归纳）</p>
+        </header>
+        <div class="principle-grid">
+          <div class="principle"><h3 data-i18n="qc.p1">大面积中性底</h3><p data-i18n="qc.p1.d">画布 #F7F7F5 + 白色表面，品牌紫只出现在关键动作与强调位（10–15%）。</p></div>
+          <div class="principle"><h3 data-i18n="qc.p2">标题用深紫</h3><p data-i18n="qc.p2.d">标题 #4F3478 而非纯黑，正文近黑 #1A1A1A —— 品牌感来自文字色而非色块。</p></div>
+          <div class="principle"><h3 data-i18n="qc.p3">两档浅色分隔</h3><p data-i18n="qc.p3.d">主边框 #D9D9D6 与次级柔和线 #E9E8E4（虚线），避免满屏等重边框。</p></div>
+          <div class="principle"><h3 data-i18n="qc.p4">紫灰阴影 + 轻浮起</h3><p data-i18n="qc.p4.d">阴影带紫灰色调（非纯黑），浮起 -2px 级，克制而可感知。</p></div>
+        </div>
+      </section>
+
+      <!-- 品牌与色彩 -->
+      <section class="section" id="brand">
+        <header class="section-head">
+          <p class="eyebrow">Brand &amp; Color</p>
+          <h2 data-i18n="color.title">色彩系统</h2>
+          <p data-i18n="color.sub">官方品牌色是品牌资产，Web 派生色满足状态、对比度与交互需要，两者命名分开。</p>
+        </header>
+
+        <h3 data-i18n="color.brand.h">品牌紫五档（命名规范 3.2）</h3>
+        <div class="swatch-grid" style="margin-bottom:var(--space-5)">
+          <div class="swatch"><div class="chip" style="background:#4f3478"></div><div class="meta"><b>purple-700</b><code>#4F3478 · 80%</code></div></div>
+          <div class="swatch"><div class="chip" style="background:#6b489d"></div><div class="meta"><b>purple-600</b><code>#6B489D · 100%</code></div></div>
+          <div class="swatch"><div class="chip" style="background:#7e5cb4"></div><div class="meta"><b>purple-500</b><code>#7E5CB4 · 60%</code></div></div>
+          <div class="swatch"><div class="chip" style="background:#e4d9f3"></div><div class="meta"><b>purple-40</b><code>#E4D9F3 · 40%</code></div></div>
+          <div class="swatch"><div class="chip" style="background:#f1ecf7"></div><div class="meta"><b>purple-100</b><code>#F1ECF7 · 20%</code></div></div>
+        </div>
+
+        <h3 data-i18n="color.semantic.h">Web 语义色（3.3）</h3>
+        <div class="table-scroll-x" style="margin-bottom:var(--space-5)">
+          <table class="spec-table">
+            <thead><tr><th data-i18n="color.semantic.col.token">令牌</th><th data-i18n="color.semantic.col.value">值</th><th data-i18n="color.semantic.col.use">用途</th></tr></thead>
+            <tbody>
+              <tr><td><code>color-action-primary</code></td><td><code>#6B489D</code></td><td>主动作背景、选中态</td></tr>
+              <tr><td><code>color-action-primary-hover</code></td><td><code>#4F3478</code></td><td>悬停 / 按下</td></tr>
+              <tr><td><code>color-link</code></td><td><code>#006AA2</code></td><td>白底小号正文链接</td></tr>
+              <tr><td><code>color-success</code></td><td><code>#007A73</code></td><td>成功</td></tr>
+              <tr><td><code>color-warning</code></td><td><code>#9A4707</code></td><td>警告</td></tr>
+              <tr><td><code>color-danger</code></td><td><code>#A50034</code></td><td>错误、危险操作</td></tr>
+              <tr><td><code>color-info</code></td><td><code>#006AA2</code></td><td>信息提示</td></tr>
+              <tr><td><code>color-text-primary</code></td><td><code>#1A1A1A</code></td><td>主正文</td></tr>
+              <tr><td><code>color-text-secondary</code></td><td><code>#4B4D50</code></td><td>次级信息</td></tr>
+              <tr><td><code>color-text-muted</code></td><td><code>#75787B</code></td><td>辅助信息</td></tr>
+              <tr><td><code>color-border</code> / <code>-soft</code></td><td><code>#D9D9D6</code> / <code>#E9E8E4</code></td><td>主边框 / 次级分隔</td></tr>
+              <tr><td><code>color-surface</code> / <code>color-canvas</code></td><td><code>#FFFFFF</code> / <code>#F7F7F5</code></td><td>表面 / 画布</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 data-i18n="color.ratio.h">色彩比例（3.4）</h3>
+        <div class="ratio-bar" style="margin-bottom:var(--space-4)">
+          <div style="flex:8;background:var(--color-surface);color:var(--color-text-secondary)" data-i18n="color.ratio.neutral">中性色与白 75–85%</div>
+          <div style="flex:1.5;background:#6b489d;color:#fff" data-i18n="color.ratio.purple">ALE Purple 10–15%</div>
+          <div style="flex:1;background:#0085ca;color:#fff" data-i18n="color.ratio.status">状态/辅助色 ≤10%</div>
+        </div>
+        <div class="note">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 9v4m0 4h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg>
+          <span data-i18n="color.note">官方亮色 #0085CA / #00B2A9 / #FF4500 白底对比不足 4.5:1，只用于图形元素；白底小字号文字一律用深色派生值。</span>
+        </div>
+      </section>
+
+      <!-- 字体排版 -->
+      <section class="section" id="type">
+        <header class="section-head">
+          <p class="eyebrow">Typography</p>
+          <h2 data-i18n="type.title">字体与排版</h2>
+          <p data-i18n="type.sub">Trebuchet 主字体、左对齐、正文 ≥16px、层级连续不跳级。</p>
+        </header>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:var(--space-5)">
+          <div>
+            <h3 data-i18n="type.stack.h">字体栈</h3>
+            <pre class="code">font-family: <span class="key">"Trebuchet MS"</span>, <span class="key">"Noto Sans SC"</span>,
+  <span class="key">"Microsoft YaHei UI"</span>, <span class="key">"PingFang SC"</span>,
+  <span class="key">"Segoe UI"</span>, Arial, sans-serif;
+
+<span class="cmt">/* 代码与等宽 */</span>
+font-family: <span class="key">"SFMono-Regular"</span>, Consolas,
+  <span class="key">"Liberation Mono"</span>, monospace;</pre>
+            <h3 style="margin-top:var(--space-4)" data-i18n="type.link.h">链接细节</h3>
+            <p style="margin:0"><a href="#type" data-i18n="type.link.demo">这是一个链接示例（下划线 .08em / 偏移 .18em）</a></p>
+            <h3 style="margin-top:var(--space-4)" data-i18n="type.eyebrow.h">Eyebrow 引导词（可选）</h3>
+            <p class="eyebrow" style="margin:0">Ale Webui · Standard</p>
+          </div>
+          <div class="demo-stage">
+            <h3 style="margin-top:0" data-i18n="type.scale.h">字号与行高</h3>
+            <div class="type-scale">
+              <div><span class="tag">h1 · 32px · 1.2</span><div style="font-size:32px;line-height:1.2;color:var(--color-heading-accent)">页面标题</div></div>
+              <div><span class="tag">h2 · 24px · 1.25</span><div style="font-size:24px;line-height:1.25;color:var(--color-heading-accent)">区块标题</div></div>
+              <div><span class="tag">h3 · 19px · 1.35</span><div style="font-size:19px;line-height:1.35;color:var(--color-heading-accent)">三级标题</div></div>
+              <div><span class="tag">body · 16px · 1.65</span><div style="font-size:16px">正文内容示例</div></div>
+              <div style="border:0"><span class="tag">compact 14px / aux 13px</span><div style="font-size:14px">紧凑控件文字 14px <span style="font-size:13px;color:var(--color-text-muted)">辅助文字 13px</span></div></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 设计令牌 -->
+      <section class="section" id="tokens">
+        <header class="section-head">
+          <p class="eyebrow">Tokens</p>
+          <h2 data-i18n="token.title">设计令牌</h2>
+          <p data-i18n="token.sub">三层令牌：基础值 → 语义用途 → 组件变量。间距、圆角、阴影、动效时长全部来自令牌。</p>
+        </header>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:var(--space-5)">
+          <div>
+            <h3 data-i18n="token.radius.h">圆角三档（8/12/16）</h3>
+            <div class="radius-demo">
+              <div style="border-radius:8px" >radius-sm · 8px</div>
+              <div style="border-radius:12px">radius-md · 12px</div>
+              <div style="border-radius:16px">radius-lg · 16px</div>
+            </div>
+            <h3 style="margin-top:var(--space-5)" data-i18n="token.shadow.h">阴影三档（紫灰基调）</h3>
+            <div class="shadow-demo">
+              <div style="border-radius:12px;box-shadow:var(--shadow-sm)" data-i18n="token.shadow.sm">常规卡片</div>
+              <div style="border-radius:12px;box-shadow:var(--shadow-md)" data-i18n="token.shadow.md">悬浮面板</div>
+              <div style="border-radius:12px;box-shadow:var(--shadow-hover)" data-i18n="token.shadow.hover">悬停浮起</div>
+            </div>
+            <h3 style="margin-top:var(--space-5)" data-i18n="token.motion.h">动效时长四档（23 章）</h3>
+            <p style="margin:0">
+              <span class="motion-chip" data-i18n="token.motion.fast">微交互 160ms</span>
+              <span class="motion-chip" data-i18n="token.motion.panel">面板 240ms</span>
+              <span class="motion-chip" data-i18n="token.motion.enter">入场 560ms（一次性）</span>
+              <span class="motion-chip" data-i18n="token.motion.theme">主题切换 ≤300ms</span>
+            </p>
+          </div>
+          <div>
+            <h3 data-i18n="token.space.h">间距 4px 基准网格</h3>
+            <div class="demo-stage" style="padding:var(--space-4)">
+              <div style="display:grid;gap:6px;font-size:12px;color:var(--color-text-muted)">
+                <div style="height:4px;width:4px;background:var(--color-action);border-radius:2px"></div>
+                <div style="height:8px;width:8px;background:var(--color-action);border-radius:2px"></div>
+                <div style="height:12px;width:12px;background:var(--color-action);border-radius:3px"></div>
+                <div style="height:16px;width:16px;background:var(--color-action);border-radius:4px"></div>
+                <div style="height:24px;width:24px;background:var(--color-action);border-radius:5px"></div>
+                <div style="height:32px;width:32px;background:var(--color-action);border-radius:6px"></div>
+                <div style="height:48px;width:48px;background:var(--color-action);border-radius:8px"></div>
+              </div>
+            </div>
+            <h3 style="margin-top:var(--space-5)" data-i18n="token.code.h">tokens.css 核心摘录</h3>
+            <pre class="code"><span class="cmt">/* Semantic */</span>
+--color-canvas: var(--neutral-50);
+--color-surface: var(--neutral-0);
+--color-border-soft: var(--neutral-150);
+--color-action: var(--ale-purple-600);
+
+<span class="cmt">/* Elevation（紫灰，非纯黑） */</span>
+--shadow-sm: 0 1px 3px rgb(32 25 46 / 8%);
+--shadow-hover: 0 10px 22px rgb(32 25 46 / 20%);
+
+<span class="cmt">/* Motion */</span>
+--motion-fast: 160ms; --motion-panel: 240ms;</pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- 三形态 -->
+      <section class="section" id="arch">
+        <header class="section-head">
+          <p class="eyebrow">Architecture</p>
+          <h2 data-i18n="arch.title">三种产品形态</h2>
+          <p data-i18n="arch.sub">同一系统可混用形态；相同组件必须使用相同样式。</p>
+        </header>
+        <div class="arch-grid">
+          <div class="card" style="padding:var(--space-4)">
+            <h3 data-i18n="arch.a">A · 内容/门户型</h3>
+            <pre class="wire">topbar 64px ─ Logo | nav | tools
+▔▔▔▔▔▔▔▔▔▔▔▔▔ 3px purple bar
+sidebar 300px │ content ≤1180px</pre>
+            <p data-i18n="arch.a.d">知识库、培训、产品浏览。顶栏带 3px 品牌紫底条 + 可选侧栏。</p>
+            <p style="margin-top:8px;font-size:12px;color:var(--color-text-muted)"><span data-i18n="arch.ref">参照：</span> <a href="https://github.com/apllozhang/TSSKB" target="_blank" rel="noopener">TSSKB</a></p>
+          </div>
+          <div class="card" style="padding:var(--space-4)">
+            <h3 data-i18n="arch.b">B · 应用/工作台型</h3>
+            <pre class="wire">topbar ─ Logo | title | lang·theme·user
+page title + count │ search · filter · CTA
+table feature pack │ pagination</pre>
+            <p data-i18n="arch.b.d">登录、数据管理、导入。数据表格功能包为标配。</p>
+            <p style="margin-top:8px;font-size:12px;color:var(--color-text-muted)"><span data-i18n="arch.ref">参照：</span> <a href="https://github.com/apllozhang/ale-dan-cpl-system" target="_blank" rel="noopener">ale-dan-cpl-system</a></p>
+          </div>
+          <div class="card" style="padding:var(--space-4)">
+            <h3 data-i18n="arch.c">C · 向导/流程型</h3>
+            <pre class="wire">stepper ① → ② → ③ → ④
+current lit · done rewinds · future disabled
+one task per step · data kept across steps</pre>
+            <p data-i18n="arch.c.d">多步采集、对比、报告。步骤条：当前高亮、完成可回退、未到禁用。</p>
+            <p style="margin-top:8px;font-size:12px;color:var(--color-text-muted)"><span data-i18n="arch.ref">参照：</span> <a href="https://github.com/apllozhang/nvci-lite" target="_blank" rel="noopener">nvci-lite</a></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 核心组件 -->
+      <section class="section" id="components">
+        <header class="section-head">
+          <p class="eyebrow">Components</p>
+          <h2 data-i18n="comp.title">核心组件</h2>
+          <p data-i18n="comp.sub">所有控件覆盖六态；浮起-按压是全站统一的按钮语言。</p>
+        </header>
+
+        <div class="demo-stage" style="margin-bottom:var(--space-5)">
+          <h3 style="margin-top:0" data-i18n="comp.button.h">按钮（11 章：hover -2px 浮起 / active 归零）</h3>
+          <div class="demo-row">
+            <button class="button primary" type="button" data-i18n="comp.button.primary">主要操作</button>
+            <button class="button secondary" type="button" data-i18n="comp.button.secondary">次要操作</button>
+            <button class="button tertiary" type="button" data-i18n="comp.button.tertiary">低强调</button>
+            <button class="button danger" type="button" data-i18n="comp.button.danger">危险操作</button>
+            <button class="button primary" type="button" disabled data-i18n="comp.button.disabled">禁用</button>
+          </div>
+          <div class="demo-row">
+            <button class="button primary sm" type="button">Small</button>
+            <button class="button primary" type="button">Medium</button>
+            <button class="button primary lg" type="button">Large</button>
+            <button class="button secondary" type="button" id="demo-loading-btn" data-i18n="comp.button.loading">点击看加载态</button>
+          </div>
+        </div>
+
+        <div class="demo-stage" style="margin-bottom:var(--space-5)">
+          <h3 style="margin-top:0" data-i18n="comp.badge.h">状态标签（15 章：圆点 + 文字）</h3>
+          <div class="demo-row">
+            <span class="badge neutral" data-i18n="comp.badge.draft">草稿</span>
+            <span class="badge info" data-i18n="comp.badge.doing">进行中</span>
+            <span class="badge success" data-i18n="comp.badge.published">已发布</span>
+            <span class="badge warning" data-i18n="comp.badge.archived">已归档</span>
+            <span class="badge danger" data-i18n="comp.badge.rejected">已拒绝</span>
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:var(--space-5);margin-bottom:var(--space-5)">
+          <div class="demo-stage">
+            <h3 style="margin-top:0" data-i18n="comp.form.h">表单（13 章：标签在上 / 错误紧邻控件）</h3>
+            <div class="field">
+              <label for="demo-title"><span data-i18n="comp.form.label">标题</span> <span class="req" aria-hidden="true">*</span></label>
+              <input class="input" id="demo-title" type="text" aria-describedby="demo-title-help demo-title-error" />
+              <p class="help" id="demo-title-help" data-i18n="comp.form.help">使用能准确描述内容的简短名称。</p>
+              <p class="error" id="demo-title-error" role="alert" hidden data-i18n="comp.form.error">请输入标题。</p>
+            </div>
+            <div class="demo-row">
+              <button class="button secondary sm" type="button" id="demo-error-btn" data-i18n="comp.form.demo.error">触发错误态</button>
+              <button class="button tertiary sm" type="button" id="demo-reset-btn" data-i18n="comp.form.demo.reset">重置</button>
+            </div>
+          </div>
+          <div class="demo-stage">
+            <h3 style="margin-top:0" data-i18n="comp.modal.h">模态与确认（17 章）</h3>
+            <p style="font-size:13.5px;color:var(--color-text-secondary)">role="dialog" · aria-modal · 焦点圈闭 · Esc 关闭 · 焦点归还</p>
+            <div class="demo-row">
+              <button class="button primary" type="button" id="demo-modal-btn" data-i18n="comp.modal.open">打开模态框</button>
+            </div>
+            <h3 style="margin-top:var(--space-5)" data-i18n="comp.toast.h">Toast 反馈（16 章）</h3>
+            <div class="demo-row">
+              <button class="button secondary sm" type="button" id="demo-toast-success" data-i18n="comp.toast.success">成功 Toast</button>
+              <button class="button secondary sm" type="button" id="demo-toast-info" data-i18n="comp.toast.info">信息 Toast</button>
+              <button class="button danger sm" type="button" id="demo-toast-error" data-i18n="comp.toast.error">错误 Toast</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="demo-stage">
+          <h3 style="margin-top:0" data-i18n="comp.card.h">卡片浮动（12 章：可交互元素才有浮起）</h3>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:var(--space-4)">
+            <div class="card card--interactive" tabindex="0">
+              <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 2 7l10 5 10-5-10-5ZM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+              <h3 data-i18n="comp.card.demo">悬停我试试（-2px 浮起 + 边框变紫）</h3>
+              <p>card--interactive</p>
+            </div>
+            <div class="card planned">
+              <h3 data-i18n="comp.card.static.t">非交互卡片</h3>
+              <p data-i18n="comp.card.static.d">无浮起 · 无手形光标（planned / 静态信息卡）</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 数据表格功能包 -->
+      <section class="section" id="table">
+        <header class="section-head">
+          <p class="eyebrow">14A · Feature Pack</p>
+          <h2 data-i18n="table.title">数据表格功能包</h2>
+          <p data-i18n="table.sub">形态 B 标配（14A）：排序 · 列宽拖动 · 换行 · 分页 · 防抖搜索 · 批量 · 亮暗主题 · 多语言。本表即规范自身的实现。</p>
+        </header>
+
+        <div class="table-wrap">
+          <div class="table-toolbar">
+            <div class="search-box" id="demo-search-box">
+              <svg class="lead" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+              <input class="input" id="demo-search" type="text" data-i18n-placeholder="table.search.ph" placeholder="搜索编号、标题、负责人…" />
+              <button class="clear-btn" id="demo-search-clear" type="button" data-i18n-aria="a11y.clearSearch" aria-label="清除搜索">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="width:14px;height:14px" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+              </button>
+            </div>
+            <select class="select" id="demo-status" aria-label="Status">
+              <option value="all" data-i18n="table.filter.all">全部状态</option>
+              <option value="draft" data-i18n="table.status.draft">草稿</option>
+              <option value="doing" data-i18n="table.status.doing">进行中</option>
+              <option value="published" data-i18n="table.status.published">已发布</option>
+              <option value="archived" data-i18n="table.status.archived">已归档</option>
+            </select>
+          </div>
+
+          <div class="batch-bar" id="demo-batch-bar">
+            <span class="count">已选 0 条</span>
+            <button class="button tertiary sm" type="button" id="demo-batch-clear" data-i18n="table.batch.clear">清除选择</button>
+            <button class="button danger sm" type="button" id="demo-batch-delete" data-i18n="table.batch.delete">批量删除</button>
+          </div>
+
+          <div class="table-scroll">
+            <table class="data" aria-describedby="table-note">
+              <thead><tr id="demo-thead-row"></tr></thead>
+              <tbody id="demo-tbody"></tbody>
+            </table>
+          </div>
+          <div class="pagination">
+            <div class="pg-left" id="demo-pager-left"></div>
+            <div class="pg-right" id="demo-pager-right"></div>
+          </div>
+        </div>
+        <p id="table-note" class="help" style="font-size:12px;margin-top:8px">提示：表头按钮排序（aria-sort）· 表头右缘拖动或聚焦后用 ←/→ 调整列宽（Shift 微调）· 搜索防抖 300ms。</p>
+
+        <!-- 批量删除确认（危险确认模板） -->
+        <div class="modal-overlay" id="demo-batch-modal" role="dialog" aria-modal="true" aria-labelledby="demo-batch-modal-title" data-dismissable="false">
+          <div class="modal">
+            <header>
+              <h3 id="demo-batch-modal-title">确认删除已选中的记录？</h3>
+              <button class="icon-btn" type="button" data-modal-close aria-label="关闭">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="width:18px;height:18px" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+              </button>
+            </header>
+            <div class="modal-body" data-i18n="table.batch.confirmBody">删除后将无法恢复。</div>
+            <footer>
+              <button class="button secondary" type="button" id="demo-batch-cancel" data-i18n="comp.modal.cancel">取消</button>
+              <button class="button danger" type="button" id="demo-batch-ok" data-i18n="table.batch.delete">批量删除</button>
+            </footer>
+          </div>
+        </div>
+      </section>
+
+      <!-- 动效 -->
+      <section class="section" id="motion">
+        <header class="section-head">
+          <p class="eyebrow">Motion</p>
+          <h2 data-i18n="motion.title">动效与微交互</h2>
+          <p data-i18n="motion.sub">四档时长令牌 + 三个统一动效语言：按钮浮起、卡片浮起、页面入场（一次性）。</p>
+        </header>
+        <div class="demo-row" style="margin-bottom:var(--space-4)">
+          <button class="button primary" type="button" id="motion-replay" data-i18n="motion.replay">重放入场动画</button>
+          <span class="motion-chip">160ms</span><span class="motion-chip">240ms</span><span class="motion-chip">560ms</span><span class="motion-chip">≤300ms</span>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:var(--space-4)">
+          <div class="motion-tile">
+            <button class="button primary" type="button" data-i18n="comp.button.primary">主要操作</button>
+            <span data-i18n="motion.tile1">按钮浮起：试试悬停上方按钮</span>
+          </div>
+          <div class="motion-tile card--interactive">
+            <strong style="color:var(--color-heading-accent)">card--interactive</strong>
+            <span data-i18n="motion.tile2">卡片浮起：试试悬停本卡</span>
+          </div>
+          <div class="motion-tile enter-once" id="motion-tiles">
+            <span style="font-size:22px" aria-hidden="true">↓ 12px</span>
+            <span data-i18n="motion.tile3">入场动画：点击重放</span>
+          </div>
+        </div>
+        <div class="note" style="margin-top:var(--space-4)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 9v4m0 4h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg>
+          <span data-i18n="motion.rules">浮动只给可交互元素；同屏同时浮起不超过悬停的那个；入场动画仅首屏一次；列表不逐项延迟；必须支持 prefers-reduced-motion。</span>
+        </div>
+      </section>
+
+      <!-- 验收清单 -->
+      <section class="section" id="accept">
+        <header class="section-head">
+          <p class="eyebrow">Acceptance</p>
+          <h2 data-i18n="accept.title">无障碍与验收清单</h2>
+          <p data-i18n="accept.sub">正式项目至少满足 WCAG 2.2 AA 核心要求；自动化检查不能替代人工键盘与读屏抽查。</p>
+        </header>
+        <div class="checklist" id="checklist"></div>
+        <div class="card" style="margin-top:var(--space-5)">
+          <h3 data-i18n="accept.err.h">错误信息公式</h3>
+          <p data-i18n="accept.err.body">发生了什么 + 对用户造成什么影响 + 用户现在能做什么。诊断编号放次要位置并支持复制。</p>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <img class="logo-color" src="assets/ale-logo.png" alt="Alcatel-Lucent Enterprise" />
+    <img class="logo-white" src="assets/ale-logo-white.png" alt="Alcatel-Lucent Enterprise" style="display:none" />
+    <p class="legal" data-i18n="footer.legal">The Alcatel-Lucent name and logo are trademarks of Nokia used under license by ALE. www.al-enterprise.com</p>
+    <p class="legal" style="margin:0" data-i18n="footer.copy">© Copyright ALE International 2026 · ALE WebUI 设计规范 v5.1 · 演示站点，按规范自举实现</p>
+    <p class="legal" style="margin:0" data-i18n="footer.products">参照实现：TSSKB · ale-dan-cpl-system · nvci-lite</p>
+    <p class="legal" style="margin:0"><a href="http://10.10.10.218:8095/" target="_blank" rel="noopener" data-i18n="footer.kit">工程骨架 Kit :8095 ↗</a></p>
+  </footer>
+
+  <div class="toast-region" id="toast-region" aria-live="polite"></div>
+
+  <!-- 演示用模态框 -->
+  <div class="modal-overlay" id="demo-modal" role="dialog" aria-modal="true" aria-labelledby="demo-modal-title">
+    <div class="modal">
+      <header>
+        <h3 id="demo-modal-title" data-i18n="comp.modal.title">确认删除“课程草稿”？</h3>
+        <button class="icon-btn" type="button" data-modal-close aria-label="关闭">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="width:18px;height:18px" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+        </button>
+      </header>
+      <div class="modal-body" data-i18n="comp.modal.body">删除后将无法恢复。已发布内容不受影响。</div>
+      <footer>
+        <button class="button secondary" type="button" id="demo-modal-cancel" data-i18n="comp.modal.cancel">取消</button>
+        <button class="button danger" type="button" id="demo-modal-ok" data-i18n="comp.modal.ok">删除草稿</button>
+      </footer>
+    </div>
+  </div>
+
+  <script src="js/i18n.js?v=20260912"></script>
+  <script src="js/app.js?v=20260912"></script>
+  <script src="js/table.js?v=20260912"></script>
+  <script>
+    /* 验收清单渲染 */
+    (function () {
+      var i18n = window.ALE.i18n;
+      var groups = [
+        { key: "accept.g1", items: ["check.1", "check.2", "check.3"] },
+        { key: "accept.g2", items: ["check.4", "check.5", "check.6"] },
+        { key: "accept.g3", items: ["check.7", "check.8", "check.9"] },
+        { key: "accept.g4", items: ["check.10", "check.11"] },
+        { key: "accept.g5", items: ["check.12"] }
+      ];
+      var ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>';
+      var host = document.getElementById("checklist");
+      function render() {
+        host.innerHTML = "";
+        groups.forEach(function (g) {
+          var card = document.createElement("div");
+          card.className = "card";
+          var h = document.createElement("h3");
+          h.textContent = i18n.t(g.key);
+          card.appendChild(h);
+          var ul = document.createElement("ul");
+          g.items.forEach(function (k) {
+            var li = document.createElement("li");
+            li.innerHTML = ICON + "<span></span>";
+            li.lastElementChild.textContent = i18n.t(k);
+            ul.appendChild(li);
+          });
+          card.appendChild(ul);
+          host.appendChild(card);
+        });
+      }
+      render();
+      i18n.onChange(render);
+    })();
+  </script>
+</body>
+</html>
