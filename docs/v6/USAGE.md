@@ -88,7 +88,7 @@ npm run design:check        # 12 项门禁：版本/资产/五档溢出/热区/�
 | 能力 | 状态 |
 |---|---|
 | 令牌/主题/基础组件/14A 表格/门禁 | ✅ 可直接用（三个线上站点验证过） |
-| 多语言 | ✅ React（react-i18next）/ Alpine（i18n.js 已接线）；⚠️ Static 机制在库（`js/i18n.js`）但模板未接线——M5 试点首站（培训复盘页）发现，列入弥补计划 |
+| 多语言 | ✅ React（react-i18next）/ Alpine（i18n.js 已接线）；⚠️ Static 机制在库（`js/i18n.js`）但模板未接线——临时任务实测发现，列入弥补计划 |
 | App Shell / Form / Feedback 四链路 | ✅ React 全量（M4 交付）；Alpine 顶栏+表格 Core+表单模式+Alert/Toast；Static 仅内容站外壳——覆盖面详见 20-components 各文件"骨架支持矩阵" |
 | Date Picker / Tree / Combobox 等复杂组件 | 📋 v6.1 backlog |
 | 设计稿（Figma）侧的令牌同步 | 📋 未开始 |

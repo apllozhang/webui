@@ -138,10 +138,10 @@ cd ale-webui-kit/deploy && set DEPLOY_HOST=10.10.10.218&& set DEPLOY_PORT=8095&&
 4. ✅ **规则 ID 全面覆盖**：`kit/tools/scan-rules.mjs` 扫全类型条款行（含表格行），59 条注册（46 条历史 ID 零变动），幂等零漂移；success-bg WARN 已清（primitives 登记 #dff4f2）
 
 ### 短期（M5，2–3 周）
-5. **三真实项目试点**：TSSKB/dan-cpl/nvci 各选 1–2 页用 v6 组件改造，记录迁移耗时/缺失令牌/例外——**这是 v6.0 发布的硬条件**（评审 §11 第 7 周）。首站已完成：内部《培训复盘》长文页换肤上线 8096（记录见 `review/2026-09-12-M5试点首站-培训复盘页.md`）
+5. **三真实项目试点**：TSSKB/dan-cpl/nvci 各选 1–2 页用 v6 组件改造，记录迁移耗时/缺失令牌/例外——**这是 v6.0 发布的硬条件**（评审 §11 第 7 周）。状态：未开始。（注：一次临时任务曾对内部《培训复盘》页完成换肤部署——8096，不列入试点；记录见 `review/2026-09-12-临时任务-培训复盘页换肤与部署.md`，其 Static 档发现已进第 8 项）
 6. **design-exceptions.yml 启用**：Schema 已有，开始真实登记
 7. **字体分片化**：unicode-range 分包（现首载 ~2.2MB，评审指出偏重）
-8. **Static 档 i18n 接线（M5 试点发现，弥补计划）**：`js/i18n.js`（ALEI18n）机制在库但 base/index/article 模板未接语言切换；USAGE 成熟度表已改为如实表述；接线时补 en 词典与语言切换按钮
+8. **Static 档 i18n 接线（临时任务实测发现，弥补计划）**：`js/i18n.js`（ALEI18n）机制在库但 base/index/article 模板未接语言切换；USAGE 成熟度表已改为如实表述；接线时补 en 词典与语言切换按钮
 
 ### 中期（M6，发布）
 9. **干净交付目录**（`tools/make-release.mjs`：拼装+校验+zip）、v6.0 tag + GitHub Release、§15 发布完成定义逐项打勾、三方签字
