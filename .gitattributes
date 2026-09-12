@@ -1,0 +1,3 @@
+# F16：统一 EOL——文本门禁（scan-rules）以 LF 为基准，autocrlf 检出的 CRLF 会造成假漂移
+* text=auto
+*.md text eol=lf

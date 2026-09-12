@@ -182,6 +182,7 @@ Date Picker/Tree/Combobox、图表封装、Figma Variables 同步、五档截图
 | 通用 | **fonts.check 假阳性** | 验证字体必须"资产 HTTP 200 + document.fonts 注册数 + check"三件套，单独 check 会被系统字体骗 |
 | 通用 | **build 绿 ≠ 运行对** | React import 丢失/FAB 断点写反都是构建不报错的；截图回归是刚需 |
 | 通用 | **工作区↔stage 双副本** | push 前必同步，否则线上有仓库没有 |
+| F16 | **门禁可移植性（EOL）** | 文本门禁读文件先规范化 EOL（autocrlf 检出 CRLF 会让 LF 基准的 `--check` 假报 DRIFT）；`.gitattributes` 锁 `*.md eol=lf` 根治 |
 
 ## 9. 风险与依赖
 

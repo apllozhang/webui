@@ -41,7 +41,8 @@ function walk(dir, out = []) {
 }
 
 function parseFile(file) {
-  const raw = fs.readFileSync(file, "utf8");
+  // F16：EOL 规范化——autocrlf 检出为 CRLF 时，LF 基准的重建区段与原文逐字节比对必假报 DRIFT
+  const raw = fs.readFileSync(file, "utf8").replace(/\r\n/g, "\n");
   const lines = raw.split("\n");
   let idPrefix = null, inFront = false;
   for (let i = 0; i < Math.min(lines.length, 12); i++) {

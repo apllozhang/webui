@@ -28,6 +28,7 @@ status: M2 迁移（内容 = v5.4.1 基线，未新增规则）
 | F11 | 页面元素字体命中 Times New Roman / Arial（评审实测） | BUTTON 等替换元素不继承字体，`.icon-btn` 未写 `font:inherit` | 所有按钮类必须 `font:inherit`；等宽栈补 `"Noto Sans SC"` 中文回退；纳入抽查 |
 | F12 | 演示站 title 为 v5.1、README 称 v5.2，文档已 v5.3 | 版本号手工散布多处，无单一真源 | P0-1：`design-system.version.json` + 发布一致性检查（治理章） |
 | F13 | **点击导航链接实际触发主题/语言切换（上线后用户发现）** | 热区扩展 `.icon-btn::before { position:absolute; inset:0 }` 时控件缺 `position:relative`，伪元素相对定位祖先 `.topbar` 铺满整个顶栏，形成全栏透明热区层 | **铁律：任何用伪元素做热区/状态层的控件，必须同时显式声明 `position:relative`**（已补入 9 章/11.1 实现代码）；发布前 hit-test 抽查：`elementFromPoint(链接中心)` 必须命中链接自身 |
+| F16 | 文本门禁在 Windows autocrlf 检出上假报漂移（`rules:check` 报 23 文件 DRIFT，同一命令在 CI 为绿；M5-0.1） | scan-rules.mjs 读文件未做 EOL 规范化：autocrlf 检出为 CRLF，重建的 LF 注册区段与 CRLF 原文逐字节比对必不一致 | 文本门禁读文件一律先做 EOL 规范化（`\r\n`→`\n`）再比对/写回；仓库以 `.gitattributes` 锁 `*.md eol=lf` 根治 |
 
 ## 规则 ID 注册表（本文件 Must 条款）
 
