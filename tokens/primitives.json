@@ -1,0 +1,294 @@
+{
+  "$schema": "./schema/token.schema.json",
+  "meta": {
+    "domain": "primitive",
+    "rule": "组件禁止直接引用本域（GOV-ENG）；Web 派生色/暗色系基础值自动升域"
+  },
+  "tokens": {
+    "ale-purple-700": {
+      "value": "#4f3478",
+      "type": "color",
+      "description": "80% 深紫：悬停/标题强调"
+    },
+    "ale-purple-600": {
+      "value": "#6b489d",
+      "type": "color",
+      "description": "100% 主紫（Pantone 267C）"
+    },
+    "ale-purple-500": {
+      "value": "#7e5cb4",
+      "type": "color",
+      "description": "60% 浅紫：图表序列/hover 边框"
+    },
+    "ale-purple-40": {
+      "value": "#e4d9f3",
+      "type": "color",
+      "description": "40%：暗底浅紫文字"
+    },
+    "ale-purple-100": {
+      "value": "#f1ecf7",
+      "type": "color",
+      "description": "20% 极浅紫：tint 底"
+    },
+    "ale-blue": {
+      "value": "#0085ca",
+      "type": "color",
+      "description": "官方亮蓝（仅图形）"
+    },
+    "ale-teal": {
+      "value": "#00b2a9",
+      "type": "color",
+      "description": "官方亮青（仅图形）"
+    },
+    "ale-orange": {
+      "value": "#ff4500",
+      "type": "color",
+      "description": "官方亮橙（仅图形）"
+    },
+    "ale-red": {
+      "value": "#a50034",
+      "type": "color",
+      "description": "品牌红（Danger 实底）"
+    },
+    "neutral-0": {
+      "value": "#ffffff",
+      "type": "color",
+      "description": "白"
+    },
+    "neutral-50": {
+      "value": "#f7f7f5",
+      "type": "color",
+      "description": "画布灰"
+    },
+    "neutral-150": {
+      "value": "#e9e8e4",
+      "type": "color",
+      "description": "柔和分隔线"
+    },
+    "neutral-200": {
+      "value": "#d9d9d6",
+      "type": "color",
+      "description": "主边框"
+    },
+    "neutral-500": {
+      "value": "#616467",
+      "type": "color",
+      "description": "辅助文字灰（v5.2 修正 5.95:1）"
+    },
+    "neutral-700": {
+      "value": "#4b4d50",
+      "type": "color",
+      "description": "次级文字"
+    },
+    "neutral-950": {
+      "value": "#1a1a1a",
+      "type": "color",
+      "description": "近黑正文"
+    },
+    "color-link": {
+      "value": "#006aa2",
+      "type": "color",
+      "description": "Web 派生/暗色系基础值"
+    },
+    "status-neutral-graphic": {
+      "value": "#b9b8b4",
+      "type": "color",
+      "description": "Web 派生/暗色系基础值"
+    },
+    "status-neutral-text": {
+      "value": "#616467",
+      "type": "color",
+      "description": "Web 派生/暗色系基础值"
+    },
+    "status-neutral-bg": {
+      "value": "#efeeec",
+      "type": "color",
+      "description": "Web 派生/暗色系基础值"
+    },
+    "status-info-graphic": {
+      "value": "#0085ca",
+      "type": "color",
+      "description": "Web 派生/暗色系基础值"
+    },
+    "status-info-text": {
+      "value": "#006aa2",
+      "type": "color",
+      "description": "Web 派生/暗色系基础值"
+    },
+    "status-info-bg": {
+      "value": "#e3f1f9",
+      "type": "color",
+      "description": "Web 派生/暗色系基础值"
+    },
+    "status-success-graphic": {
+      "value": "#00b2a9",
+      "type": "color",
+      "description": "Web 派生/暗色系基础值"
+    },
+    "status-success-text": {
+      "value": "#007a73",
+      "type": "color",
+      "description": "Web 派生/暗色系基础值"
+    },
+    "status-success-bg": {
+      "value": "#dcf3f1",
+      "type": "color",
+      "description": "Web 派生/暗色系基础值"
+    },
+    "status-warning-graphic": {
+      "value": "#f59e0b",
+      "type": "color",
+      "description": "Web 派生/暗色系基础值"
+    },
+    "status-warning-text": {
+      "value": "#9a4707",
+      "type": "color",
+      "description": "Web 派生/暗色系基础值"
+    },
+    "status-warning-bg": {
+      "value": "#fceedd",
+      "type": "color",
+      "description": "Web 派生/暗色系基础值"
+    },
+    "status-danger-graphic": {
+      "value": "#ff4500",
+      "type": "color",
+      "description": "Web 派生/暗色系基础值"
+    },
+    "status-danger-text": {
+      "value": "#a50034",
+      "type": "color",
+      "description": "Web 派生/暗色系基础值"
+    },
+    "status-danger-bg": {
+      "value": "#fce4e9",
+      "type": "color",
+      "description": "Web 派生/暗色系基础值"
+    },
+    "color-canvas": {
+      "value": "#171420",
+      "type": "color",
+      "description": "Web 派生/暗色系基础值"
+    },
+    "color-surface": {
+      "value": "#211d2c",
+      "type": "color",
+      "description": "Web 派生/暗色系基础值"
+    },
+    "color-text-primary": {
+      "value": "#efedf4",
+      "type": "color",
+      "description": "Web 派生/暗色系基础值"
+    },
+    "color-text-secondary": {
+      "value": "#c6c2d1",
+      "type": "color",
+      "description": "Web 派生/暗色系基础值"
+    },
+    "color-text-muted": {
+      "value": "#9b96ab",
+      "type": "color",
+      "description": "Web 派生/暗色系基础值"
+    },
+    "color-border": {
+      "value": "#3d3750",
+      "type": "color",
+      "description": "Web 派生/暗色系基础值"
+    },
+    "color-border-soft": {
+      "value": "#2e2939",
+      "type": "color",
+      "description": "Web 派生/暗色系基础值"
+    },
+    "dark-color-canvas": {
+      "value": "#171420",
+      "type": "color",
+      "description": "Web 派生/暗色系基础值"
+    },
+    "dark-color-surface": {
+      "value": "#211d2c",
+      "type": "color",
+      "description": "Web 派生/暗色系基础值"
+    },
+    "dark-color-text-primary": {
+      "value": "#efedf4",
+      "type": "color",
+      "description": "Web 派生/暗色系基础值"
+    },
+    "dark-color-text-secondary": {
+      "value": "#c6c2d1",
+      "type": "color",
+      "description": "Web 派生/暗色系基础值"
+    },
+    "dark-color-text-muted": {
+      "value": "#9b96ab",
+      "type": "color",
+      "description": "Web 派生/暗色系基础值"
+    },
+    "dark-color-border": {
+      "value": "#3d3750",
+      "type": "color",
+      "description": "Web 派生/暗色系基础值"
+    },
+    "dark-color-border-soft": {
+      "value": "#2e2939",
+      "type": "color",
+      "description": "Web 派生/暗色系基础值"
+    },
+    "dark-color-link": {
+      "value": "#58b7e8",
+      "type": "color",
+      "description": "Web 派生/暗色系基础值"
+    },
+    "dark-status-neutral-graphic": {
+      "value": "#8d8a94",
+      "type": "color",
+      "description": "Web 派生/暗色系基础值"
+    },
+    "dark-status-neutral-text": {
+      "value": "#b5b1bf",
+      "type": "color",
+      "description": "Web 派生/暗色系基础值"
+    },
+    "dark-status-info-graphic": {
+      "value": "#0085ca",
+      "type": "color",
+      "description": "Web 派生/暗色系基础值"
+    },
+    "dark-status-info-text": {
+      "value": "#58b7e8",
+      "type": "color",
+      "description": "Web 派生/暗色系基础值"
+    },
+    "dark-status-success-graphic": {
+      "value": "#00b2a9",
+      "type": "color",
+      "description": "Web 派生/暗色系基础值"
+    },
+    "dark-status-success-text": {
+      "value": "#35c9bf",
+      "type": "color",
+      "description": "Web 派生/暗色系基础值"
+    },
+    "dark-status-warning-graphic": {
+      "value": "#f59e0b",
+      "type": "color",
+      "description": "Web 派生/暗色系基础值"
+    },
+    "dark-status-warning-text": {
+      "value": "#f5b04d",
+      "type": "color",
+      "description": "Web 派生/暗色系基础值"
+    },
+    "dark-status-danger-graphic": {
+      "value": "#ff4500",
+      "type": "color",
+      "description": "Web 派生/暗色系基础值"
+    },
+    "dark-status-danger-text": {
+      "value": "#ff7a91",
+      "type": "color",
+      "description": "Web 派生/暗色系基础值"
+    }
+  }
+}

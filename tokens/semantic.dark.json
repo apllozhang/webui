@@ -1,0 +1,138 @@
+{
+  "$schema": "./schema/token.schema.json",
+  "meta": {
+    "domain": "semantic",
+    "theme": "dark",
+    "rule": "语义层重映射；新字面色将记录为 WARN（primitives 为命名登记簿）"
+  },
+  "tokens": {
+    "color-canvas": {
+      "value": "#171420",
+      "type": "color"
+    },
+    "color-surface": {
+      "value": "#211d2c",
+      "type": "color"
+    },
+    "color-text-primary": {
+      "value": "#efedf4",
+      "type": "color"
+    },
+    "color-text-secondary": {
+      "value": "#c6c2d1",
+      "type": "color"
+    },
+    "color-text-muted": {
+      "value": "#9b96ab",
+      "type": "color"
+    },
+    "color-border": {
+      "value": "#3d3750",
+      "type": "color"
+    },
+    "color-border-soft": {
+      "value": "#2e2939",
+      "type": "color"
+    },
+    "color-action": {
+      "value": "var(--ale-purple-600)",
+      "type": "color"
+    },
+    "color-action-hover": {
+      "value": "var(--ale-purple-500)",
+      "type": "color"
+    },
+    "color-link": {
+      "value": "#58b7e8",
+      "type": "color"
+    },
+    "color-heading-accent": {
+      "value": "var(--ale-purple-40)",
+      "type": "color"
+    },
+    "color-purple-tint": {
+      "value": "rgb(107 72 157 / 24%)",
+      "type": "color"
+    },
+    "color-on-tint": {
+      "value": "var(--ale-purple-40)",
+      "type": "color"
+    },
+    "status-neutral-graphic": {
+      "value": "#8d8a94",
+      "type": "color"
+    },
+    "status-neutral-text": {
+      "value": "#b5b1bf",
+      "type": "color"
+    },
+    "status-neutral-bg": {
+      "value": "rgb(185 184 180 / 14%)",
+      "type": "color"
+    },
+    "status-info-graphic": {
+      "value": "#0085ca",
+      "type": "color"
+    },
+    "status-info-text": {
+      "value": "#58b7e8",
+      "type": "color"
+    },
+    "status-info-bg": {
+      "value": "rgb(0 133 202 / 16%)",
+      "type": "color"
+    },
+    "status-success-graphic": {
+      "value": "#00b2a9",
+      "type": "color"
+    },
+    "status-success-text": {
+      "value": "#35c9bf",
+      "type": "color"
+    },
+    "status-success-bg": {
+      "value": "rgb(0 178 169 / 14%)",
+      "type": "color"
+    },
+    "status-warning-graphic": {
+      "value": "#f59e0b",
+      "type": "color"
+    },
+    "status-warning-text": {
+      "value": "#f5b04d",
+      "type": "color"
+    },
+    "status-warning-bg": {
+      "value": "rgb(245 158 11 / 14%)",
+      "type": "color"
+    },
+    "status-danger-graphic": {
+      "value": "#ff4500",
+      "type": "color"
+    },
+    "status-danger-text": {
+      "value": "#ff7a91",
+      "type": "color"
+    },
+    "status-danger-bg": {
+      "value": "rgb(255 69 0 / 15%)",
+      "type": "color"
+    },
+    "shadow-sm": {
+      "value": "0 1px 3px rgb(0 0 0 / 40%)",
+      "type": "shadow"
+    },
+    "shadow-md": {
+      "value": "0 10px 30px rgb(0 0 0 / 45%)",
+      "type": "shadow"
+    },
+    "shadow-hover": {
+      "value": "0 10px 22px rgb(0 0 0 / 50%)",
+      "type": "shadow"
+    },
+    "ring-soft": {
+      "value": "0 0 0 3px rgb(126 92 180 / 35%)",
+      "type": "shadow"
+    }
+  }
+}

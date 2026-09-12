@@ -3,6 +3,85 @@ title: 三层设计令牌
 id-prefix: FND-TOKEN
 source: ALE-WEBUI-设计规范-v5.4.md
 status: M2 迁移（内容 = v5.4.1 基线，未新增规则）
+
+<!-- BEGIN:generated-token-table -->
+| 令牌 | 亮色 | 暗色 | 说明 |
+|---|---|---|---|
+| --ale-purple-700 | #4f3478 | （同亮色） |  |
+| --ale-purple-600 | #6b489d | （同亮色） |  |
+| --ale-purple-500 | #7e5cb4 | （同亮色） |  |
+| --ale-purple-40 | #e4d9f3 | （同亮色） |  |
+| --ale-purple-100 | #f1ecf7 | （同亮色） |  |
+| --ale-blue | #0085ca | （同亮色） |  |
+| --ale-teal | #00b2a9 | （同亮色） |  |
+| --ale-orange | #ff4500 | （同亮色） |  |
+| --ale-red | #a50034 | （同亮色） |  |
+| --neutral-0 | #ffffff | （同亮色） |  |
+| --neutral-50 | #f7f7f5 | （同亮色） |  |
+| --neutral-150 | #e9e8e4 | （同亮色） |  |
+| --neutral-200 | #d9d9d6 | （同亮色） |  |
+| --neutral-500 | #616467 | （同亮色） |  |
+| --neutral-700 | #4b4d50 | （同亮色） |  |
+| --neutral-950 | #1a1a1a | （同亮色） |  |
+| --color-canvas | #f7f7f5（= var(--neutral-50)） | #171420 |  |
+| --color-surface | #ffffff（= var(--neutral-0)） | #211d2c |  |
+| --color-text-primary | #1a1a1a（= var(--neutral-950)） | #efedf4 |  |
+| --color-text-secondary | #4b4d50（= var(--neutral-700)） | #c6c2d1 |  |
+| --color-text-muted | #616467（= var(--neutral-500)） | #9b96ab |  |
+| --color-border | #d9d9d6（= var(--neutral-200)） | #3d3750 |  |
+| --color-border-soft | #e9e8e4（= var(--neutral-150)） | #2e2939 |  |
+| --color-action | #6b489d（= var(--ale-purple-600)） | #6b489d（= var(--ale-purple-600)） |  |
+| --color-action-hover | #4f3478（= var(--ale-purple-700)） | #7e5cb4（= var(--ale-purple-500)） |  |
+| --color-link | #006aa2 | #58b7e8 |  |
+| --color-purple-tint | #f1ecf7（= var(--ale-purple-100)） | rgb(107 72 157 / 24%) |  |
+| --color-heading-accent | #4f3478（= var(--ale-purple-700)） | #e4d9f3（= var(--ale-purple-40)） |  |
+| --status-neutral-graphic | #b9b8b4 | #8d8a94 |  |
+| --status-neutral-text | #616467 | #b5b1bf |  |
+| --status-neutral-bg | #efeeec | rgb(185 184 180 / 14%) |  |
+| --status-info-graphic | #0085ca | #0085ca |  |
+| --status-info-text | #006aa2 | #58b7e8 |  |
+| --status-info-bg | #e3f1f9 | rgb(0 133 202 / 16%) |  |
+| --status-success-graphic | #00b2a9 | #00b2a9 |  |
+| --status-success-text | #007a73 | #35c9bf |  |
+| --status-success-bg | #dff4f2 | rgb(0 178 169 / 14%) | v5.4.1 contrast fix (4.498→4.554:1) |
+| --status-warning-graphic | #f59e0b | #f59e0b |  |
+| --status-warning-text | #9a4707 | #f5b04d |  |
+| --status-warning-bg | #fceedd | rgb(245 158 11 / 14%) |  |
+| --status-danger-graphic | #ff4500 | #ff4500 |  |
+| --status-danger-text | #a50034 | #ff7a91 |  |
+| --status-danger-bg | #fce4e9 | rgb(255 69 0 / 15%) |  |
+| --shadow-sm | 0 1px 3px rgb(32 25 46 / 8%) | 0 1px 3px rgb(0 0 0 / 40%) |  |
+| --shadow-md | 0 10px 30px rgb(50 36 76 / 14%) | 0 10px 30px rgb(0 0 0 / 45%) |  |
+| --shadow-hover | 0 10px 22px rgb(32 25 46 / 20%) | 0 10px 22px rgb(0 0 0 / 50%) |  |
+| --ring-soft | 0 0 0 3px rgb(107 72 157 / 15%) | 0 0 0 3px rgb(126 92 180 / 35%) |  |
+| --motion-fast | 160ms | （同亮色） |  |
+| --motion-panel | 240ms | （同亮色） |  |
+| --motion-enter | 560ms | （同亮色） |  |
+| --ease-standard | cubic-bezier(0.2, 0, 0, 1) | （同亮色） |  |
+| --ease-emphasized | cubic-bezier(0.2, 0, 0, 1) | （同亮色） |  |
+| --state-layer-hover | 0.08 | （同亮色） |  |
+| --state-layer-focus | 0.10 | （同亮色） |  |
+| --state-layer-pressed | 0.12 | （同亮色） |  |
+| --color-on-action | #ffffff（= var(--neutral-0)） | （同亮色） |  |
+| --color-on-action-hover | #ffffff（= var(--neutral-0)） | （同亮色） |  |
+| --color-on-tint | #4f3478（= var(--ale-purple-700)） | #e4d9f3（= var(--ale-purple-40)） |  |
+| --button-primary-bg | #6b489d（= var(--color-action)） | （同亮色） |  |
+| --button-primary-bg-hover | #4f3478（= var(--color-action-hover)） | （同亮色） |  |
+| --input-border | #3d3750（= var(--color-border)） | （同亮色） |  |
+| --card-bg | #211d2c（= var(--color-surface)） | （同亮色） |  |
+| --radius-sm | 8px | （同亮色） |  |
+| --radius-md | 12px | （同亮色） |  |
+| --radius-lg | 16px | （同亮色） |  |
+| --space-1 | 4px | （同亮色） |  |
+| --space-2 | 8px | （同亮色） |  |
+| --space-3 | 12px | （同亮色） |  |
+| --space-4 | 16px | （同亮色） |  |
+| --space-5 | 24px | （同亮色） |  |
+| --space-6 | 32px | （同亮色） |  |
+| --space-7 | 48px | （同亮色） |  |
+| --content-max | 1180px | （同亮色） |  |
+| --topbar-height | 64px | （同亮色） |  |
+<!-- END:generated-token-table -->
 ---
 # 三层设计令牌
 v6.0 计划：本文件将由 tokens/*.json 生成（M3 阶段）；当前为手工源。

@@ -1,0 +1,332 @@
+{
+  "pairs": [
+    {
+      "theme": "light",
+      "fg": "#1a1a1a",
+      "bg": "#f7f7f5",
+      "min": 4.5,
+      "ids": "light/text-primary×canvas"
+    },
+    {
+      "theme": "light",
+      "fg": "#1a1a1a",
+      "bg": "#ffffff",
+      "min": 4.5,
+      "ids": "light/text-primary×surface"
+    },
+    {
+      "theme": "light",
+      "fg": "#4b4d50",
+      "bg": "#ffffff",
+      "min": 4.5,
+      "ids": "light/text-secondary×surface"
+    },
+    {
+      "theme": "light",
+      "fg": "#616467",
+      "bg": "#ffffff",
+      "min": 4.5,
+      "ids": "light/text-muted×surface"
+    },
+    {
+      "theme": "light",
+      "fg": "#616467",
+      "bg": "#f7f7f5",
+      "min": 4.5,
+      "ids": "light/text-muted×canvas"
+    },
+    {
+      "theme": "light",
+      "fg": "#ffffff",
+      "bg": "#6b489d",
+      "min": 4.5,
+      "ids": "light/on-action×action"
+    },
+    {
+      "theme": "light",
+      "fg": "#ffffff",
+      "bg": "#4f3478",
+      "min": 4.5,
+      "ids": "light/on-action-hover×action-hover"
+    },
+    {
+      "theme": "light",
+      "fg": "#4f3478",
+      "bg": "#f1ecf7",
+      "min": 4.5,
+      "ids": "light/on-tint×purple-tint"
+    },
+    {
+      "theme": "light",
+      "fg": "#006aa2",
+      "bg": "#ffffff",
+      "min": 4.5,
+      "ids": "light/link×surface"
+    },
+    {
+      "theme": "light",
+      "fg": "#6b489d",
+      "bg": "#ffffff",
+      "min": 4.5,
+      "ids": "light/action×surface"
+    },
+    {
+      "theme": "light",
+      "fg": "#4f3478",
+      "bg": "#ffffff",
+      "min": 4.5,
+      "ids": "light/heading-accent×surface"
+    },
+    {
+      "theme": "light",
+      "fg": "#616467",
+      "bg": "#efeeec",
+      "min": 4.5,
+      "ids": "light/status-neutral-text×status-neutral-bg"
+    },
+    {
+      "theme": "light",
+      "fg": "#006aa2",
+      "bg": "#e3f1f9",
+      "min": 4.5,
+      "ids": "light/status-info-text×status-info-bg"
+    },
+    {
+      "theme": "light",
+      "fg": "#007a73",
+      "bg": "#dff4f2",
+      "min": 4.5,
+      "ids": "light/status-success-text×status-success-bg"
+    },
+    {
+      "theme": "light",
+      "fg": "#9a4707",
+      "bg": "#fceedd",
+      "min": 4.5,
+      "ids": "light/status-warning-text×status-warning-bg"
+    },
+    {
+      "theme": "light",
+      "fg": "#a50034",
+      "bg": "#fce4e9",
+      "min": 4.5,
+      "ids": "light/status-danger-text×status-danger-bg"
+    },
+    {
+      "theme": "light",
+      "fg": "#b9b8b4",
+      "bg": "#ffffff",
+      "min": 3,
+      "ids": "light/status-neutral-graphic×surface(graphic)",
+      "exempt": true,
+      "exemptReason": "冗余图形：信息由并存文字承载（规范 15 章附录 G）"
+    },
+    {
+      "theme": "light",
+      "fg": "#0085ca",
+      "bg": "#ffffff",
+      "min": 3,
+      "ids": "light/status-info-graphic×surface(graphic)"
+    },
+    {
+      "theme": "light",
+      "fg": "#00b2a9",
+      "bg": "#ffffff",
+      "min": 3,
+      "ids": "light/status-success-graphic×surface(graphic)",
+      "exempt": true,
+      "exemptReason": "冗余图形：信息由并存文字承载（规范 15 章附录 G）"
+    },
+    {
+      "theme": "light",
+      "fg": "#f59e0b",
+      "bg": "#ffffff",
+      "min": 3,
+      "ids": "light/status-warning-graphic×surface(graphic)",
+      "exempt": true,
+      "exemptReason": "冗余图形：信息由并存文字承载（规范 15 章附录 G）"
+    },
+    {
+      "theme": "light",
+      "fg": "#ff4500",
+      "bg": "#ffffff",
+      "min": 3,
+      "ids": "light/status-danger-graphic×surface(graphic)"
+    },
+    {
+      "theme": "light",
+      "fg": "#7e5cb4",
+      "bg": "#ffffff",
+      "min": 3,
+      "ids": "light/ale-purple-500×surface(graphic)"
+    },
+    {
+      "theme": "light",
+      "fg": "#0085ca",
+      "bg": "#ffffff",
+      "min": 3,
+      "ids": "light/ale-blue×surface(graphic)"
+    },
+    {
+      "theme": "dark",
+      "fg": "#efedf4",
+      "bg": "#171420",
+      "min": 4.5,
+      "ids": "dark/text-primary×canvas"
+    },
+    {
+      "theme": "dark",
+      "fg": "#efedf4",
+      "bg": "#211d2c",
+      "min": 4.5,
+      "ids": "dark/text-primary×surface"
+    },
+    {
+      "theme": "dark",
+      "fg": "#c6c2d1",
+      "bg": "#211d2c",
+      "min": 4.5,
+      "ids": "dark/text-secondary×surface"
+    },
+    {
+      "theme": "dark",
+      "fg": "#9b96ab",
+      "bg": "#211d2c",
+      "min": 4.5,
+      "ids": "dark/text-muted×surface"
+    },
+    {
+      "theme": "dark",
+      "fg": "#9b96ab",
+      "bg": "#171420",
+      "min": 4.5,
+      "ids": "dark/text-muted×canvas"
+    },
+    {
+      "theme": "dark",
+      "bg": "#6b489d",
+      "min": 4.5,
+      "ids": "dark/on-action×action"
+    },
+    {
+      "theme": "dark",
+      "bg": "#7e5cb4",
+      "min": 4.5,
+      "ids": "dark/on-action-hover×action-hover"
+    },
+    {
+      "theme": "dark",
+      "fg": "#e4d9f3",
+      "bg": "rgb(107 72 157 / 24%)",
+      "min": 4.5,
+      "ids": "dark/on-tint×purple-tint"
+    },
+    {
+      "theme": "dark",
+      "fg": "#58b7e8",
+      "bg": "#211d2c",
+      "min": 4.5,
+      "ids": "dark/link×surface"
+    },
+    {
+      "theme": "dark",
+      "fg": "#6b489d",
+      "bg": "#211d2c",
+      "min": 4.5,
+      "ids": "dark/action×surface",
+      "exempt": true,
+      "exemptReason": "设计豁免：信息由并存文字/其他角色承载（规范 15 章与 3.3A）"
+    },
+    {
+      "theme": "dark",
+      "fg": "#e4d9f3",
+      "bg": "#211d2c",
+      "min": 4.5,
+      "ids": "dark/heading-accent×surface"
+    },
+    {
+      "theme": "dark",
+      "fg": "#b5b1bf",
+      "bg": "rgb(185 184 180 / 14%)",
+      "min": 4.5,
+      "ids": "dark/status-neutral-text×status-neutral-bg"
+    },
+    {
+      "theme": "dark",
+      "fg": "#58b7e8",
+      "bg": "rgb(0 133 202 / 16%)",
+      "min": 4.5,
+      "ids": "dark/status-info-text×status-info-bg"
+    },
+    {
+      "theme": "dark",
+      "fg": "#35c9bf",
+      "bg": "rgb(0 178 169 / 14%)",
+      "min": 4.5,
+      "ids": "dark/status-success-text×status-success-bg"
+    },
+    {
+      "theme": "dark",
+      "fg": "#f5b04d",
+      "bg": "rgb(245 158 11 / 14%)",
+      "min": 4.5,
+      "ids": "dark/status-warning-text×status-warning-bg"
+    },
+    {
+      "theme": "dark",
+      "fg": "#ff7a91",
+      "bg": "rgb(255 69 0 / 15%)",
+      "min": 4.5,
+      "ids": "dark/status-danger-text×status-danger-bg"
+    },
+    {
+      "theme": "dark",
+      "fg": "#8d8a94",
+      "bg": "#211d2c",
+      "min": 3,
+      "ids": "dark/status-neutral-graphic×surface(graphic)"
+    },
+    {
+      "theme": "dark",
+      "fg": "#0085ca",
+      "bg": "#211d2c",
+      "min": 3,
+      "ids": "dark/status-info-graphic×surface(graphic)"
+    },
+    {
+      "theme": "dark",
+      "fg": "#00b2a9",
+      "bg": "#211d2c",
+      "min": 3,
+      "ids": "dark/status-success-graphic×surface(graphic)"
+    },
+    {
+      "theme": "dark",
+      "fg": "#f59e0b",
+      "bg": "#211d2c",
+      "min": 3,
+      "ids": "dark/status-warning-graphic×surface(graphic)"
+    },
+    {
+      "theme": "dark",
+      "fg": "#ff4500",
+      "bg": "#211d2c",
+      "min": 3,
+      "ids": "dark/status-danger-graphic×surface(graphic)"
+    },
+    {
+      "theme": "dark",
+      "fg": "#7e5cb4",
+      "bg": "#211d2c",
+      "min": 3,
+      "ids": "dark/ale-purple-500×surface(graphic)"
+    },
+    {
+      "theme": "dark",
+      "fg": "#0085ca",
+      "bg": "#211d2c",
+      "min": 3,
+      "ids": "dark/ale-blue×surface(graphic)"
+    }
+  ]
+}

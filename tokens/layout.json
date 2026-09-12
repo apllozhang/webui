@@ -1,0 +1,122 @@
+{
+  "$schema": "./schema/token.schema.json",
+  "meta": {
+    "domain": "layout"
+  },
+  "tokens": {
+    "radius": {
+      "sm": {
+        "value": "8px",
+        "type": "dimension"
+      },
+      "md": {
+        "value": "12px",
+        "type": "dimension"
+      },
+      "lg": {
+        "value": "16px",
+        "type": "dimension"
+      }
+    },
+    "spacing": {
+      "1": {
+        "value": "4px",
+        "type": "dimension"
+      },
+      "2": {
+        "value": "8px",
+        "type": "dimension"
+      },
+      "3": {
+        "value": "12px",
+        "type": "dimension"
+      },
+      "4": {
+        "value": "16px",
+        "type": "dimension"
+      },
+      "5": {
+        "value": "24px",
+        "type": "dimension"
+      },
+      "6": {
+        "value": "32px",
+        "type": "dimension"
+      },
+      "7": {
+        "value": "48px",
+        "type": "dimension"
+      }
+    },
+    "container": {
+      "content-max": {
+        "value": "1180px",
+        "type": "dimension"
+      },
+      "reading-max": {
+        "value": "760px",
+        "type": "dimension",
+        "description": "长文阅读宽度（评审 §8.2，v5.4.1 新增令牌）"
+      },
+      "topbar-height": {
+        "value": "64px",
+        "type": "dimension"
+      }
+    },
+    "control": {
+      "height-compact": {
+        "value": "36px",
+        "type": "dimension"
+      },
+      "height-default": {
+        "value": "44px",
+        "type": "dimension"
+      },
+      "hit-target-min": {
+        "value": "44px",
+        "type": "dimension"
+      }
+    },
+    "z-index": {
+      "content": {
+        "value": "0",
+        "type": "number"
+      },
+      "sticky": {
+        "value": "100",
+        "type": "number"
+      },
+      "dropdown": {
+        "value": "300",
+        "type": "number"
+      },
+      "overlay": {
+        "value": "500",
+        "type": "number"
+      },
+      "modal": {
+        "value": "510",
+        "type": "number"
+      },
+      "toast": {
+        "value": "700",
+        "type": "number"
+      },
+      "blocking": {
+        "value": "900",
+        "type": "number"
+      }
+    },
+    "icon": {
+      "sizes": {
+        "value": [
+          16,
+          18,
+          20,
+          24
+        ],
+        "type": "list"
+      }
+    }
+  }
+}
