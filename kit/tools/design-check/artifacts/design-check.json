@@ -1,6 +1,6 @@
 {
-  "url": "http://10.10.10.218:8091/",
-  "time": "2026-09-12T05:01:52.961Z",
+  "url": "http://127.0.0.1:8765/",
+  "time": "2026-09-12T09:23:44.838Z",
   "checks": [
     {
       "id": "VER",
@@ -8,7 +8,7 @@
       "pass": true,
       "detail": {
         "expect": "ALE WebUI 设计规范 v5.4",
-        "dir": "ale-webui-site"
+        "dir": "spec-site"
       }
     },
     {
@@ -17,33 +17,28 @@
       "pass": true,
       "detail": {
         "dirs": [
-          "ale-webui-site",
-          "dist"
+          "spec-site"
         ]
       }
     },
     {
       "id": "OVF-320",
       "name": "320px 根级无横向溢出",
-      "pass": false,
+      "pass": true,
       "detail": {
-        "scrollW": 500,
+        "scrollW": 320,
         "clientW": 320,
-        "overflowEls": [
-          "DIV."
-        ]
+        "overflowEls": []
       }
     },
     {
       "id": "OVF-375",
       "name": "375px 根级无横向溢出",
-      "pass": false,
+      "pass": true,
       "detail": {
-        "scrollW": 500,
+        "scrollW": 375,
         "clientW": 375,
-        "overflowEls": [
-          "DIV."
-        ]
+        "overflowEls": []
       }
     },
     {
@@ -79,17 +74,9 @@
     {
       "id": "HIT-NAV",
       "name": "导航链接命中自身",
-      "pass": false,
+      "pass": true,
       "detail": {
-        "misses": [
-          "品牌",
-          "排版",
-          "令牌",
-          "组件",
-          "数据表格",
-          "动效",
-          "验收"
-        ]
+        "misses": []
       }
     },
     {
@@ -97,15 +84,7 @@
       "name": "表格控件热区 ≥44px",
       "pass": true,
       "detail": {
-        "navMisses": [
-          "品牌",
-          "排版",
-          "令牌",
-          "组件",
-          "数据表格",
-          "动效",
-          "验收"
-        ],
+        "navMisses": [],
         "sort": 44,
         "pg": 44,
         "checkbox": 44,
@@ -123,30 +102,23 @@
     {
       "id": "ASSET-HTTP",
       "name": "核心资产全部 HTTP 200",
-      "pass": false,
+      "pass": true,
       "detail": {
-        "bad": [
-          {
-            "url": "http://10.10.10.218:8091/css/tokens.css?v=5.4.0",
-            "error": "requestfailed"
-          }
-        ]
+        "bad": []
       }
     },
     {
       "id": "CONSOLE",
       "name": "控制台零未解释错误",
-      "pass": false,
+      "pass": true,
       "detail": {
-        "errors": [
-          "Failed to load resource: net::ERR_FAILED"
-        ]
+        "errors": []
       }
     }
   ],
-  "pass": false,
+  "pass": true,
   "screenshots": [
-    "D:\\AIWork\\ZCode\\Vibe Coding\\WEBUI\\ale-webui-kit\\tools\\design-check\\artifacts\\baseline-320.png",
-    "D:\\AIWork\\ZCode\\Vibe Coding\\WEBUI\\ale-webui-kit\\tools\\design-check\\artifacts\\baseline-1440.png"
+    "D:\\AIWork\\ZCode\\Vibe Coding\\WEBUI\\webui\\kit\\tools\\design-check\\artifacts\\baseline-320.png",
+    "D:\\AIWork\\ZCode\\Vibe Coding\\WEBUI\\webui\\kit\\tools\\design-check\\artifacts\\baseline-1440.png"
   ]
 }

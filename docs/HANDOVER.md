@@ -193,8 +193,8 @@ Date Picker/Tree/Combobox、图表封装、Figma Variables 同步、五档截图
 
 ## 10. 移交确认清单
 
-- [ ] 接手人克隆 `apllozhang/webui`，按 §4.3 跑通本地服务与 design:check（12 PASS）
-- [ ] 读 docs/v6/USAGE.md 并完成一次"决策树选型 → 拷骨架 → 改一个页面"
+- [x] 接手人克隆 `apllozhang/webui`，按 §4.3 跑通本地服务与 design:check（12 PASS）——2026-09-12 完成：线上 203:8091 与本地 spec-site 各 12/12 PASS，tokens:contrast 46 对 ALL PASS，证据见 `review/2026-09-12-接手验收与确认报告.md`
+- [x] 读 docs/v6/USAGE.md 并完成一次"决策树选型 → 拷骨架 → 改一个页面"——2026-09-12 完成：工具应用型→数据工作台→React，浏览器实测通过，演练记录与截图同上
 - [ ] 确认能 SSH 到 218/203 并看到两站（8091/8095）
 - [ ] 读完 §8 教训表
 - [ ] 与原负责人做一次 30 分钟术语对齐（四概念/二维模型/规则 ID）
