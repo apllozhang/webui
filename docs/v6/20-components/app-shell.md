@@ -52,8 +52,30 @@ Skip link → `#main`；`nav aria-label`；抽屉焦点圈闭/归还；页面唯
 
 ## 正确 / 错误示例
 
-✅ 一页一个 H1、一个 Primary；面包屑只表层级。
-❌ 侧栏嵌侧栏；页头两个 Primary；面包屑当步骤条。
+**面包屑表层级，不当步骤条（M4 示例库）**
+
+✅ 正确：层级 = 信息架构层级；当前页 `aria-current="page"` 且不加链接。
+
+```html
+<nav aria-label="面包屑">
+  <ol class="breadcrumb">
+    <li><a href="#/">首页</a></li>
+    <li><a href="#/quotes">报价审核</a></li>
+    <li aria-current="page">QUO-2026-2001</li>
+  </ol>
+</nav>
+```
+
+❌ 错误：把向导步骤塞进面包屑——步骤是流程位置，不是层级；读屏无法感知"共几步、能回退"，用户也无法直接跳步。多步流程用 Stepper（见 `10-patterns/wizard-flow.md`）。
+
+```html
+<!-- ❌ 步骤进度伪装成面包屑 -->
+<nav aria-label="面包屑">
+  <ol><li>基本信息</li><li>报价明细</li><li>完成</li></ol>
+</nav>
+```
+
+✅ 一页一个 H1、一个 Primary；❌ 侧栏嵌侧栏；页头两个 Primary。
 
 ## 骨架支持矩阵
 

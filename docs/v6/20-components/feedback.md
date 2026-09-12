@@ -39,8 +39,28 @@ status: M4 第一批（React 全组件 + 载体选择矩阵已交付）
 
 ## 正确 / 错误示例
 
-✅ 删除成功：Toast「已删除 3 条」+ 列表刷新。
-❌ 表单错误只 Toast；用 alert() 阻塞式弹窗；Skeleton 转圈当内容。
+**破坏性操作：Dialog 确认 → Toast + 列表刷新（M4 示例库，React 骨架现成链路）**
+
+✅ 正确：强制决策 → 服务端成功后反馈 → 界面与数据一致。
+
+```tsx
+const ok = await confirmDialog({ title: `删除已选中的 ${n} 条记录？`, tone: "danger" });
+if (!ok) return;
+await deleteRows(rows);                 // 先落库
+toast("success", `已删除 ${n} 条记录`);  // role=status，不打断
+setData(prev => prev.filter(r => !ids.has(r.id)));
+```
+
+❌ 错误三连：
+
+1. `window.alert()` 阻塞主线程、样式脱离体系、不可取消；
+2. 只 Toast 不刷新列表——用户看到"已删除"，表格里还在；
+3. 表单校验错误也用 Toast——字段错误走 Inline Error + ErrorSummary（见载体选择矩阵）。
+
+**Skeleton 是结构占位，不是加载动画的替身**
+
+✅ 形状接近最终内容 + `aria-hidden="true"` + 更新区 `aria-busy`。
+❌ 全屏转圈 spinner 盖住整个页面，内容布局在加载完成时跳变。
 
 ## 骨架支持矩阵
 

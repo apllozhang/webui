@@ -49,8 +49,27 @@ ErrorSummary（提交失败时置顶：role=alert + 锚点跳各字段）
 
 ## 正确 / 错误示例
 
-✅ 错误写「请输入 8–20 位密码（当前 5 位）」；只读用文本展示。
-❌ 只用红框不说明原因；placeholder 当标签；错误只 Toast 不落字段。
+**错误落到字段：说明「问题 + 修复方法」（M4 示例库）**
+
+✅ 正确：错误紧邻控件、aria 关联、给出当前值与目标。
+
+```html
+<label for="pwd">密码</label>
+<input id="pwd" type="password" aria-invalid="true" aria-describedby="pwd-err">
+<p id="pwd-err" role="alert">请输入 8–20 位密码（当前 5 位）</p>
+```
+
+❌ 错误：红框无说明 + placeholder 当标签 + 错误只进 Toast——Toast 消失后，用户站在表单前不知道哪里错、该怎么改；placeholder 在输入后即消失，不能替代 label。
+
+```html
+<!-- ❌ 三连错误：无 label 关联、无错误文本、只依赖 Toast -->
+<input type="password" style="border:1px solid red" placeholder="密码">
+```
+
+**只读用文本展示，不用禁用样式伪装**
+
+✅ 只读值用 `<p class="readonly-value">QUO-2026-2001</p>`。
+❌ `<input disabled>`——语义是"不可用"而非"已定值"，且对比度不达标。
 
 ## 骨架支持矩阵
 

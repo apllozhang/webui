@@ -42,8 +42,25 @@ Pagination: 每页 N | 第 x–y 共 z | « ‹ 1 2 … n › »
 
 ## 正确 / 错误示例
 
-✅ 数字右对齐 tabular-nums；空态给「清除筛选」。
-❌ 纯色点表达状态（用圆点+文字徽章）；一页塞两套分页；行内 checkbox 不拦冒泡。
+**状态用「圆点 + 文字」徽章，非纯色点（M4 示例库）**
+
+✅ 正确：颜色 + 文字双编码——色觉障碍可辨、读屏可读（色彩不单独传达状态，见 `00-foundations/color.md`）。
+
+```html
+<td><span class="badge status-success">
+  <span class="dot" aria-hidden="true"></span>已通过
+</span></td>
+```
+
+❌ 错误：只留一个颜色通道，深色主题下深浅变化更不可辨。
+
+```html
+<!-- ❌ 纯色点，读屏读到空单元格 -->
+<td><span class="dot" style="background:var(--status-success-graphic)"></span></td>
+```
+
+✅ 数字列右对齐 + `tabular-nums`；空态给「清除筛选」行动入口。
+❌ 一页两套分页；行内 checkbox 点击冒泡到整行选中（应 stopPropagation）。
 
 ## 骨架支持矩阵
 
