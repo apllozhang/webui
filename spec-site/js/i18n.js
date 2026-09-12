@@ -7,7 +7,7 @@
 
   var DICT = {
     zh: {
-      "meta.title": "ALE WebUI 设计规范 v5.1",
+      "meta.title": "ALE WebUI 设计规范 v5.4",
       "brand.spec": "WebUI 设计规范",
       "nav.brand": "品牌",
       "nav.type": "排版",
@@ -217,13 +217,13 @@
       "check.12": "日期/数值/单位/状态文案统一；示例不含真实凭据",
 
       "footer.legal": "The Alcatel-Lucent name and logo are trademarks of Nokia used under license by ALE. www.al-enterprise.com",
-      "footer.copy": "© Copyright ALE International 2026 · ALE WebUI 设计规范 v5.1 · 演示站点，按规范自举实现",
+      "footer.copy": "© Copyright ALE International 2026 · ALE WebUI 设计规范 v5.4 · 演示站点，按规范自举实现",
       "footer.products": "参照实现：TSSKB · ale-dan-cpl-system · nvci-lite",
       "footer.kit": "工程骨架 Kit :8095 ↗"
     },
 
     en: {
-      "meta.title": "ALE WebUI Design Spec v5.1",
+      "meta.title": "ALE WebUI Design Spec v5.4",
       "brand.spec": "WebUI Design Spec",
       "nav.brand": "Brand",
       "nav.type": "Typography",
@@ -433,7 +433,7 @@
       "check.12": "Dates/numbers/units/status wording unified; no real credentials",
 
       "footer.legal": "The Alcatel-Lucent name and logo are trademarks of Nokia used under license by ALE. www.al-enterprise.com",
-      "footer.copy": "© Copyright ALE International 2026 · ALE WebUI Design Spec v5.1 · Demo site, bootstrapped by its own spec",
+      "footer.copy": "© Copyright ALE International 2026 · ALE WebUI Design Spec v5.4 · Demo site, bootstrapped by its own spec",
       "footer.products": "References: TSSKB · ale-dan-cpl-system · nvci-lite",
       "footer.kit": "Skeletons Kit :8095 ↗"
     }

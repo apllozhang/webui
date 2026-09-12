@@ -3,15 +3,15 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ALE WebUI 设计规范 v5.1</title>
-  <meta name="description" content="ALE WebUI 设计规范 v5.1：品牌基础、设计令牌、核心组件、数据表格功能包、动效与无障碍。" />
+  <title>ALE WebUI 设计规范 v5.4</title>
+  <meta name="description" content="ALE WebUI 设计规范 v5.4：品牌基础、设计令牌、核心组件、数据表格功能包、动效与无障碍。" />
   <link rel="icon" href="assets/ale-logo.png" />
-  <link rel="stylesheet" href="fonts/noto.css?v=20260912" />
-  <link rel="stylesheet" href="css/tokens.css?v=20260912" />
-  <link rel="stylesheet" href="css/base.css?v=20260912" />
-  <link rel="stylesheet" href="css/layout.css?v=20260912" />
-  <link rel="stylesheet" href="css/components.css?v=20260912" />
-  <link rel="stylesheet" href="css/content.css?v=20260912" />
+  <link rel="stylesheet" href="fonts/noto.css?v=5.4.0" />
+  <link rel="stylesheet" href="css/tokens.css?v=5.4.0" />
+  <link rel="stylesheet" href="css/base.css?v=5.4.0" />
+  <link rel="stylesheet" href="css/layout.css?v=5.4.0" />
+  <link rel="stylesheet" href="css/components.css?v=5.4.0" />
+  <link rel="stylesheet" href="css/content.css?v=5.4.0" />
 </head>
 <body data-i18n-title="meta.title">
   <a class="skip-link" href="#main" data-i18n="skip">跳到主要内容</a>
@@ -80,6 +80,7 @@
 
     <!-- 快捷入口卡：叠压 + 浮起（规范 12 章） -->
     <div class="task-cards">
+      <h2 class="sr-only">快速入口</h2>
       <a class="card" href="#brand"><div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/></svg></div><h3 data-i18n="task.color">色彩系统</h3><p data-i18n="task.color.d">品牌紫五档 + Web 语义色</p></a>
       <a class="card" href="#type"><div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20 14 4M4 4h10M9 20h10"/></svg></div><h3 data-i18n="task.type">字体排版</h3><p data-i18n="task.type.d">Trebuchet 字体栈与字号行高</p></a>
       <a class="card" href="#components"><div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="8" height="8" rx="2"/><rect x="13" y="3" width="8" height="8" rx="2"/><rect x="3" y="13" width="8" height="8" rx="2"/><rect x="13" y="13" width="8" height="8" rx="2"/></svg></div><h3 data-i18n="task.comp">核心组件</h3><p data-i18n="task.comp.d">按钮浮起 · 卡片浮动 · 模态 Toast</p></a>
@@ -163,7 +164,7 @@
           <h2 data-i18n="type.title">字体与排版</h2>
           <p data-i18n="type.sub">Trebuchet 主字体、左对齐、正文 ≥16px、层级连续不跳级。</p>
         </header>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:var(--space-5)">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:var(--space-5)">
           <div>
             <h3 data-i18n="type.stack.h">字体栈</h3>
             <pre class="code">font-family: <span class="key">"Trebuchet MS"</span>, <span class="key">"Noto Sans SC"</span>,
@@ -198,7 +199,7 @@ font-family: <span class="key">"SFMono-Regular"</span>, Consolas,
           <h2 data-i18n="token.title">设计令牌</h2>
           <p data-i18n="token.sub">三层令牌：基础值 → 语义用途 → 组件变量。间距、圆角、阴影、动效时长全部来自令牌。</p>
         </header>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:var(--space-5)">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:var(--space-5)">
           <div>
             <h3 data-i18n="token.radius.h">圆角三档（8/12/16）</h3>
             <div class="radius-demo">
@@ -321,7 +322,7 @@ one task per step · data kept across steps</pre>
           </div>
         </div>
 
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:var(--space-5);margin-bottom:var(--space-5)">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:var(--space-5);margin-bottom:var(--space-5)">
           <div class="demo-stage">
             <h3 style="margin-top:0" data-i18n="comp.form.h">表单（13 章：标签在上 / 错误紧邻控件）</h3>
             <div class="field">
@@ -505,9 +506,9 @@ one task per step · data kept across steps</pre>
     </div>
   </div>
 
-  <script src="js/i18n.js?v=20260912"></script>
-  <script src="js/app.js?v=20260912"></script>
-  <script src="js/table.js?v=20260912"></script>
+  <script src="js/i18n.js?v=5.4.0"></script>
+  <script src="js/app.js?v=5.4.0"></script>
+  <script src="js/table.js?v=5.4.0"></script>
   <script>
     /* 验收清单渲染 */
     (function () {

@@ -34,7 +34,7 @@ a:hover { color: var(--color-action-hover); }
   border-radius: 2px;
 }
 
-code, pre, .mono { font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace; }
+code, pre, .mono { font-family: "SFMono-Regular", Consolas, "Liberation Mono", "Noto Sans SC", monospace; }
 
 h1, h2, h3, h4 { color: var(--color-heading-accent); line-height: 1.25; margin: 0 0 var(--space-3); }
 h1 { font-size: 32px; line-height: 1.2; }

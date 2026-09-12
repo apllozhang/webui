@@ -1,0 +1,14 @@
+{
+  "name": "ale-webui",
+  "version": "5.4.0",
+  "spec": "ALE-WEBUI-设计规范-v5.4.md",
+  "released": "2026-09-12",
+  "sites": {
+    "spec-site": {
+      "title": "ALE WebUI 设计规范 v5.4"
+    },
+    "kit": {
+      "title": "ALE WebUI Kit"
+    }
+  }
+}
