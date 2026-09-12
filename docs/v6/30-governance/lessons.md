@@ -31,11 +31,13 @@ status: M2 迁移（内容 = v5.4.1 基线，未新增规则）
 
 ## 规则 ID 注册表（本文件 Must 条款）
 
+<!-- BEGIN:must-registry -->
 | ID | 条款（摘录） |
 |---|---|
-| GOV-LESSON-001 | | F1 | 动态渲染表格列宽失效、单元格文字逐字竖排 | `table-layout: fixed` 与 `width: max-content` 组合在动态 DOM 下不稳定 | 固定布局表格必须 |
-| GOV-LESSON-002 | | F2 | i18n 文案显示原始键名（如 `table.range`） | 插值函数 `args[i++]` 在条件判断与取值处双重自增 | i18n 插值实现必须有单测覆盖多参数替换；缺键回退链 |
-| GOV-LESSON-003 | | F3 | 分页页码按钮空白 | 图标分支未渲染数字回退 | 分支渲染必须有 else 分支兜底 | |
-| GOV-LESSON-004 | | F7 | 辅助文字对比度 4.44:1（本规范自身缺陷） | v5.x 统一 TSSKB 灰阶时把 muted 从 `#616467` 浅化为 `#75787B` | v5.2 修正为 `#616 |
-| GOV-LESSON-005 | | F11 | 页面元素字体命中 Times New Roman / Arial（评审实测） | BUTTON 等替换元素不继承字体，`.icon-btn` 未写 `font:inherit` | 所 |
-| GOV-LESSON-006 | | F13 | **点击导航链接实际触发主题/语言切换（上线后用户发现）** | 热区扩展 `.icon-btn::before { position:absolute; inset:0 }` 时控件 |
+| GOV-LESSON-001 | \| F1 \| 动态渲染表格列宽失效、单元格文字逐字竖排 \| `table-layout: fixed` 与 `width: max-content` 组合在动态 DOM 下不稳定 \| 固定布局表格必须**显式计算表格总宽**（Σ列宽 + 固定列），并为 `th`/`td` 同步显式像素宽度；复杂档用 TanStack Table \| |
+| GOV-LESSON-002 | \| F2 \| i18n 文案显示原始键名（如 `table.range`） \| 插值函数 `args[i++]` 在条件判断与取值处双重自增 \| i18n 插值实现必须有单测覆盖多参数替换；缺键回退链 = 当前语言 → 默认语言 → 键名 \| |
+| GOV-LESSON-003 | \| F3 \| 分页页码按钮空白 \| 图标分支未渲染数字回退 \| 分支渲染必须有 else 分支兜底 \| |
+| GOV-LESSON-004 | \| F7 \| 辅助文字对比度 4.44:1（本规范自身缺陷） \| v5.x 统一 TSSKB 灰阶时把 muted 从 `#616467` 浅化为 `#75787B` \| v5.2 修正为 `#616467`；任何文字令牌变更必须重跑附录 G 量化自查 \| |
+| GOV-LESSON-005 | \| F11 \| 页面元素字体命中 Times New Roman / Arial（评审实测） \| BUTTON 等替换元素不继承字体，`.icon-btn` 未写 `font:inherit` \| 所有按钮类必须 `font:inherit`；等宽栈补 `"Noto Sans SC"` 中文回退；纳入抽查 \| |
+| GOV-LESSON-006 | \| F13 \| **点击导航链接实际触发主题/语言切换（上线后用户发现）** \| 热区扩展 `.icon-btn::before { position:absolute; inset:0 }` 时控件缺 `position:relative`，伪元素相对定位祖先 `.topbar` 铺满整个顶栏，形成全栏透明热区层 \| **铁律：任何用伪元素做热区/状态层的控件，必须同时显式声明 `position:relative`**（已补入 9 章/11.1 实现代码）；发布前 hit-test 抽查：`elementFromPoint(链接中心)` 必须命中链接自身 \| |
+<!-- END:must-registry -->

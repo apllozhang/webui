@@ -86,3 +86,12 @@ ErrorSummary（提交失败时置顶：role=alert + 锚点跳各字段）
 | FORM-ERR-001 | 错误紧邻控件且 aria 关联 |
 | FORM-KEY-001 | 键盘可完成全部输入与提交 |
 | FORM-SUM-001 | 错误摘要存在且锚点可跳转 |
+
+
+## 规则 ID 注册表（本文件 Must 条款）
+
+<!-- BEGIN:must-registry -->
+| ID | 条款（摘录） |
+|---|---|
+| CMP-FORM-001 | ## 六态（每个输入控件必须齐全） |
+<!-- END:must-registry -->

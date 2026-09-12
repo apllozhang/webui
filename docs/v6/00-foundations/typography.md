@@ -51,8 +51,10 @@ font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;  /* 代�
 
 ## 规则 ID 注册表（本文件 Must 条款）
 
+<!-- BEGIN:must-registry -->
 | ID | 条款（摘录） |
 |---|---|
-| FND-TYPE-001 | **中文自托管规则（必须）**：`fonts/noto.css` 提供 `@font-face`（Noto Sans SC，chinese-simplified 400/500/700，woff2 单 |
+| FND-TYPE-001 | **中文自托管规则（必须）**：`fonts/noto.css` 提供 `@font-face`（Noto Sans SC，chinese-simplified 400/500/700，woff2 单文件全量约 1.1MB/字重，`font-display: swap`），随站点自托管（`/fonts/noto/*.woff2`），不引用任何公共 CDN。西文/数字由 Trebuchet MS 承担（品牌字体，Windows/macOS 系统内置）；中文渲染跨平台统一为 Noto Sans SC；PingFang SC 仅作 macOS 加载完成前的回退。禁止在字体栈中声明 Microsoft YaHei / SimHei 等商业授权字体（版权归属方正/中易系，系统内置授权不覆盖嵌入与再分发场景）。 |
 | FND-TYPE-002 | **排版角色与 HTML 语义分层（v5.4，必须）**：视觉尺寸由"角色"决定，HTML 标签只保证语义层级（h1→h2→h3 连续，不得跳级）。同一 HTML 标签可承载不同视觉角色： |
 | FND-TYPE-003 | - **标题强调色**：标题可用 `--ale-purple-700`（深紫）替代近黑，是 TSSKB 清爽风格的关键（建议）；正文与辅助文字保持中性色（必须）。 |
+<!-- END:must-registry -->

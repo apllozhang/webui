@@ -81,6 +81,8 @@ status: M2 迁移（内容 = v5.4.1 基线，未新增规则）
 
 ## 规则 ID 注册表（本文件 Must 条款）
 
+<!-- BEGIN:must-registry -->
 | ID | 条款（摘录） |
 |---|---|
 | PAT-OVER-001 | - 面包屑只表示层级，不作步骤进度；步骤进度必须用步骤条组件。 |
+<!-- END:must-registry -->

@@ -92,3 +92,12 @@ Skip link → `#main`；`nav aria-label`；抽屉焦点圈闭/归还；页面唯
 | SHELL-OVF-001 | 五档视口根级无溢出 | design:check OVF-* |
 | SHELL-HIT-001 | 导航链接 elementFromPoint 命中自身 | design:check HIT-NAV |
 | SHELL-SEM-001 | 唯一 h1、标题不跳级 | 人工/axe（M4+） |
+
+
+## 规则 ID 注册表（本文件 Must 条款）
+
+<!-- BEGIN:must-registry -->
+| ID | 条款（摘录） |
+|---|---|
+| CMP-SHELL-001 | \| 顶栏高度 \| `--topbar-height`（64/58px）；底边 3px `--ale-purple-600`（内容站必须） \| |
+<!-- END:must-registry -->

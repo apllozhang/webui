@@ -79,3 +79,13 @@ setData(prev => prev.filter(r => !ids.has(r.id)));
 | FB-ROLE-001 | Toast/Alert/Dialog 的 role 正确 |
 | FB-FOCUS-001 | Dialog/Drawer 焦点圈闭+归还 |
 | FB-SKELETON-001 | skeleton aria-hidden |
+
+
+## 规则 ID 注册表（本文件 Must 条款）
+
+<!-- BEGIN:must-registry -->
+| ID | 条款（摘录） |
+|---|---|
+| CMP-FB-001 | ## 载体选择矩阵（必须先选对载体） |
+| CMP-FB-002 | - **Toast**：`role=status`（成功/信息）/`alert`（错误）；≤3 条堆叠；关键结果不自动消失或延时 ≥6s；错误必须同时有字段级反馈。 |
+<!-- END:must-registry -->

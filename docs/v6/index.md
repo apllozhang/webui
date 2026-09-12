@@ -1,3 +1,7 @@
+---
+title: ALE WebUI 设计规范 v6 — 总索引
+id-prefix: GOV-CORE
+---
 # ALE WebUI 设计规范 v6（M2 骨架）
 > 状态：**M2 信息架构与规范契约**。内容迁移自 v5.4.1 只读基线（未新增规则）；规则 ID 体系与术语表自本版生效。
 > 单体完整版（历史）：`../ALE-WEBUI-设计规范-v5.4.md`；基线标签 `v5.4.1`。
@@ -49,3 +53,14 @@
 ## 内容完整性声明
 
 v5.4 的全部 41 个章节块已映射至本目录（映射表见 migration-v5-to-v6.md）；`版本沿革` 保留在单体版，v6 各文件 frontmatter 标注来源与基线。
+
+
+## 规则 ID 注册表（本文件 Must 条款）
+
+<!-- BEGIN:must-registry -->
+| ID | 条款（摘录） |
+|---|---|
+| GOV-CORE-001 | ## 术语表（四概念严格区分，禁止混用） |
+| GOV-CORE-002 | 任何冲突按此顺序裁决；偏离 L2 必须登记（30-governance/exceptions.md）。 |
+| GOV-CORE-003 | - 强度：**必须**（违反需登记例外）/ 建议 / 可选。 |
+<!-- END:must-registry -->

@@ -43,6 +43,8 @@ status: M2 迁移（内容 = v5.4.1 基线，未新增规则）
 
 ## 规则 ID 注册表（本文件 Must 条款）
 
+<!-- BEGIN:must-registry -->
 | ID | 条款（摘录） |
 |---|---|
 | CMP-ANT-001 | **核对基线**：映射后必须重跑附录 G 对比度断言（Ant 派生的 hover/active/bg 变体以 `colorPrimary` 为基，自动生成值需抽查 ≥4.5:1）。 |
+<!-- END:must-registry -->

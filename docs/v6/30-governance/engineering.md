@@ -65,14 +65,16 @@ ale-webui-kit/
 
 ## 规则 ID 注册表（本文件 Must 条款）
 
+<!-- BEGIN:must-registry -->
 | ID | 条款（摘录） |
 |---|---|
-| GOV-ENG-001 | - 组件 API 暴露语义不暴露视觉：`Button: variant=primary|secondary|tertiary|danger|ghost-on-brand, size, loading` |
+| GOV-ENG-001 | - 组件 API 暴露语义不暴露视觉：`Button: variant=primary\|secondary\|tertiary\|danger\|ghost-on-brand, size, loading`；`Badge: tone=neutral\|info\|success\|warning\|danger`。禁止 `purple=true, rounded=12` 式拼装参数。 |
 | GOV-ENG-002 | ### 25.1 工程骨架与共享层（ale-webui-kit，必须） |
 | GOV-ENG-003 | ├─ tools/sync-shared.mjs    同步 shared/ → 三骨架（改令牌后必须执行） |
 | GOV-ENG-004 | - 组件 API 暴露语义：`variant/tone/size`；禁止视觉拼装参数。 |
-| GOV-ENG-005 | - **Ant Design 5 接入（可选加速路径）**：当业务速度优先时，React 骨架可引入 Ant Design，但映射关系必须使用附录 H，且 `shared/css/tokens.css |
+| GOV-ENG-005 | - **Ant Design 5 接入（可选加速路径）**：当业务速度优先时，React 骨架可引入 Ant Design，但映射关系必须使用附录 H，且 `shared/css/tokens.css` 仍是唯一真相源——Ant 主题是其下游翻译。禁止同一产品混用两套组件库；Ant Table/Form 可替换自写实现，14A 无障碍要求（aria-sort、键盘列宽）不因换库豁免。 |
 | GOV-ENG-006 | ### 25.2 部署与交付基线（必须） |
-| GOV-ENG-007 | - 缓存策略：带哈希的图片资产可强缓存（≥7d）；**CSS/JS 用协商缓存（`Cache-Control: no-cache` + etag）**，禁止无哈希文件的长期强缓存（曾导致用户 1 天内 |
+| GOV-ENG-007 | - 缓存策略：带哈希的图片资产可强缓存（≥7d）；**CSS/JS 用协商缓存（`Cache-Control: no-cache` + etag）**，禁止无哈希文件的长期强缓存（曾导致用户 1 天内拿到过期脚本）； |
 | GOV-ENG-008 | - 大列表分页/增量/虚拟化并保留键盘与读屏可用；大文件导入必须显示进度与结果摘要（成功 N 条、失败 M 条及原因）。 |
 | GOV-ENG-009 | - 全局 `mousemove/mouseup` 监听（列宽拖动）必须在拖动结束后移除；悬停浮起动画只动 `transform`，不触发重排。 |
+<!-- END:must-registry -->

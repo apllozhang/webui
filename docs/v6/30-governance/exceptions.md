@@ -1,3 +1,7 @@
+---
+title: 偏离登记（design-exceptions.yml）
+id-prefix: GOV-EXC
+---
 # 偏离登记（design-exceptions.yml）
 
 对任何「必须」条款的偏离必须登记；**无复审日期或无负责人的例外不得合并**。
@@ -22,3 +26,12 @@
 1. 提交例外 PR：改 `design-exceptions.yml` + 在规则文件对应条款标注「存在例外 EXC-xxx」。
 2. 审批：规则所属层负责人批准（见 30-governance/versioning.md 分工）。
 3. 复审：到期自动失效，需重新登记；重复出现 ≥2 次的例外应升级为正式模式提案。
+
+
+## 规则 ID 注册表（本文件 Must 条款）
+
+<!-- BEGIN:must-registry -->
+| ID | 条款（摘录） |
+|---|---|
+| GOV-EXC-001 | 对任何「必须」条款的偏离必须登记；**无复审日期或无负责人的例外不得合并**。 |
+<!-- END:must-registry -->

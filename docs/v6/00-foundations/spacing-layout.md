@@ -72,7 +72,9 @@ status: M2 迁移（内容 = v5.4.1 基线，未新增规则）
 
 ## 规则 ID 注册表（本文件 Must 条款）
 
+<!-- BEGIN:must-registry -->
 | ID | 条款（摘录） |
 |---|---|
 | FND-SPACE-001 | - 面包屑只表示层级，不作步骤进度；步骤进度必须用步骤条组件。 |
-| FND-SPACE-002 | 必须：320px 宽无页面级横向滚动（表格外层 `min-width:0; max-width:100%; overflow-x:auto`，网格列用 `minmax(min(Npx,100%),1f |
+| FND-SPACE-002 | 必须：320px 宽无页面级横向滚动（表格外层 `min-width:0; max-width:100%; overflow-x:auto`，网格列用 `minmax(min(Npx,100%),1fr)` 钳制，任何元素不得把宽度传递给根节点）；**触控热区口径（v5.4 统一，正文为准）**：触控/粗指针环境命中区域 ≥44×44px（令牌 `--hit-target-min`），桌面精确指针环境可见高度可为 32/36/40px（令牌 `--control-height-compact`），但命中区域同样不得小于 44px——通过伪元素/label/容器扩展实现，不放大图形本身；复选框等小图形控件的热区同样按此办理；200% 缩放不重叠不截断。 |
+<!-- END:must-registry -->

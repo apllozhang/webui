@@ -159,6 +159,8 @@ v6.0 计划：本文件将由 tokens/*.json 生成（M3 阶段）；当前为手
 
 ## 规则 ID 注册表（本文件 Must 条款）
 
+<!-- BEGIN:must-registry -->
 | ID | 条款（摘录） |
 |---|---|
 | FND-TOKEN-001 | ## 6. 三层设计令牌（必须） |
+<!-- END:must-registry -->

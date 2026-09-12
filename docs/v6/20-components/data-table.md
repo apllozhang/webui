@@ -78,3 +78,13 @@ Pagination: 每页 N | 第 x–y 共 z | « ‹ 1 2 … n › »
 | TABLE-HIT-001 | 排序/分页/复选框热区 ≥44px |
 | TABLE-STATE-001 | 空/加载/错误态存在 |
 | TABLE-OVF-001 | 表格横向滚动限制在容器内 |
+
+
+## 规则 ID 注册表（本文件 Must 条款）
+
+<!-- BEGIN:must-registry -->
+| ID | 条款（摘录） |
+|---|---|
+| CMP-TABLE-001 | ## 交互行为（必须） |
+| CMP-TABLE-002 | - 列宽：手柄 `role="separator"` + `tabindex=0` + 方向键 ±10（Shift ±1）；控件必须 `position:relative`（F13 铁律）； |
+<!-- END:must-registry -->

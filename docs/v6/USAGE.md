@@ -1,3 +1,7 @@
+---
+title: ALE WebUI 使用指南（给开发者）
+id-prefix: GOV-USG
+---
 # ALE WebUI 使用指南（给开发者）
 
 > 回答一个问题：「我拿到这套规范，具体怎么用？」
@@ -90,3 +94,14 @@ npm run design:check        # 12 项门禁：版本/资产/五档溢出/热区/�
 
 **结论**：「markdown + 样式文件」确实不够——所以这套体系是"令牌真源 + 骨架代码 + 门禁"三位一体。
 程序员的使用方式是：**拷骨架、用组件、查文档、跑门禁**，四步之外不需要理解规范全文。
+
+
+## 规则 ID 注册表（本文件 Must 条款）
+
+<!-- BEGIN:must-registry -->
+| ID | 条款（摘录） |
+|---|---|
+| GOV-USG-001 | ├─ kit/shared/         生成产物 = tokens.css / preset / 组件样式（禁止手改） |
+| GOV-USG-002 | └─ kit/tools/          门禁 = design:check / tokens:contrast（发布前必须跑） |
+| GOV-USG-003 | \| 拿不准颜色/间距 \| 查 `docs/v6/00-foundations/`，**只能引用 `--color-*`/`--space-*` 令牌，禁止写裸值** \| |
+<!-- END:must-registry -->

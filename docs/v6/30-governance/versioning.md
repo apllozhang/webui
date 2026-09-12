@@ -38,6 +38,8 @@ status: M2 迁移（内容 = v5.4.1 基线，未新增规则）
 
 ## 规则 ID 注册表（本文件 Must 条款）
 
+<!-- BEGIN:must-registry -->
 | ID | 条款（摘录） |
 |---|---|
-| GOV-VER-001 | - **单一版本真源（v5.4，必须）**：`design-system.version.json` 是唯一版本定义（spec-site 与 kit/shared 各存一份，内容一致）；HTML `< |
+| GOV-VER-001 | - **单一版本真源（v5.4，必须）**：`design-system.version.json` 是唯一版本定义（spec-site 与 kit/shared 各存一份，内容一致）；HTML `<title>`/description、页脚版本、README、部署健康检查全部以其为准。发布前执行一致性检查：文档版本 = 页面 title = 页脚 = version.json，不一致禁止发布。 |
+<!-- END:must-registry -->

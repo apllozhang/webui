@@ -17,6 +17,8 @@ status: M2 迁移（内容 = v5.4.1 基线，未新增规则）
 
 ## 规则 ID 注册表（本文件 Must 条款）
 
+<!-- BEGIN:must-registry -->
 | ID | 条款（摘录） |
 |---|---|
 | GOV-A11Y-001 | ## 22. 无障碍基线（必须，WCAG 2.2 AA） |
+<!-- END:must-registry -->

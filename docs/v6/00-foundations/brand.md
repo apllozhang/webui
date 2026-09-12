@@ -86,10 +86,12 @@ X:\BP 目录\Marketing Resources\ALE Brand\ALE-logos\
 
 ## 规则 ID 注册表（本文件 Must 条款）
 
+<!-- BEGIN:must-registry -->
 | ID | 条款（摘录） |
 |---|---|
 | FND-BRAND-001 | ### 2.1 Logo 资产来源（必须） |
 | FND-BRAND-002 | 只从官方资产目录取用，禁止截图、重绘、重导出： |
 | FND-BRAND-003 | - 图标按钮必须有 `aria-label`；品牌 Logo 与功能图标是两类资产，不得混用。 |
 | FND-BRAND-004 | 3. Logo 最小净空 = 圆形符号半径一半；"A" 保持透明；禁止重绘/改色/特效/3D；彩色版浅底、白色反白版深底。 |
-| FND-BRAND-005 | 6. **字体版权红线（v5.3）**：微软雅黑（Microsoft YaHei，方正版权）、黑体（SimHei，中易版权）等商业字体的系统内置授权**不覆盖 Web 嵌入与再分发场景**，字体栈禁止 |
+| FND-BRAND-005 | 6. **字体版权红线（v5.3）**：微软雅黑（Microsoft YaHei，方正版权）、黑体（SimHei，中易版权）等商业字体的系统内置授权**不覆盖 Web 嵌入与再分发场景**，字体栈禁止声明；替代方案即自托管 OFL 字体。品牌指南"不引入远程字体文件"条款的准确含义：不引用第三方 CDN，自托管资产不受限。 |
+<!-- END:must-registry -->

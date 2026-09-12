@@ -74,11 +74,13 @@ status: M2 迁移（内容 = v5.4.1 基线，未新增规则）
 
 ## 规则 ID 注册表（本文件 Must 条款）
 
+<!-- BEGIN:must-registry -->
 | ID | 条款（摘录） |
 |---|---|
 | CMP-BTN-001 | **标准按键动画（必须，TSSKB 实测规范化）：** |
 | CMP-BTN-002 | - 必须覆盖六态：默认、悬停、键盘焦点、按下、禁用、加载中（加载保留原宽度，图标用旋转指示）。 |
-| CMP-BTN-003 | - 键盘焦点（必须）与鼠标焦点分离：`:focus-visible { outline: 2px solid #6b489d; outline-offset: 2px; }`；输入框鼠标焦点用柔和环  |
+| CMP-BTN-003 | - 键盘焦点（必须）与鼠标焦点分离：`:focus-visible { outline: 2px solid #6b489d; outline-offset: 2px; }`；输入框鼠标焦点用柔和环 `box-shadow: var(--ring-soft)` + 边框变紫。 |
 | CMP-BTN-004 | ### 11.1 状态层（State Layer，v5.3，必须） |
 | CMP-BTN-005 | 吸收 M3 state layer 机制：**所有实底交互控件的状态反馈，统一用 on-\* 前景色 × 固定透明度叠加表达**，与变色、阴影、浮起叠加使用。透明度全局只有三档，禁止各组件自行调色： |
-| CMP-BTN-006 | **前置条件（必须）**：使用 `::before/::after` 做热区扩展或状态层的控件必须显式 `position: relative`，否则伪元素将相对更外层定位祖先（如 sticky to |
+| CMP-BTN-006 | **前置条件（必须）**：使用 `::before/::after` 做热区扩展或状态层的控件必须显式 `position: relative`，否则伪元素将相对更外层定位祖先（如 sticky topbar）铺满，造成全区域点击串扰（见附录 F13）。发布前以 `elementFromPoint` 对导航/控件中心做 hit-test 抽查。`--ease-standard` 正名：该曲线即 M3 emphasized 曲线（cubic-bezier(0.2,0,0,1)），令牌别名 `--ease-emphasized` 同值并存的语义名。 |
+<!-- END:must-registry -->

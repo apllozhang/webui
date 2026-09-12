@@ -45,7 +45,9 @@ status: M2 迁移（内容 = v5.4.1 基线，未新增规则）
 
 ## 规则 ID 注册表（本文件 Must 条款）
 
+<!-- BEGIN:must-registry -->
 | ID | 条款（摘录） |
 |---|---|
 | FND-MOTION-001 | **限制（必须）：** |
 | FND-MOTION-002 | - 必须尊重减少动态效果： |
+<!-- END:must-registry -->
