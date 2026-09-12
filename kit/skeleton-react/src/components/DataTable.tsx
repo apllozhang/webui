@@ -139,6 +139,8 @@ export function DataTable({ data, onDelete }: { data: DemoRow[]; onDelete?: (row
     // eslint-disable-next-line react-hooks/exhaustive-deps
   ], [t, selection]);
 
+  const [userSized, setUserSized] = useState(false);   // 拖过列宽 → 精确像素模式（拖哪列动哪列）
+
   const table = useReactTable({
     data: filtered,
     columns,
@@ -187,7 +189,10 @@ export function DataTable({ data, onDelete }: { data: DemoRow[]; onDelete?: (row
 
       <div className="rounded-[12px] border border-border bg-surface" style={{ boxShadow: "var(--shadow-sm)" }}>
         <div className="overflow-x-auto">
-          <table className="data w-full" style={{ width: table.getTotalSize() || undefined, minWidth: "100%" }}>
+          <table className="data w-full"
+                 style={userSized
+                   ? { width: table.getTotalSize(), minWidth: 0 }   // 精确模式：总宽=Σ列宽，只有目标列变
+                   : { minWidth: "100%" }}>                          // 初始：filler 列吸收余量填满容器
             <thead>
               {table.getHeaderGroups().map((hg) => (
                 <tr key={hg.id}>
@@ -217,6 +222,7 @@ export function DataTable({ data, onDelete }: { data: DemoRow[]; onDelete?: (row
                                className="col-resizer"
                                onMouseDown={(e) => {
                                  e.preventDefault();
+                                 setUserSized(true);
                                  (e.target as HTMLElement).classList.add("active");
                                  header.getResizeHandler()?.(e as unknown as React.MouseEvent);
                                  const onUp = () => {
@@ -227,6 +233,7 @@ export function DataTable({ data, onDelete }: { data: DemoRow[]; onDelete?: (row
                                }}
                                onTouchStart={header.getResizeHandler()}
                                onKeyDown={(e) => {
+                                 setUserSized(true);
                                  const step = e.shiftKey ? 1 : 10;
                                  const cur = table.getState().columnSizing[header.column.id] ?? header.getSize();
                                  if (e.key === "ArrowLeft") table.setColumnSizing((prev) => ({ ...prev, [header.column.id]: Math.max(50, (prev[header.column.id] ?? cur) - step) }));
@@ -238,12 +245,13 @@ export function DataTable({ data, onDelete }: { data: DemoRow[]; onDelete?: (row
                       </th>
                     );
                   })}
+                  <th className="filler" aria-hidden="true" />
                 </tr>
               ))}
             </thead>
             <tbody>
               {table.getRowModel().rows.length === 0 ? (
-                <tr><td colSpan={columns.length} className="table-state">{t("table.empty")}</td></tr>
+                <tr><td colSpan={columns.length + 1} className="table-state">{t("table.empty")}</td></tr>
               ) : (
                 table.getRowModel().rows.map((row) => (
                   <tr key={row.id} aria-selected={selection.has(row.original.id)}
@@ -255,6 +263,7 @@ export function DataTable({ data, onDelete }: { data: DemoRow[]; onDelete?: (row
                         {flexRender(cell.column.columnDef.cell, cell.getContext())}
                       </td>
                     ))}
+                    <td className="filler border-b" style={{ borderColor: "var(--color-border-soft)" }} />
                   </tr>
                 ))
               )}

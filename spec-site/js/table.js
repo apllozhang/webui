@@ -69,11 +69,18 @@
   var batchBar = $("#demo-batch-bar");
   var confirmModal = $("#demo-batch-modal");
   var tableEl = document.querySelector("table.data");
+  var userResized = false;   // 用户调整过列宽 → 精确像素模式（拖哪列动哪列，F14）
 
-  /* 显式总宽：fixed 布局下表格宽度 = 选择列 + Σ列宽，保证 th/td 对齐确定（14A.2） */
+  /* 宽度模式：初始 min-width:100% 填满容器；拖动后 width=Σ列宽+解除拉伸（只有目标列变） */
   function syncTableWidth() {
     var total = 44 + COLS.reduce(function (sum, c) { return sum + state.widths[c.key]; }, 0);
-    tableEl.style.width = total + "px";
+    if (userResized) {
+      tableEl.style.width = total + "px";
+      tableEl.style.minWidth = "0";
+    } else {
+      tableEl.style.width = "";
+      tableEl.style.minWidth = "100%";
+    }
   }
 
   function fmtDate(d) {
@@ -175,6 +182,7 @@
         rz.classList.add("active");
         var startX = e.clientX, startW = state.widths[col.key];
         function move(ev) {
+          userResized = true;
           state.widths[col.key] = Math.max(50, startW + (ev.clientX - startX));
           th.style.width = state.widths[col.key] + "px";
           syncTableWidth();
@@ -189,6 +197,7 @@
         document.addEventListener("mouseup", up);
       });
       rz.addEventListener("keydown", function (e) {
+        userResized = true;
         var step = e.shiftKey ? 1 : 10;
         if (e.key === "ArrowLeft") { state.widths[col.key] = Math.max(50, state.widths[col.key] - step); }
         else if (e.key === "ArrowRight") { state.widths[col.key] = Math.max(50, state.widths[col.key] + step); }

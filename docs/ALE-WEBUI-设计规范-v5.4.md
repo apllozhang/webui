@@ -778,6 +778,7 @@ ale-webui-kit/
 | F11 | 页面元素字体命中 Times New Roman / Arial（评审实测） | BUTTON 等替换元素不继承字体，`.icon-btn` 未写 `font:inherit` | 所有按钮类必须 `font:inherit`；等宽栈补 `"Noto Sans SC"` 中文回退；纳入抽查 |
 | F12 | 演示站 title 为 v5.1、README 称 v5.2，文档已 v5.3 | 版本号手工散布多处，无单一真源 | P0-1：`design-system.version.json` + 发布一致性检查（治理章） |
 | F13 | **点击导航链接实际触发主题/语言切换（上线后用户发现）** | 热区扩展 `.icon-btn::before { position:absolute; inset:0 }` 时控件缺 `position:relative`，伪元素相对定位祖先 `.topbar` 铺满整个顶栏，形成全栏透明热区层 | **铁律：任何用伪元素做热区/状态层的控件，必须同时显式声明 `position:relative`**（已补入 9 章/11.1 实现代码）；发布前 hit-test 抽查：`elementFromPoint(链接中心)` 必须命中链接自身 |
+| F14 | **拖动单列列宽时其他列跟着变（用户实测反馈）** | 表格 `min-width:100%`（或 width:100%）+ `table-layout:fixed`：列宽之和 ≠ 表宽时浏览器把差值按比例分摊/压缩到所有列，拖动即触发全表重排 | **双模式宽度**：初始=填满容器（filler 列或 100%）；用户一旦拖动/键盘调宽即切换精确像素模式（`width=Σ列宽` 且解除 min-width），此后只有目标列变化，超出容器横向滚动；验收用两次拖动法断言非目标列逐像素不变（tools/verify-colresize.mjs） |
 
 ## 附录 G：量化自查数据（WCAG 对比度实测，白底/亮色主题）
 
