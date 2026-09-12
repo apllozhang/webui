@@ -76,7 +76,7 @@ function put(conn, local, remote) {
     `cd ${REMOTE_DIR} && tar -xzf ~/kit.tgz 2>/dev/null || true`,
     `cd ${REMOTE_DIR} && docker build -t ${NAME} . 2>&1 | tail -3`,
     `docker run -d --name ${NAME} -p ${PORT}:80 --restart unless-stopped ${NAME}`,
-    `sleep 1 && curl -s -o /dev/null -w "HTTP %{http_code}" http://127.0.0.1:${PORT}/ && curl -s -o /dev/null -w " react:%{http_code}" http://127.0.0.1:${PORT}/react/ && curl -s -o /dev/null -w " alpine:%{http_code}" http://127.0.0.1:${PORT}/alpine/ && curl -s -o /dev/null -w " static:%{http_code}" http://127.0.0.1:${PORT}/static/ && echo ""`,
+    `sleep 1 && for u in / /react/ /alpine/ /static/ /react/fonts/noto.css /alpine/assets/fonts/noto.css /static/fonts/noto.css; do code=$(curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:${PORT}$u); echo "$code $u"; if [ "$code" != "200" ]; then echo "ASSET GATE FAILED: $u"; exit 1; fi; done`,
   ];
   // 先上传 tar（放在 REMOTE_DIR 外，避免打进镜像）
   await put(conn, TARGZ, `/home/alec/kit.tgz`);

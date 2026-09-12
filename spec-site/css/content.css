@@ -12,7 +12,7 @@
 .principle { counter-increment: principle; padding: var(--space-4); background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-md); box-shadow: var(--shadow-sm); }
 .principle::before { content: counter(principle, decimal-leading-zero); display: block; margin-bottom: 8px; color: var(--ale-purple-40); font-size: 1.6rem; font-weight: 800; line-height: 1; }
 :root.dark .principle::before { color: var(--ale-purple-500); }
-.principle h3 { font-size: .95rem; margin-bottom: 4px; }
+.principle h3 { font-size: 1rem; margin-bottom: 4px; }
 .principle p { margin: 0; font-size: .8rem; color: var(--color-text-muted); }
 
 /* 表格化参数 */

@@ -65,7 +65,7 @@
             <a class="button ghost-on-brand" href="#components" data-i18n="hero.cta2">查看组件与动效</a>
           </div>
           <div class="hero-stats">
-            <div><strong>3</strong><span data-i18n="hero.s1">产品形态</span></div>
+            <div><strong>2</strong><span data-i18n="hero.s1">产品家族</span></div>
             <div><strong>8</strong><span data-i18n="hero.s2">表格功能项</span></div>
             <div><strong>4</strong><span data-i18n="hero.s3">动效时长档</span></div>
             <div><strong>AA</strong><span data-i18n="hero.s4">无障碍基线</span></div>
@@ -251,39 +251,26 @@ font-family: <span class="key">"SFMono-Regular"</span>, Consolas,
         </div>
       </section>
 
-      <!-- 三形态 -->
+      <!-- 产品家族 × 交互模式（v5.4.1 二维模型同步演示） -->
       <section class="section" id="arch">
         <header class="section-head">
           <p class="eyebrow">Architecture</p>
-          <h2 data-i18n="arch.title">三种产品形态</h2>
-          <p data-i18n="arch.sub">同一系统可混用形态；相同组件必须使用相同样式。</p>
+          <h2 data-i18n="arch.title">产品家族与交互模式</h2>
+          <p data-i18n="arch.sub">先选产品家族，再选交互模式；工程档由两者共同决定。同一系统可横跨多行，相同组件必须同样式。</p>
         </header>
-        <div class="arch-grid">
-          <div class="card" style="padding:var(--space-4)">
-            <h3 data-i18n="arch.a">A · 内容/门户型</h3>
-            <pre class="wire">topbar 64px ─ Logo | nav | tools
-▔▔▔▔▔▔▔▔▔▔▔▔▔ 3px purple bar
-sidebar 300px │ content ≤1180px</pre>
-            <p data-i18n="arch.a.d">知识库、培训、产品浏览。顶栏带 3px 品牌紫底条 + 可选侧栏。</p>
-            <p style="margin-top:8px;font-size:12px;color:var(--color-text-muted)"><span data-i18n="arch.ref">参照：</span> <a href="https://github.com/apllozhang/TSSKB" target="_blank" rel="noopener">TSSKB</a></p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:16px;margin-bottom:16px">
+          <div class="card" style="padding:16px">
+            <h3 style="margin:0 0 6px" data-i18n="arch.fam.content">内容网站型</h3>
+            <p style="margin:0;font-size:13px;color:var(--color-text-secondary)" data-i18n="arch.fam.content.d">知识库、培训、产品信息。阅读体验优先。</p>
+            <p style="margin:8px 0 0;font-size:12px;color:var(--color-text-muted)"><span data-i18n="arch.modes">交互模式</span>: <span data-i18n="arch.mode.portal">阅读门户</span> · <span data-i18n="arch.mode.catalog">检索目录</span> · <span data-i18n="arch.mode.article">长文详情</span> — 工程档 <a href="https://github.com/apllozhang/TSSKB" target="_blank" rel="noopener">TSSKB</a> → Static</p>
           </div>
-          <div class="card" style="padding:var(--space-4)">
-            <h3 data-i18n="arch.b">B · 应用/工作台型</h3>
-            <pre class="wire">topbar ─ Logo | title | lang·theme·user
-page title + count │ search · filter · CTA
-table feature pack │ pagination</pre>
-            <p data-i18n="arch.b.d">登录、数据管理、导入。数据表格功能包为标配。</p>
-            <p style="margin-top:8px;font-size:12px;color:var(--color-text-muted)"><span data-i18n="arch.ref">参照：</span> <a href="https://github.com/apllozhang/ale-dan-cpl-system" target="_blank" rel="noopener">ale-dan-cpl-system</a></p>
-          </div>
-          <div class="card" style="padding:var(--space-4)">
-            <h3 data-i18n="arch.c">C · 向导/流程型</h3>
-            <pre class="wire">stepper ① → ② → ③ → ④
-current lit · done rewinds · future disabled
-one task per step · data kept across steps</pre>
-            <p data-i18n="arch.c.d">多步采集、对比、报告。步骤条：当前高亮、完成可回退、未到禁用。</p>
-            <p style="margin-top:8px;font-size:12px;color:var(--color-text-muted)"><span data-i18n="arch.ref">参照：</span> <a href="https://github.com/apllozhang/nvci-lite" target="_blank" rel="noopener">nvci-lite</a></p>
+          <div class="card" style="padding:16px">
+            <h3 style="margin:0 0 6px" data-i18n="arch.fam.tool">工具应用型</h3>
+            <p style="margin:0;font-size:13px;color:var(--color-text-secondary)" data-i18n="arch.fam.tool.d">数据管理、采集、报价、批处理。操作效率优先。</p>
+            <p style="margin:8px 0 0;font-size:12px;color:var(--color-text-muted)"><span data-i18n="arch.modes">交互模式</span>: <span data-i18n="arch.mode.workbench">数据工作台</span> · <span data-i18n="arch.mode.light">轻量单任务</span> · <span data-i18n="arch.mode.wizard">多步向导</span> — 工程档 React / Alpine（<a href="https://github.com/apllozhang/ale-dan-cpl-system" target="_blank" rel="noopener">dan-cpl</a> · <a href="https://github.com/apllozhang/nvci-lite" target="_blank" rel="noopener">nvci-lite</a>）</p>
           </div>
         </div>
+        <p style="margin:0;font-size:12px;color:var(--color-text-muted)"><span data-i18n="arch.note">注：React / Alpine / Static 是工程档（技术选型），不是产品类型。</span></p>
       </section>
 
       <!-- 核心组件 -->
