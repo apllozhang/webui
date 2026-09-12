@@ -28,7 +28,7 @@ _*.py / _*.mjs           历次整改的操作脚本（操作记录，可读可�
 - git 在 `C:\Program Files\Git\cmd\git.exe`（PATH 里没有）；commit 需带身份参数
 - GitHub 走 SSH（HTTPS 443 被墙，22 通）；SSH key 在 `C:\Users\Administrator\.ssh\id_ed25519`（若换了机器需重建并加到 GitHub）
 - github.com:443 超时是常态，push 失败先 `python _probe.py` 测通道
-- 部署目标 10.10.10.218 ≡ 10.20.30.203（同一台机），SSH `alec`，密码见仓库根 `deploy.secret.json`（不入库）与 `D:\AIWork.20.30.203.txt`；容器 ale-webui-spec:8091 / ale-webui-kit:8095。**M5-0.2 已密码外置（deploy 脚本零硬编码口令）、M5-0.3 已轮换（旧口令失效）——决策 A 约束②已执行**
+- 部署目标 10.10.10.218 ≡ 10.20.30.203（同一台机），SSH `alec`，密码见仓库根 `deploy.secret.json`（不入库）与 `D:\AIWork.20.30.203.txt`；容器 ale-webui-spec:8091 / ale-webui-kit:8095。**M5-0.2 已密码外置（deploy 脚本零硬编码口令）；M5-0.3 曾轮换、负责人裁决测试阶段回退原口令（暴露风险已知悉，建议 M6 发布前再轮换）**
 - 品牌资料在 `X:\BP 目录\Marketing Resources\`（网络盘）
 - 本机有 Edge/Chrome，puppeteer-core 门禁可用（node_modules 已装在 ale-webui-kit/tools）
 
