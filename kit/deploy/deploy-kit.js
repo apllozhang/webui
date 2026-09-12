@@ -3,12 +3,48 @@
 const { execSync } = require("child_process");
 const fs = require("fs");
 const path = require("path");
-const { Client } = require(path.join(__dirname, "..", "..", "_deploy", "node_modules", "ssh2"));
 
-const HOST = process.env.DEPLOY_HOST || "10.10.10.218";
-const USER = "alec";
-const PASS = "P@ssw0rd@5121";
+// M5-0.2 密码外置：凭据读自仓库根 deploy.secret.json（不入库；模板 deploy.secret.example.json）
+function loadSecret() {
+  const cands = [
+    path.join(__dirname, "..", "..", "deploy.secret.json"),
+    path.join(__dirname, "deploy.secret.json"),
+    path.join(process.cwd(), "deploy.secret.json"),
+  ];
+  const f = cands.find((p) => fs.existsSync(p));
+  if (!f) {
+    console.error("[deploy] 缺少凭据文件 deploy.secret.json（不入库）。\n" +
+      "  修复：复制 deploy.secret.example.json 为仓库根目录 deploy.secret.json 并填入 host/user/password。");
+    process.exit(1);
+  }
+  const s = JSON.parse(fs.readFileSync(f, "utf8"));
+  for (const k of ["host", "user", "password"]) {
+    if (!s[k]) { console.error(`[deploy] deploy.secret.json 缺字段: ${k}`); process.exit(1); }
+  }
+  return s;
+}
+const SECRET = loadSecret();
+
+// F-依赖：ssh2 解析（仓库内 kit/tools/node_modules 随库提交；兼容本目录安装）
+function requireSsh2() {
+  const cands = [
+    path.join(__dirname, "..", "..", "kit", "tools", "node_modules", "ssh2"),
+    path.join(__dirname, "..", "tools", "node_modules", "ssh2"),
+    path.join(__dirname, "node_modules", "ssh2"),
+    "ssh2",
+  ];
+  for (const p of cands) { try { return require(p); } catch (e) { /* 依次尝试 */ } }
+  console.error("[deploy] 找不到 ssh2：在 kit/tools 下 npm install ssh2，或在本目录 npm install ssh2");
+  process.exit(1);
+}
+const { Client } = requireSsh2();
+
+const HOST = process.env.DEPLOY_HOST || SECRET.host;
+const USER = SECRET.user;
+const PASS = SECRET.password;
 const PORT = process.env.DEPLOY_PORT || "8095";
+// Windows 下 GNU tar 会把 "D:\..." 当远程主机，指定系统自带 bsdtar（认盘符）
+const TAR = process.env.TAR_BIN || (process.platform === "win32" ? "C:\\Windows\\System32\\tar.exe" : "tar");
 const KIT = path.join(__dirname, "..");
 const BUILD = path.join(__dirname, "build");
 const TARGZ = path.join(__dirname, "kit.tgz");
@@ -28,7 +64,7 @@ function pack() {
     filter: (s) => !s.includes("node_modules") && !s.includes(".git"),
   });
   fs.cpSync(path.join(KIT, "skeleton-static", "dist"), path.join(BUILD, "static"), { recursive: true });
-  execSync(`tar -czf "${TARGZ}" -C "${BUILD}" .`, { stdio: "inherit" });
+  execSync(`"${TAR}" -czf "${TARGZ}" -C "${BUILD}" .`, { stdio: "inherit" });
   console.log("packed:", fs.statSync(TARGZ).size, "bytes");
 }
 

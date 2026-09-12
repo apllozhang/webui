@@ -143,6 +143,9 @@ WRITE(path.join(siteRel, "css", "tokens.css"), css);
 const preset = `/**
  * ⚠️ 由 tokens/*.json 生成（npm run tokens:build）— 禁止手改色值
  * 颜色/圆角/阴影/时长全部映射 tokens.css 的 CSS 变量
+ * 用法（skeleton-react/tailwind.config.ts）：
+ *   import preset from "./tailwind.preset";
+ *   export default { presets: [preset], content: [...], darkMode: "class" };
  */
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -174,8 +177,8 @@ export default {
       boxShadow: { sm: "var(--shadow-sm)", md: "var(--shadow-md)", hover: "var(--shadow-hover)" },
       transitionDuration: { fast: "var(--motion-fast)", panel: "var(--motion-panel)", enter: "var(--motion-enter)" },
       fontFamily: {
-        sans: [${typo["font-sans"].value.split(", ").map((f) => f).join(", ")}],
-        mono: [${typo["font-mono"].value.split(", ").map((f) => f).join(", ")}],
+        sans: ${JSON.stringify(typo["font-sans"].value)},
+        mono: ${JSON.stringify(typo["font-mono"].value)},
       },
       maxWidth: { content: "var(--content-max)", reading: "var(--reading-max)" },
     },
