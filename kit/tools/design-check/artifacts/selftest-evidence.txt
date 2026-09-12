@@ -1,0 +1,8 @@
+design:check --selftest 门禁自测证据（注入三类缺陷，门禁必须失败；验证后已恢复正确状态）
+[selftest] 已注入缺陷：超宽元素 + 全屏覆盖层 + tokens.css 404
+FAIL  OVF-320  320px 根级无横向溢出  — {"scrollW":500,"clientW":320,"overflowEls":["DIV."]}
+FAIL  OVF-375  375px 根级无横向溢出  — {"scrollW":500,"clientW":375,"overflowEls":["DIV."]}
+FAIL  HIT-NAV  导航链接命中自身  — {"misses":["品牌","排版","令牌","组件","数据表格","动效","验收"]}
+FAIL  ASSET-HTTP  核心资产全部 HTTP 200  — {"bad":[{"url":"http://10.10.10.218:8091/css/tokens.css?v=5.4.0","error":"requestfailed"}]}
+FAIL  CONSOLE  控制台零未解释错误  — {"errors":["Failed to load resource: net::ERR_FAILED"]}
+=== design:check FAILED ===  报告：tools/design-check/artifacts/design-check.json

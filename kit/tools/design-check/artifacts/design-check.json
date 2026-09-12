@@ -1,0 +1,152 @@
+{
+  "url": "http://10.10.10.218:8091/",
+  "time": "2026-09-12T05:01:52.961Z",
+  "checks": [
+    {
+      "id": "VER",
+      "name": "版本一致性（title ↔ version.json）",
+      "pass": true,
+      "detail": {
+        "expect": "ALE WebUI 设计规范 v5.4",
+        "dir": "ale-webui-site"
+      }
+    },
+    {
+      "id": "ASSET-LOCAL",
+      "name": "核心资产存在（全部候选目录）",
+      "pass": true,
+      "detail": {
+        "dirs": [
+          "ale-webui-site",
+          "dist"
+        ]
+      }
+    },
+    {
+      "id": "OVF-320",
+      "name": "320px 根级无横向溢出",
+      "pass": false,
+      "detail": {
+        "scrollW": 500,
+        "clientW": 320,
+        "overflowEls": [
+          "DIV."
+        ]
+      }
+    },
+    {
+      "id": "OVF-375",
+      "name": "375px 根级无横向溢出",
+      "pass": false,
+      "detail": {
+        "scrollW": 500,
+        "clientW": 375,
+        "overflowEls": [
+          "DIV."
+        ]
+      }
+    },
+    {
+      "id": "OVF-768",
+      "name": "768px 根级无横向溢出",
+      "pass": true,
+      "detail": {
+        "scrollW": 768,
+        "clientW": 768,
+        "overflowEls": []
+      }
+    },
+    {
+      "id": "OVF-1024",
+      "name": "1024px 根级无横向溢出",
+      "pass": true,
+      "detail": {
+        "scrollW": 1024,
+        "clientW": 1024,
+        "overflowEls": []
+      }
+    },
+    {
+      "id": "OVF-1440",
+      "name": "1440px 根级无横向溢出",
+      "pass": true,
+      "detail": {
+        "scrollW": 1440,
+        "clientW": 1440,
+        "overflowEls": []
+      }
+    },
+    {
+      "id": "HIT-NAV",
+      "name": "导航链接命中自身",
+      "pass": false,
+      "detail": {
+        "misses": [
+          "品牌",
+          "排版",
+          "令牌",
+          "组件",
+          "数据表格",
+          "动效",
+          "验收"
+        ]
+      }
+    },
+    {
+      "id": "HIT-CTRL",
+      "name": "表格控件热区 ≥44px",
+      "pass": true,
+      "detail": {
+        "navMisses": [
+          "品牌",
+          "排版",
+          "令牌",
+          "组件",
+          "数据表格",
+          "动效",
+          "验收"
+        ],
+        "sort": 44,
+        "pg": 44,
+        "checkbox": 44,
+        "iconBtn": 40
+      }
+    },
+    {
+      "id": "HIT-ICON",
+      "name": "图标按钮热区 ≥40px（桌面口径）",
+      "pass": true,
+      "detail": {
+        "iconBtn": 40
+      }
+    },
+    {
+      "id": "ASSET-HTTP",
+      "name": "核心资产全部 HTTP 200",
+      "pass": false,
+      "detail": {
+        "bad": [
+          {
+            "url": "http://10.10.10.218:8091/css/tokens.css?v=5.4.0",
+            "error": "requestfailed"
+          }
+        ]
+      }
+    },
+    {
+      "id": "CONSOLE",
+      "name": "控制台零未解释错误",
+      "pass": false,
+      "detail": {
+        "errors": [
+          "Failed to load resource: net::ERR_FAILED"
+        ]
+      }
+    }
+  ],
+  "pass": false,
+  "screenshots": [
+    "D:\\AIWork\\ZCode\\Vibe Coding\\WEBUI\\ale-webui-kit\\tools\\design-check\\artifacts\\baseline-320.png",
+    "D:\\AIWork\\ZCode\\Vibe Coding\\WEBUI\\ale-webui-kit\\tools\\design-check\\artifacts\\baseline-1440.png"
+  ]
+}
