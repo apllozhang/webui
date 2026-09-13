@@ -32,8 +32,8 @@ export default {
       boxShadow: { sm: "var(--shadow-sm)", md: "var(--shadow-md)", hover: "var(--shadow-hover)" },
       transitionDuration: { fast: "var(--motion-fast)", panel: "var(--motion-panel)", enter: "var(--motion-enter)" },
       fontFamily: {
-        sans: ["Trebuchet MS", "Noto Sans SC", "PingFang SC", sans-serif],
-        mono: ["SFMono-Regular", Consolas, "Liberation Mono", "Noto Sans SC", monospace],
+        sans: ["Trebuchet MS", "Noto Sans SC", "PingFang SC", "sans-serif"],
+        mono: ["SFMono-Regular", "Consolas", "Liberation Mono", "Noto Sans SC", "monospace"],
       },
       maxWidth: { content: "var(--content-max)", reading: "var(--reading-max)" },
     },

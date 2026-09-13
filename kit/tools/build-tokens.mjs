@@ -140,6 +140,9 @@ const siteRel = path.relative(REPO, SITE);
 WRITE(path.join(siteRel, "css", "tokens.css"), css);
 
 /* ── 生成 2：tailwind.preset.js ── */
+// 字体栈 → 每项 JSON.stringify 的数组字面量（裸标识符如 sans-serif/Consolas 会生成非法 JS，F17）
+const fontStackArr = (stack) =>
+  stack.split(",").map((f) => JSON.stringify(f.trim().replace(/^"+|"+$/g, ""))).join(", ");
 const preset = `/**
  * ⚠️ 由 tokens/*.json 生成（npm run tokens:build）— 禁止手改色值
  * 颜色/圆角/阴影/时长全部映射 tokens.css 的 CSS 变量
@@ -174,8 +177,8 @@ export default {
       boxShadow: { sm: "var(--shadow-sm)", md: "var(--shadow-md)", hover: "var(--shadow-hover)" },
       transitionDuration: { fast: "var(--motion-fast)", panel: "var(--motion-panel)", enter: "var(--motion-enter)" },
       fontFamily: {
-        sans: [${typo["font-sans"].value.split(", ").map((f) => f).join(", ")}],
-        mono: [${typo["font-mono"].value.split(", ").map((f) => f).join(", ")}],
+        sans: [${fontStackArr(typo["font-sans"].value)}],
+        mono: [${fontStackArr(typo["font-mono"].value)}],
       },
       maxWidth: { content: "var(--content-max)", reading: "var(--reading-max)" },
     },
