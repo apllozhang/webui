@@ -1,8 +1,8 @@
 {
-  "run_id": 34756655926,
-  "conclusion": "failure",
-  "sha": "5adccd46b02578fb844f182dcb53fa08e25b21fd",
+  "run_id": 34757608069,
+  "conclusion": "cancelled",
+  "sha": "7596e2c98a3b3289dd5bf9c2028de5f9f8592295",
   "event": "push",
-  "time": "2026-09-13T12:18:21Z",
-  "url": "https://github.com/apllozhang/webui/actions/runs/34756655926"
+  "time": "2026-09-13T12:38:07Z",
+  "url": "https://github.com/apllozhang/webui/actions/runs/34757608069"
 }
