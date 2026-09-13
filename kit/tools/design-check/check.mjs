@@ -35,22 +35,13 @@ function record(id, name, pass, detail) {
 }
 
 function findBrowser() {
-  const env = process.env.PUPPETEER_EXECUTABLE_PATH || process.env.CHROME_PATH;
-  if (env && fs.existsSync(env)) return env;
   const cands = [
-    // Windows（开发机 / windows runner）
     "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
     "C:\\Program Files\\Microsoft\\Edge\\Application\\msedge.exe",
     "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
-    // Linux（CI runner）
-    "/usr/bin/google-chrome-stable",
-    "/usr/bin/google-chrome",
-    "/usr/bin/chromium-browser",
-    "/usr/bin/chromium",
-    "/snap/bin/chromium",
   ];
   for (const p of cands) if (fs.existsSync(p)) return p;
-  throw new Error("未找到 Edge/Chrome，可设 PUPPETEER_EXECUTABLE_PATH 或 CHROME_PATH 指定");
+  throw new Error("未找到 Edge/Chrome，请安装或调整 cands");
 }
 
 /* ── 检查 1：版本一致性（version.json ↔ index.html title） ── */

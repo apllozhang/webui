@@ -1,6 +1,6 @@
 {
-  "url": "http://127.0.0.1:8765/",
-  "time": "2026-09-12T10:46:49.989Z",
+  "url": "http://10.10.10.218:8091/",
+  "time": "2026-09-12T09:41:58.719Z",
   "checks": [
     {
       "id": "VER",
@@ -8,7 +8,7 @@
       "pass": true,
       "detail": {
         "expect": "ALE WebUI 设计规范 v5.4",
-        "dir": "spec-site"
+        "dir": "ale-webui-site"
       }
     },
     {
@@ -17,7 +17,8 @@
       "pass": true,
       "detail": {
         "dirs": [
-          "spec-site"
+          "ale-webui-site",
+          "dist"
         ]
       }
     },
@@ -118,7 +119,7 @@
   ],
   "pass": true,
   "screenshots": [
-    "D:\\AIWork\\ZCode\\Vibe Coding\\WEBUI\\webui\\kit\\tools\\design-check\\artifacts\\baseline-320.png",
-    "D:\\AIWork\\ZCode\\Vibe Coding\\WEBUI\\webui\\kit\\tools\\design-check\\artifacts\\baseline-1440.png"
+    "D:\\AIWork\\ZCode\\Vibe Coding\\WEBUI\\ale-webui-kit\\tools\\design-check\\artifacts\\baseline-320.png",
+    "D:\\AIWork\\ZCode\\Vibe Coding\\WEBUI\\ale-webui-kit\\tools\\design-check\\artifacts\\baseline-1440.png"
   ]
 }

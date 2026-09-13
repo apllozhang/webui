@@ -8,7 +8,7 @@ const ssh2mod = await import(pathToFileURL(SSH2_ENTRY).href);
 const Client = ssh2mod.Client;
 
 const HOSTS = ["10.10.10.218", "10.20.30.203"];
-const OLD_PW = "P@ssw0rd@5121";
+const OLD_PW = JSON.parse(fs.readFileSync(path.resolve(HERE, "..", "..", "..", "_deploy", "deploy.secret.json"), "utf8")).password;
 
 function tryAuth(host, password) {
   return new Promise((resolve) => {
