@@ -19,9 +19,10 @@ STATIC = ROOT / "static"
 DIST = ROOT / "dist"
 CONTENT = ROOT / "content.json"
 
+# 相对 href：站点部署在子路径（8095 Kit 站 /static/）时导航才可用
 NAV = [
-    {"label": "首页", "href": "/", "current": True},
-    {"label": "文档", "href": "/article.html", "current": False},
+    {"label": "首页", "href": "index.html", "current": True},
+    {"label": "文档", "href": "article.html", "current": False},
 ]
 
 
