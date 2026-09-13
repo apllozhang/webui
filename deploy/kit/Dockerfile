@@ -13,5 +13,5 @@ RUN cp -r /usr/share/nginx/html/hub/. /usr/share/nginx/html/ && rm -rf /usr/shar
 EXPOSE 80
 
 LABEL org.opencontainers.image.title="ALE WebUI Kit" \
-      org.opencontainers.image.description="ALE WebUI v5.1 spec skeletons: react / alpine / static" \
+      org.opencontainers.image.description="ALE WebUI v5.4.1 spec skeletons: react / alpine / static" \
       org.opencontainers.image.vendor="ALE International"
