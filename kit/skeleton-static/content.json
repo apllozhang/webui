@@ -1,6 +1,7 @@
 {
   "site_name": "ALE 知识库",
   "home": {
+    "title": "首页",
     "hero": {
       "eyebrow": "ALE WEBUI · 静态骨架",
       "title": "清晰 · 可信 · 开放 · 高效",
