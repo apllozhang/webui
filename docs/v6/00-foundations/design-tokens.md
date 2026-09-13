@@ -163,4 +163,5 @@ BEGIN/END 标记区间为生成区，禁止手改——改动请进 tokens/*.jso
 | ID | 条款（摘录） |
 |---|---|
 | FND-TOKEN-001 | ## 6. 三层设计令牌（必须） |
+| FND-TOKEN-002 | BEGIN/END 标记区间为生成区，禁止手改——改动请进 tokens/*.json 后重建。 |
 <!-- END:must-registry -->

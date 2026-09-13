@@ -1,6 +1,6 @@
 {
   "url": "http://127.0.0.1:8765/",
-  "time": "2026-09-13T00:57:07.652Z",
+  "time": "2026-09-13T12:14:56.526Z",
   "checks": [
     {
       "id": "VER",
@@ -17,7 +17,8 @@
       "pass": true,
       "detail": {
         "dirs": [
-          "spec-site"
+          "spec-site",
+          "dist"
         ]
       }
     },
@@ -118,7 +119,7 @@
   ],
   "pass": true,
   "screenshots": [
-    "D:\\AIWork\\ZCode\\Vibe Coding\\WEBUI\\_repo_stage\\kit\\tools\\design-check\\artifacts\\baseline-320.png",
-    "D:\\AIWork\\ZCode\\Vibe Coding\\WEBUI\\_repo_stage\\kit\\tools\\design-check\\artifacts\\baseline-1440.png"
+    "D:\\AIWork\\ZCode\\Vibe Coding\\WEBUI\\webui\\kit\\tools\\design-check\\artifacts\\baseline-320.png",
+    "D:\\AIWork\\ZCode\\Vibe Coding\\WEBUI\\webui\\kit\\tools\\design-check\\artifacts\\baseline-1440.png"
   ]
 }

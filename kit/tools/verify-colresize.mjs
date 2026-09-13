@@ -9,9 +9,10 @@ import puppeteer from "puppeteer-core";
 const exe = ["C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
              "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"].find((p) => fs.existsSync(p));
 
+// 站点地址可用 KIT_URL / CHECK_URL 覆盖（VPN 环境 10.10.10.218 不可达时指向 10.20.30.203）
 const TARGETS = [
-  { name: "react", url: "http://10.10.10.218:8095/react/" },
-  { name: "spec-site", url: "http://10.10.10.218:8091/#table" },
+  { name: "react", url: `${process.env.KIT_URL || "http://10.10.10.218:8095/"}`.replace(/\/?$/, "/") + "react/" },
+  { name: "spec-site", url: `${process.env.CHECK_URL || "http://10.10.10.218:8091/"}`.replace(/\/?$/, "/") + "#table" },
 ];
 
 async function drag(page, delta) {

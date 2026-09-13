@@ -16,7 +16,9 @@ const HERE = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(HERE, "..", "..");            // kit/
 const REPO = path.resolve(ROOT, "..");                  // 仓库根（stage 内为 _repo_stage；工作区为 WEBUI）
 const args = process.argv.slice(2);
-const urlArg = args.includes("--url") ? args[args.indexOf("--url") + 1] : "http://10.10.10.218:8091/";
+// URL 解析：CHECK_URL 环境变量 > --url 参数 > 默认（npm run 串联多脚本时尾部参数只会落在最后一个命令上）
+const urlArg = process.env.CHECK_URL
+  || (args.includes("--url") ? args[args.indexOf("--url") + 1] : "http://10.10.10.218:8091/");
 const SELFTEST = args.includes("--selftest");
 
 // 候选 spec-site 目录（stage 与工作区布局不同，按存在性选择）

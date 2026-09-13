@@ -1,0 +1,179 @@
+{
+  "url": "http://10.20.30.203:8095/",
+  "time": "2026-09-13T12:15:03.647Z",
+  "checks": [
+    {
+      "id": "HUB-RENDER",
+      "name": "HUB 非空白渲染",
+      "pass": true,
+      "detail": {
+        "textLen": 537,
+        "els": 30,
+        "rootChildren": null
+      }
+    },
+    {
+      "id": "HUB-TITLE",
+      "name": "HUB title 非空",
+      "pass": true,
+      "detail": {
+        "title": "ALE WebUI Kit · 骨架导航"
+      }
+    },
+    {
+      "id": "HUB-ASSET",
+      "name": "HUB 子资源全部 200",
+      "pass": true,
+      "detail": {
+        "bad": []
+      }
+    },
+    {
+      "id": "HUB-CONSOLE",
+      "name": "HUB 控制台零错误",
+      "pass": true,
+      "detail": {
+        "errors": []
+      }
+    },
+    {
+      "id": "HUB-OVF320",
+      "name": "HUB 320px 根级无横向溢出",
+      "pass": true,
+      "detail": {
+        "scrollW": 320,
+        "clientW": 320
+      }
+    },
+    {
+      "id": "REACT-RENDER",
+      "name": "REACT 非空白渲染",
+      "pass": true,
+      "detail": {
+        "textLen": 491,
+        "els": 237,
+        "rootChildren": 1
+      }
+    },
+    {
+      "id": "REACT-TITLE",
+      "name": "REACT title 非空",
+      "pass": true,
+      "detail": {
+        "title": "ALE WebUI 复杂骨架 · React"
+      }
+    },
+    {
+      "id": "REACT-ASSET",
+      "name": "REACT 子资源全部 200",
+      "pass": true,
+      "detail": {
+        "bad": []
+      }
+    },
+    {
+      "id": "REACT-CONSOLE",
+      "name": "REACT 控制台零错误",
+      "pass": true,
+      "detail": {
+        "errors": []
+      }
+    },
+    {
+      "id": "REACT-OVF320",
+      "name": "REACT 320px 根级无横向溢出",
+      "pass": true,
+      "detail": {
+        "scrollW": 320,
+        "clientW": 320
+      }
+    },
+    {
+      "id": "ALPINE-RENDER",
+      "name": "ALPINE 非空白渲染",
+      "pass": true,
+      "detail": {
+        "textLen": 723,
+        "els": 257,
+        "rootChildren": null
+      }
+    },
+    {
+      "id": "ALPINE-TITLE",
+      "name": "ALPINE title 非空",
+      "pass": true,
+      "detail": {
+        "title": "ALE WebUI 轻量骨架 · Alpine"
+      }
+    },
+    {
+      "id": "ALPINE-ASSET",
+      "name": "ALPINE 子资源全部 200",
+      "pass": true,
+      "detail": {
+        "bad": []
+      }
+    },
+    {
+      "id": "ALPINE-CONSOLE",
+      "name": "ALPINE 控制台零错误",
+      "pass": true,
+      "detail": {
+        "errors": []
+      }
+    },
+    {
+      "id": "ALPINE-OVF320",
+      "name": "ALPINE 320px 根级无横向溢出",
+      "pass": true,
+      "detail": {
+        "scrollW": 320,
+        "clientW": 320
+      }
+    },
+    {
+      "id": "STATIC-RENDER",
+      "name": "STATIC 非空白渲染",
+      "pass": true,
+      "detail": {
+        "textLen": 308,
+        "els": 52,
+        "rootChildren": null
+      }
+    },
+    {
+      "id": "STATIC-TITLE",
+      "name": "STATIC title 非空",
+      "pass": true,
+      "detail": {
+        "title": "首页 | ALE 知识库"
+      }
+    },
+    {
+      "id": "STATIC-ASSET",
+      "name": "STATIC 子资源全部 200",
+      "pass": true,
+      "detail": {
+        "bad": []
+      }
+    },
+    {
+      "id": "STATIC-CONSOLE",
+      "name": "STATIC 控制台零错误",
+      "pass": true,
+      "detail": {
+        "errors": []
+      }
+    },
+    {
+      "id": "STATIC-OVF320",
+      "name": "STATIC 320px 根级无横向溢出",
+      "pass": true,
+      "detail": {
+        "scrollW": 320,
+        "clientW": 320
+      }
+    }
+  ],
+  "pass": true
+}

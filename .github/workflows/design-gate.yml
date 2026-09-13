@@ -1,6 +1,8 @@
-# ALE WebUI 设计门禁（M4 收尾 · CI 化）
-# push 即跑：tokens:check（零漂移）+ tokens:contrast（46 对断言）+ design:check（12 项浏览器门禁）
+# ALE WebUI 设计门禁（M4 收尾整改 · R10 后全量）
+# push 即跑：tokens:check（零漂移）+ tokens:contrast（46 对断言）
+#          + design:check（8091 规范站 12 项 + Kit 四入口 20 项，R10）
 # 浏览器：runner 预装 Chrome 优先，缺失则用 @puppeteer/browsers 下载（check.mjs 读 CHROME_PATH）
+# Kit 四入口：CI 内现场构建 react(vite)/static(jinja2) 并装配 hub 根目录，8766 端口自检
 # 运行结论回写 .github/ci-state.json（[skip ci] 防循环）——私有仓库无 API token 时，git log 即运行台账
 name: design-gate
 
@@ -53,6 +55,32 @@ jobs:
           done
           curl -fsS -o /dev/null http://127.0.0.1:8765/ || { echo "spec-site 服务未就绪"; exit 1; }
 
+      - name: Build kit entries（react + static 现场构建）
+        run: |
+          cd kit/skeleton-react
+          npm ci --no-audit --no-fund
+          npm run build
+          cd ../../kit/skeleton-static
+          pip install jinja2 -q
+          python3 build.py
+
+      - name: Assemble + serve kit root (127.0.0.1:8766)
+        run: |
+          mkdir -p deploy/kit/build
+          cp -r deploy/kit/hub/. deploy/kit/build/
+          cp -r kit/skeleton-react/dist deploy/kit/build/react
+          cp -r kit/skeleton-alpine deploy/kit/build/alpine
+          rm -rf deploy/kit/build/alpine/node_modules
+          cp -r kit/skeleton-static/dist deploy/kit/build/static
+          python3 -m http.server 8766 --directory deploy/kit/build > /dev/null 2>&1 &
+          for i in $(seq 1 20); do
+            curl -fsS -o /dev/null http://127.0.0.1:8766/ && break || sleep 1
+          done
+          for u in / /react/ /alpine/ /static/; do
+            curl -fsS -o /dev/null "http://127.0.0.1:8766$u" || { echo "kit 入口未就绪: $u"; exit 1; }
+          done
+          echo "KIT_URL=http://127.0.0.1:8766/" >> "$GITHUB_ENV"
+
       - name: tokens:check（零漂移）
         working-directory: kit/tools
         run: npm run tokens:check
@@ -61,9 +89,11 @@ jobs:
         working-directory: kit/tools
         run: npm run tokens:contrast
 
-      - name: design:check（12 项浏览器门禁）
+      - name: design:check（规范站 12 项 + Kit 四入口 20 项）
         working-directory: kit/tools
-        run: npm run design:check -- --url http://127.0.0.1:8765/
+        env:
+          CHECK_URL: http://127.0.0.1:8765/
+        run: npm run design:check
 
       - name: Upload gate artifacts
         if: always()

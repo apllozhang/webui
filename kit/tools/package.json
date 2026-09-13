@@ -5,7 +5,7 @@
     "puppeteer-core": "^25.10.0"
   },
   "scripts": {
-    "design:check": "node build-tokens.mjs --check && node design-check/check.mjs",
+    "design:check": "node build-tokens.mjs --check && node design-check/check.mjs && node design-check/check-kit.mjs",
     "design:check:selftest": "node design-check/check.mjs --selftest",
     "tokens:build": "node build-tokens.mjs",
     "tokens:check": "node build-tokens.mjs --check",
