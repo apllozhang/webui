@@ -141,6 +141,23 @@ export function DataTable({ data, onDelete }: { data: DemoRow[]; onDelete?: (row
 
   const [userSized, setUserSized] = useState(false);   // 拖过列宽 → 精确像素模式（拖哪列动哪列）
 
+  // R11：未进入精确模式时，容器余量按策略分配给标题列（下限 240），
+  // 消除 1440 下 ~396px 的 filler 空白列；拖动后仍走 Σ列宽精确模式（F14 不回归）
+  const wrapRef = useRef<HTMLDivElement>(null);
+  const [wrapW, setWrapW] = useState(0);
+  useEffect(() => {
+    const el = wrapRef.current;
+    if (!el) return;
+    const ro = new ResizeObserver(() => setWrapW(el.clientWidth));
+    ro.observe(el);
+    setWrapW(el.clientWidth);
+    return () => ro.disconnect();
+  }, []);
+  const TITLE_MIN = 240;
+  const fixedCols = 44 + 140 + 110 + 110 + 110;       // select/no/type/status/size 定义宽
+  const titleW = userSized ? TITLE_MIN : Math.max(TITLE_MIN, wrapW - fixedCols);
+  const colW = (id: string, size: number) => (!userSized && id === "title" ? titleW : size);
+
   const table = useReactTable({
     data: filtered,
     columns,
@@ -188,8 +205,8 @@ export function DataTable({ data, onDelete }: { data: DemoRow[]; onDelete?: (row
       )}
 
       <div className="rounded-[12px] border border-border bg-surface" style={{ boxShadow: "var(--shadow-sm)" }}>
-        <div className="overflow-x-auto">
-          {/* 宽度模式：userSized=false 填满容器（filler 列吸收余量）；拖动后精确像素（Σ列宽，只有目标列变，F14） */}
+        <div className="overflow-x-auto" ref={wrapRef}>
+          {/* 宽度模式：userSized=false 填满容器（余量分配给标题列，R11）；拖动后精确像素（Σ列宽 + filler 兜底，只有目标列变，F14） */}
           <table className="data w-full"
                  style={userSized
                    ? { width: table.getTotalSize(), minWidth: 0 }
@@ -203,7 +220,7 @@ export function DataTable({ data, onDelete }: { data: DemoRow[]; onDelete?: (row
                     const col = header.column;
                     return (
                       <th key={header.id} className="relative select-none"
-                          style={{ width: header.getSize() }}
+                          style={{ width: colW(header.column.id, header.getSize()) }}
                           aria-sort={canSort ? (sorted === "asc" ? "ascending" : sorted === "desc" ? "descending" : "none") : undefined}>
                         <div className={cn("flex items-center gap-1", canSort && "cursor-pointer")}
                              onClick={canSort ? col.getToggleSortingHandler() : undefined}>
@@ -246,7 +263,7 @@ export function DataTable({ data, onDelete }: { data: DemoRow[]; onDelete?: (row
                       </th>
                     );
                   })}
-                  <th className="filler" aria-hidden="true" />
+                  {userSized && <th className="filler" aria-hidden="true" />}
                 </tr>
               ))}
             </thead>
@@ -260,11 +277,11 @@ export function DataTable({ data, onDelete }: { data: DemoRow[]; onDelete?: (row
                       style={selection.has(row.original.id) ? { background: "var(--color-purple-tint)" } : undefined}>
                     {row.getVisibleCells().map((cell) => (
                       <td key={cell.id} className="px-3 py-2 text-[13px] border-b"
-                          style={{ width: cell.column.getSize(), borderColor: "var(--color-border-soft)" }}>
+                          style={{ width: colW(cell.column.id, cell.column.getSize()), borderColor: "var(--color-border-soft)" }}>
                         {flexRender(cell.column.columnDef.cell, cell.getContext())}
                       </td>
                     ))}
-                    <td className="filler border-b" style={{ borderColor: "var(--color-border-soft)" }} />
+                    {userSized && <td className="filler border-b" style={{ borderColor: "var(--color-border-soft)" }} />}
                   </tr>
                 ))
               )}
