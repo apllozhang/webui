@@ -132,7 +132,8 @@
   overflow: hidden;
 }
 .table-scroll { overflow-x: auto; }
-table.data { table-layout: fixed; border-collapse: collapse; }
+/* min-width:640 —— 窄视口（≤480）下列宽不再被压缩到逐字竖排，由容器横向滚动（R2/R9） */
+table.data { table-layout: fixed; border-collapse: collapse; min-width: 640px; }
 table.data th, table.data td {
   padding: 10px 12px;
   font-size: 13px; text-align: left;
