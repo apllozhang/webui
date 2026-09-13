@@ -61,7 +61,10 @@ jobs:
           npm ci --no-audit --no-fund
           npm run build
           cd ../../kit/skeleton-static
-          pip install jinja2 -q
+          # runner 系统 pip 受 PEP 668 保护，依次尝试：已有 → --break-system-packages → 普通
+          python3 -c "import jinja2" 2>/dev/null \
+            || python3 -m pip install --break-system-packages -q jinja2 \
+            || python3 -m pip install -q jinja2
           python3 build.py
 
       - name: Assemble + serve kit root (127.0.0.1:8766)
