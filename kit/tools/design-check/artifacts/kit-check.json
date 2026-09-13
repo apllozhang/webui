@@ -1,6 +1,6 @@
 {
   "url": "http://10.20.30.203:8095/",
-  "time": "2026-09-13T12:15:03.647Z",
+  "time": "2026-09-13T23:16:13.208Z",
   "checks": [
     {
       "id": "HUB-RENDER",
@@ -51,7 +51,7 @@
       "pass": true,
       "detail": {
         "textLen": 491,
-        "els": 237,
+        "els": 226,
         "rootChildren": 1
       }
     },
@@ -86,6 +86,29 @@
       "detail": {
         "scrollW": 320,
         "clientW": 320
+      }
+    },
+    {
+      "id": "REACT-IX-AGREE",
+      "name": "必选同意提交契约",
+      "pass": true,
+      "detail": {
+        "pass": true,
+        "failShown": true,
+        "successToastOnFail": false,
+        "successAfterAgree": true
+      }
+    },
+    {
+      "id": "REACT-IX-DRAWER",
+      "name": "抽屉焦点圈闭/归还",
+      "pass": true,
+      "detail": {
+        "pass": true,
+        "expanded": "true",
+        "focusInPanel": true,
+        "tabStillInPanel": true,
+        "focusReturned": true
       }
     },
     {
@@ -132,6 +155,23 @@
       }
     },
     {
+      "id": "ALPINE-IX-THEME",
+      "name": "主题单击切换（含 localStorage 同步）",
+      "pass": true,
+      "detail": {
+        "na": false,
+        "pass": true,
+        "click1": {
+          "dark": true,
+          "stored": "dark"
+        },
+        "click2": {
+          "dark": false,
+          "stored": "light"
+        }
+      }
+    },
+    {
       "id": "STATIC-RENDER",
       "name": "STATIC 非空白渲染",
       "pass": true,
@@ -172,6 +212,32 @@
       "detail": {
         "scrollW": 320,
         "clientW": 320
+      }
+    },
+    {
+      "id": "STATIC-IX-THEME",
+      "name": "主题单击切换（含 localStorage 同步）",
+      "pass": true,
+      "detail": {
+        "na": false,
+        "pass": true,
+        "click1": {
+          "dark": true,
+          "stored": "dark"
+        },
+        "click2": {
+          "dark": false,
+          "stored": "light"
+        }
+      }
+    },
+    {
+      "id": "STATIC-IX-CRUMB",
+      "name": "面包屑目的地不跳出 /static/",
+      "pass": true,
+      "detail": {
+        "pass": true,
+        "dest": "http://10.20.30.203:8095/static/index.html"
       }
     }
   ],
