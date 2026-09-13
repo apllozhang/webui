@@ -26,6 +26,10 @@
       this.apply(next, true);
     },
     init: function () {
+      // 幂等保护（R12）：Alpine init() 命名约定与显式 x-init 双调用会重复挂 click 监听，
+      // 单击切两次回到原点——初始化一次后直接返回
+      if (this._inited) return;
+      this._inited = true;
       var self = this;
       this.apply(this.get(), false);
       document.querySelectorAll("[data-theme-toggle]").forEach(function (btn) {
