@@ -6,3 +6,8 @@ build/
 __pycache__/
 .DS_Store
 deploy.secret.json
+
+# 部署脚本本地产物（tar 上下文与包，不入库）
+deploy/kit/build/
+deploy/kit/kit.tgz
+deploy/spec-site/site.tgz
