@@ -1,3 +1,15 @@
-# F16：统一 EOL——文本门禁（scan-rules）以 LF 为基准，autocrlf 检出的 CRLF 会造成假漂移
+# F16：统一 EOL——文本门禁（scan-rules / build-tokens --check）以 LF 为基准，
+# autocrlf 检出的 CRLF 会造成假漂移。生成物（tokens.css/preset 等）与其门禁强制 LF。
 * text=auto
 *.md text eol=lf
+*.css text eol=lf
+*.js text eol=lf
+*.mjs text eol=lf
+*.cjs text eol=lf
+*.json text eol=lf
+*.py text eol=lf
+*.html text eol=lf
+*.svg text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.sh text eol=lf

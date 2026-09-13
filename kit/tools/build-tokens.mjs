@@ -23,11 +23,13 @@ const SITE = fs.existsSync(path.join(REPO, "ale-webui-site"))
   ? path.join(REPO, "ale-webui-site") : path.join(REPO, "spec-site");
 const CHECK = process.argv.includes("--check");
 const changed = [];
+// 读侧 CRLF 规范化（同 F-NEW-1）：autocrlf 检出的旧工作副本与 LF 生成内容比对前先归一
+const READ = (p) => fs.readFileSync(p, "utf8").replace(/\r\n/g, "\n");
 const WRITE = (rel, content) => {
   for (const base of [KIT, REPO]) {
     const p = path.join(base, rel);
     if (!fs.existsSync(path.dirname(p))) continue;
-    const old = fs.existsSync(p) ? fs.readFileSync(p, "utf8") : null;
+    const old = fs.existsSync(p) ? READ(p) : null;
     if (old !== content) {
       if (CHECK) changed.push(rel);
       else { fs.writeFileSync(p, content); changed.push(rel); }
@@ -203,7 +205,7 @@ const docCandidates = [
 ];
 const docPath = docCandidates.find((p) => fs.existsSync(p));
 if (fs.existsSync(docPath)) {
-  let doc = fs.readFileSync(docPath, "utf8");
+  let doc = READ(docPath);
   const BEGIN = "<!-- BEGIN:generated-token-table -->";
   const END = "<!-- END:generated-token-table -->";
   const rows = Object.entries(semL).map(([k, d]) => {
