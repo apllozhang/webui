@@ -1,5 +1,5 @@
 /** App Shell（CMP-SHELL）：工作台外壳——Topbar + Sidebar + Breadcrumb + PageHeader + Content */
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 
 export interface NavItem { label: string; href: string; current?: boolean }
@@ -48,11 +48,28 @@ export function AppShell({ logo, appTitle, nav, sidebarExtra, breadcrumb, title,
   children: React.ReactNode;
 }) {
   const [drawer, setDrawer] = useState(false);
+  const drawerPanelRef = useRef<HTMLElement>(null);
+  // 抽屉焦点管理（R15，复用 Drawer FB-FOCUS-001 模式）：打开聚焦首项、
+  // Tab/Shift+Tab 圈闭、Esc 关闭、关闭后焦点归还触发按钮
   useEffect(() => {
-    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setDrawer(false); };
-    document.addEventListener("keydown", onKey);
-    return () => document.removeEventListener("keydown", onKey);
-  }, []);
+    if (!drawer) return;
+    const panel = drawerPanelRef.current;
+    if (!panel) return;
+    const trigger = document.activeElement as HTMLElement | null;
+    const first = panel.querySelector<HTMLElement>("button,[href],input,select,textarea");
+    first?.focus();
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") { setDrawer(false); return; }
+      if (e.key !== "Tab") return;
+      const list = Array.from(panel.querySelectorAll<HTMLElement>("button,[href],input,select,textarea"))
+        .filter((x) => !x.hasAttribute("disabled"));
+      if (!list.length) return;
+      if (e.shiftKey && document.activeElement === list[0]) { list[list.length - 1].focus(); e.preventDefault(); }
+      else if (!e.shiftKey && document.activeElement === list[list.length - 1]) { list[0].focus(); e.preventDefault(); }
+    };
+    panel.addEventListener("keydown", onKey);
+    return () => { panel.removeEventListener("keydown", onKey); trigger?.focus(); };
+  }, [drawer]);
 
   const sidebar = (
     <nav aria-label="主导航" className="flex flex-col gap-0.5">
@@ -104,8 +121,9 @@ export function AppShell({ logo, appTitle, nav, sidebarExtra, breadcrumb, title,
       {drawer && (
         <div className="fixed inset-0 z-[500] md:hidden" style={{ background: "rgb(20 14 32 / 50%)" }}
              onClick={() => setDrawer(false)}>
-          <aside role="dialog" aria-modal="true" aria-label="导航菜单"
-                 className="h-full w-[260px] bg-surface p-3" onClick={(e) => e.stopPropagation()}
+          <aside ref={drawerPanelRef} role="dialog" aria-modal="true" aria-label="导航菜单"
+                 className="h-full w-[260px] bg-surface p-3"
+                 onClick={(e) => { e.stopPropagation(); if ((e.target as HTMLElement).closest("a")) setDrawer(false); }}
                  style={{ boxShadow: "var(--shadow-md)" }}>
             {sidebar}
           </aside>
