@@ -62,8 +62,8 @@ status: M2 迁移（内容 = v5.4.1 基线，未新增规则）
 | --state-layer-hover | 0.08 | （同亮色） |  |
 | --state-layer-focus | 0.10 | （同亮色） |  |
 | --state-layer-pressed | 0.12 | （同亮色） |  |
-| --color-on-action | #ffffff（= var(--neutral-0)） | （同亮色） |  |
-| --color-on-action-hover | #ffffff（= var(--neutral-0)） | （同亮色） |  |
+| --color-on-action | #ffffff（= var(--neutral-0)） | #ffffff（= var(--neutral-0)） |  |
+| --color-on-action-hover | #ffffff（= var(--neutral-0)） | #ffffff（= var(--neutral-0)） |  |
 | --color-on-tint | #4f3478（= var(--ale-purple-700)） | #e4d9f3（= var(--ale-purple-40)） |  |
 | --button-primary-bg | #6b489d（= var(--color-action)） | （同亮色） |  |
 | --button-primary-bg-hover | #4f3478（= var(--color-action-hover)） | （同亮色） |  |

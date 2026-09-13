@@ -35,19 +35,21 @@ function contrast(fg, bg) {
   return (Math.max(a, b) + 0.05) / (Math.min(a, b) + 0.05);
 }
 
-let fail = 0;
+let pass = 0, fail = 0, skip = 0, exempt = 0;
 const lines = [];
 for (const p of data.pairs) {
-  if (!p.fg || !p.bg) { lines.push(`SKIP ${p.ids}（值缺失）`); continue; }
-  if (p.exempt) { lines.push(`EXEMPT  ${p.ids}（${p.exemptReason ?? "设计豁免，见规范"}）`); continue; }
+  if (!p.fg || !p.bg) { skip++; lines.push(`SKIP ${p.ids}（值缺失）`); continue; }
+  if (p.exempt) { exempt++; lines.push(`EXEMPT  ${p.ids}（${p.exemptReason ?? "设计豁免，见规范 15 章附录 G"}）`); continue; }
   const fg = flatten(p.fg), bg = flatten(p.bg);
   const ratio = contrast(fg, bg);
   const ok = ratio >= p.min;
-  if (!ok) fail++;
+  if (!ok) fail++; else pass++;
   lines.push(`${ok ? "PASS" : "FAIL"}  ${p.ids}  ${ratio.toFixed(2)}:1  (min ${p.min}:1)`);
 }
 console.log(lines.join("\n"));
-console.log(`\ncontrast-check: ${fail === 0 ? "ALL PASS" : fail + " FAILURES"}`);
+// R17 三分类口径：总述只按实际分类计数；SKIP 非零 = 核心交互角色缺值，属 FAIL
+console.log(`\ncontrast-check: PASS ${pass} / EXEMPT ${exempt}（出处见各行，规范 15 章附录 G） / SKIP ${skip} / FAIL ${fail}`);
+if (skip > 0) console.log(`contrast-check: SKIP=${skip} —— 核心交互角色缺值不得静默跳过，判 FAIL`);
 fs.mkdirSync(path.join(HERE, "artifacts"), { recursive: true });
-fs.writeFileSync(path.join(HERE, "artifacts", "contrast-report.txt"), lines.join("\n"));
-process.exit(fail === 0 ? 0 : 1);
+fs.writeFileSync(path.join(HERE, "artifacts", "contrast-report.txt"), lines.join("\n") + `\n\nPASS ${pass} / EXEMPT ${exempt} / SKIP ${skip} / FAIL ${fail}\n`);
+process.exit(fail === 0 && skip === 0 ? 0 : 1);

@@ -1,5 +1,5 @@
 # ALE WebUI 设计门禁（M4 收尾整改 · R10 后全量）
-# push 即跑：tokens:check（零漂移）+ tokens:contrast（46 对断言）
+# push 即跑：tokens:check（零漂移）+ tokens:contrast（三分类断言，SKIP=0）
 #          + design:check（8091 规范站 12 项 + Kit 四入口 20 项，R10）
 # 浏览器：runner 预装 Chrome 优先，缺失则用 @puppeteer/browsers 下载（check.mjs 读 CHROME_PATH）
 # Kit 四入口：CI 内现场构建 react(vite)/static(jinja2) 并装配 hub 根目录，8766 端口自检
@@ -88,7 +88,7 @@ jobs:
         working-directory: kit/tools
         run: npm run tokens:check
 
-      - name: tokens:contrast（46 对断言）
+      - name: tokens:contrast（三分类断言，SKIP=0）
         working-directory: kit/tools
         run: npm run tokens:contrast
 

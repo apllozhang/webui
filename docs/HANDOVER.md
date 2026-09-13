@@ -45,7 +45,7 @@
 | v5.4.1 | 09-12 | 勘误：fonts 404 双层根因（deploy tar 清单 + Dockerfile COPY 都漏 fonts）修复 + **资产 200 门禁**；二维模型上演示站；卡片标题统一 16px；汇报编号统一 P0-1~5 | 复核收口 |
 | M1 | 09-12 | `design:check` 门禁 12 项（puppeteer-core 驱动本机 Edge，零下载）+ selftest 三类缺陷注入证明能拦 | 专家"门禁先行" |
 | M2 | 09-12 | `docs/v6/` 四层信息架构（00-foundations/10-patterns/20-components/30-governance，31 文件）+ 规则稳定 ID + 术语表 + 例外 Schema + 迁移映射 | 长文难查，评审 §5 |
-| M3 | 09-12 | **Token JSON 生成链**：tokens/*.json 真源 → build-tokens.mjs 生成 tokens.css×2/preset/文档表格/对比度输入；`--check` 零漂移；contrast-check 46 配对断言 ALL PASS（还抓出并修了 success-bg 4.498:1） | 评审 O3：机器可读令牌 |
+| M3 | 09-12 | **Token JSON 生成链**：tokens/*.json 真源 → build-tokens.mjs 生成 tokens.css×2/preset/文档表格/对比度输入；`--check` 零漂移；contrast-check 配对断言通过（R17 修正：三分类口径，当时含 2 SKIP；还抓出并修了 success-bg 4.498:1） | 评审 O3：机器可读令牌 |
 | M4 一批 | 09-12 | 四条链路：**App Shell**（AppShell.tsx：顶栏+侧栏+面包屑+页头+移动抽屉）、**Form**（Field/Switch/Radio/Checkbox/ErrorSummary/beforeunload）、**Feedback**（Alert/Skeleton/EmptyState/Drawer/Progress）、Table（已有 14A）；规范四文件按专家模板重写 | 评审 O4 |
 | F14 修复 | 09-12 | 用户发现拖列宽带动其他列 → 根因 `min-width:100%`+fixed 的比例分摊 → 双模式宽度（拖过即切精确像素）→ puppeteer 两次拖动法验证两站逐像素通过 | 用户实测 |
 | 注释泄漏修复 | 09-12 | 用户发现第一列渲染出中文注释 → JSX 属性行内 `//` 被当文本节点 → 移注释到标签上方 | 用户实测 |
@@ -103,7 +103,7 @@ cd ale-webui-kit/skeleton-static && pip install jinja2 && python build.py
 cd ale-webui-kit/tools
 npm run tokens:build        # 生成 tokens.css×2 + preset + 文档表格 + pairs
 npm run tokens:check        # 零漂移校验（CI 用）
-npm run tokens:contrast     # 46 对比度断言（ALL PASS 才过）
+npm run tokens:contrast     # 三分类断言：SKIP 须为 0，FAIL 须为 0（R17 口径）
 npm run design:check        # 12 项浏览器门禁（默认测 218:8091，--url 可换）
 npm run design:check:selftest
 npm run verify:colresize    # 列宽独立性（两次拖动法）
@@ -197,13 +197,13 @@ Date Picker/Tree/Combobox、图表封装、Figma Variables 同步、五档截图
 ## 10. 移交确认清单
 
 > **移交方复核结论（2026-09-12）**：§10 前两项由接手方完成并回填证据，移交方独立复验**全部属实**——
-> design-check.json 时间戳/URL 证明为接手方自跑（127.0.0.1:8765 @ 09:23Z）、46 对对比度断言通过、
+> design-check.json 时间戳/URL 证明为接手方自跑（127.0.0.1:8765 @ 09:23Z）、对比度断言通过（R17 修正口径：PASS 42 / EXEMPT 4 / SKIP 0）、
 > 决策树演练截图（1440/320）真实且符合"只改品牌位与业务语义"约束、卡点解除与环境差异已记录并经确认纳入 AGENTS.md。
 > **接手确认成立。批准接手方开工 M4 收尾（CI 化 / 示例库 / 骨架对齐 / 规则 ID 全覆盖）。**
 > 详见 `review/2026-09-12-接手验收与确认报告.md`。
 
 
-- [x] 接手人克隆 `apllozhang/webui`，按 §4.3 跑通本地服务与 design:check（12 PASS）——2026-09-12 完成：线上 203:8091 与本地 spec-site 各 12/12 PASS，tokens:contrast 46 对 ALL PASS，证据见 `review/2026-09-12-接手验收与确认报告.md`
+- [x] 接手人克隆 `apllozhang/webui`，按 §4.3 跑通本地服务与 design:check（12 PASS）——2026-09-12 完成：线上 203:8091 与本地 spec-site 各 12/12 PASS，tokens:contrast 断言通过（R17 修正：原'46 对 ALL PASS'含 2 SKIP），证据见 `review/2026-09-12-接手验收与确认报告.md`
 - [x] 读 docs/v6/USAGE.md 并完成一次"决策树选型 → 拷骨架 → 改一个页面"——2026-09-12 完成：工具应用型→数据工作台→React，浏览器实测通过，演练记录与截图同上
 - [ ] 确认能 SSH 到 218/203 并看到两站（8091/8095）
 - [ ] 读完 §8 教训表

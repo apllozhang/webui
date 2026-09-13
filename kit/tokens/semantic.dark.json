@@ -42,6 +42,16 @@
       "value": "var(--ale-purple-500)",
       "type": "color"
     },
+    "color-on-action": {
+      "value": "var(--neutral-0)",
+      "type": "color",
+      "description": "R17 补齐：action 上的前景角色（附录 G：白字/主紫 6.91:1）"
+    },
+    "color-on-action-hover": {
+      "value": "var(--neutral-0)",
+      "type": "color",
+      "description": "R17 补齐：action-hover 上的前景角色（暗色 hover #7e5cb4 实测 5.15:1）"
+    },
     "color-link": {
       "value": "#58b7e8",
       "type": "color"

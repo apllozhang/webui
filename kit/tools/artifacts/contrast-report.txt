@@ -26,8 +26,8 @@ PASS  dark/text-primary×surface  14.17:1  (min 4.5:1)
 PASS  dark/text-secondary×surface  9.43:1  (min 4.5:1)
 PASS  dark/text-muted×surface  5.75:1  (min 4.5:1)
 PASS  dark/text-muted×canvas  6.35:1  (min 4.5:1)
-SKIP dark/on-action×action（值缺失）
-SKIP dark/on-action-hover×action-hover（值缺失）
+PASS  dark/on-action×action  6.91:1  (min 4.5:1)
+PASS  dark/on-action-hover×action-hover  5.15:1  (min 4.5:1)
 PASS  dark/on-tint×purple-tint  11.25:1  (min 4.5:1)
 PASS  dark/link×surface  7.33:1  (min 4.5:1)
 EXEMPT  dark/action×surface（设计豁免：信息由并存文字/其他角色承载（规范 15 章与 3.3A））
@@ -44,3 +44,5 @@ PASS  dark/status-warning-graphic×surface(graphic)  7.66:1  (min 3:1)
 PASS  dark/status-danger-graphic×surface(graphic)  4.78:1  (min 3:1)
 PASS  dark/ale-purple-500×surface(graphic)  3.19:1  (min 3:1)
 PASS  dark/ale-blue×surface(graphic)  4.08:1  (min 3:1)
+
+PASS 42 / EXEMPT 4 / SKIP 0 / FAIL 0

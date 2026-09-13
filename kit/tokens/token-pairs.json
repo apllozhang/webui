@@ -204,12 +204,14 @@
     },
     {
       "theme": "dark",
+      "fg": "#ffffff",
       "bg": "#6b489d",
       "min": 4.5,
       "ids": "dark/on-action×action"
     },
     {
       "theme": "dark",
+      "fg": "#ffffff",
       "bg": "#7e5cb4",
       "min": 4.5,
       "ids": "dark/on-action-hover×action-hover"
