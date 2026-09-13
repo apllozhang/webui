@@ -19,7 +19,12 @@ export default function FormsDemo() {
   const [loading, setLoading] = useState(true);
 
   const nameError = submitted && !name.trim() ? "请输入名称。" : "";
-  const errors = nameError ? [{ id: "demo-name", label: "名称", message: "请输入名称。" }] : [];
+  const agreeError = submitted && !agree ? "必须先阅读并同意条款。" : "";
+  // 全量校验（R13）：必选同意纳入提交契约——缺项时无成功 Toast，焦点由 ErrorSummary 接管
+  const errors = [
+    ...(nameError ? [{ id: "demo-name", label: "名称", message: "请输入名称。" }] : []),
+    ...(agreeError ? [{ id: "demo-agree", label: "同意条款", message: "必须先阅读并同意条款。" }] : []),
+  ];
 
   // 未保存离开提示（FORM：beforeunload）
   useEffect(() => {
@@ -30,7 +35,7 @@ export default function FormsDemo() {
 
   const submit = () => {
     setSubmitted(true);
-    if (!name.trim()) return;
+    if (!name.trim() || !agree) return;
     toast("success", "已创建：" + name);
     setDirty(false);
   };
@@ -69,7 +74,11 @@ export default function FormsDemo() {
         </fieldset>
         <div className="mb-4 flex flex-col gap-1">
           <Switch checked={notify} onChange={(v) => { setNotify(v); setDirty(true); }} label="接收通知" />
-          <Checkbox checked={agree} onChange={(v) => { setAgree(v); setDirty(true); }} label="我已阅读并同意条款（必选）" />
+          <Checkbox id="demo-agree" ariaRequired={true}
+                    describedBy={agreeError ? "demo-agree-error" : undefined}
+                    checked={agree} onChange={(v) => { setAgree(v); setDirty(true); }}
+                    label="我已阅读并同意条款（必选）" />
+          {agreeError && <p id="demo-agree-error" role="alert" className="m-0 text-[13px] text-[color:var(--status-danger-text)]">{agreeError}</p>}
         </div>
         <div className="mb-4 flex gap-3">
           <button type="button" className="btn btn-secondary" disabled>只读示例</button>
