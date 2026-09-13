@@ -84,8 +84,8 @@ status: M2 迁移（内容 = v5.4.1 基线，未新增规则）
 <!-- END:generated-token-table -->
 ---
 # 三层设计令牌
-v6.0 计划：本文件将由 tokens/*.json 生成（M3 阶段）；当前为手工源。
-
+本文件的令牌表由 `kit/tokens/*.json` 自动生成（`npm run tokens:build`，build-tokens.mjs）；
+BEGIN/END 标记区间为生成区，禁止手改——改动请进 tokens/*.json 后重建。
 
 ---
 
