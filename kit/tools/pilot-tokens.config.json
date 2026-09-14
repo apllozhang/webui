@@ -1,35 +1,84 @@
 {
-  "note": "R4-03 扫描面配置。allowHex 仅收'确需保留且有理由'的值(须在 v6-pilot.md 注明理由);其余命中一律改令牌或登记 design-exceptions(FND-COLOR-004)。enforce=false 为报告模式(记录基线,M6-R2 收敛后翻 true)。",
+  "note": "R4-03 扫描面配置。颜色:enforce 硬门槛(未授权 hex=FAIL)。间距/圆角/阴影命中率:【迁移观测指标】(终审 2026-09-15 裁决,非阻断;6.1 目标 ≥95% 后评估转硬)。allowHex 须带理由。",
   "projects": {
     "nvci": {
-      "scanExts": [".css", ".html"],
-      "exclude": ["css/tokens.css", "fonts/noto", "vendor/"],
+      "scanExts": [
+        ".css",
+        ".html"
+      ],
+      "exclude": [
+        "css/tokens.css",
+        "fonts/noto",
+        "vendor/"
+      ],
       "allowHex": [
-        { "hex": "#2e2740", "reason": "暗色主题品牌紫 tint(ale-purple-100 暗色适配;v6 无暗色品牌斜率,M6-RC 候选)" },
-        { "hex": "#9a7cc9", "reason": "暗色 ale-purple-500 适配值(同上)" },
-        { "hex": "#8465b8", "reason": "暗色 ale-purple-600 适配值(同上)" }
+        {
+          "hex": "#2e2740",
+          "reason": "暗色主题品牌紫 tint(ale-purple-100 暗色适配;v6 无暗色品牌斜率,M6-RC 候选)"
+        },
+        {
+          "hex": "#9a7cc9",
+          "reason": "暗色 ale-purple-500 适配值(同上)"
+        },
+        {
+          "hex": "#8465b8",
+          "reason": "暗色 ale-purple-600 适配值(同上)"
+        }
       ],
       "enforce": true,
       "baseline": "M6-R2 迁移完成:26 种 → 0 未授权(3 种暗色品牌斜率白名单);--neutral-bg 改 var(--status-neutral-bg),EXC-2026-0006 关闭"
     },
     "tsskb": {
-      "scanExts": [".css", ".html"],
-      "exclude": ["static/css/tokens.css", "static/fonts/", "site/"],
+      "scanExts": [
+        ".css",
+        ".html"
+      ],
+      "exclude": [
+        "static/css/tokens.css",
+        "static/fonts/",
+        "site/"
+      ],
       "allowHex": [
-        { "hex": "#6b489d", "reason": "meta theme-color 内容属性无法用 CSS 变量,品牌主紫字面量(base.html)" },
-        { "hex": "#e9e1f4", "reason": "hero 渐变上的浅紫正文伴侣色(规范站 hero 同款,无对应令牌;M6-RC 候选:kit 增 on-purple-muted 角色)" },
-        { "hex": "#eee8f5", "reason": "category-hero 文字伴侣色(同上)" },
-        { "hex": "#ddd0ef", "reason": "path-cover eyebrow 伴侣色(同上)" },
-        { "hex": "#ded1ed", "reason": "reading-links 边框伴侣色(同上)" },
-        { "hex": "#dfd2ed", "reason": "source-page 底色伴侣色(同上)" },
-        { "hex": "#231a35", "reason": "markdown 代码块深紫底(品牌深色,近 dark-surface;M6-RC 候选)" }
+        {
+          "hex": "#6b489d",
+          "reason": "meta theme-color 内容属性无法用 CSS 变量,品牌主紫字面量(base.html)"
+        },
+        {
+          "hex": "#e9e1f4",
+          "reason": "hero 渐变上的浅紫正文伴侣色(规范站 hero 同款,无对应令牌;M6-RC 候选:kit 增 on-purple-muted 角色)"
+        },
+        {
+          "hex": "#eee8f5",
+          "reason": "category-hero 文字伴侣色(同上)"
+        },
+        {
+          "hex": "#ddd0ef",
+          "reason": "path-cover eyebrow 伴侣色(同上)"
+        },
+        {
+          "hex": "#ded1ed",
+          "reason": "reading-links 边框伴侣色(同上)"
+        },
+        {
+          "hex": "#dfd2ed",
+          "reason": "source-page 底色伴侣色(同上)"
+        },
+        {
+          "hex": "#231a35",
+          "reason": "markdown 代码块深紫底(品牌深色,近 dark-surface;M6-RC 候选)"
+        }
       ],
       "enforce": true,
       "baseline": "M6-R2 迁移完成:15 种 → 0 未授权(7 种白名单均为渐变伴侣色,理由如上)"
     },
     "dancpl": {
-      "scanExts": [".css"],
-      "exclude": ["src/v6/tokens.css", "public/fonts/"],
+      "scanExts": [
+        ".css"
+      ],
+      "exclude": [
+        "src/v6/tokens.css",
+        "public/fonts/"
+      ],
       "allowHex": [],
       "enforce": true,
       "baseline": "已清零(bridge --destructive-foreground 改 var(--color-on-action))"

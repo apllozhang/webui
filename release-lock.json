@@ -1,0 +1,11 @@
+{
+  "version": "6.0.0-rc",
+  "rc-baseline": "349e02d52ef27fdf2a954828aa573b19f9a1ef35",
+  "webui-release-sha": "TAG-DEFINED(v6.0.0 tag 即 webui 锁定,提交自身无法预知自身 SHA)",
+  "tsskb": "5d92c8d9642938b05d1f9d282264241462a8865b",
+  "nvci-lite": "9ff7d87f3f6d0f710c82f56e255e366e5f6067d7",
+  "ale-dan-cpl-system": "0e288ecce3aa5500a03bc85da56be52c458af7c0",
+  "pilot-branch": "v6-pilot",
+  "locked-at": "2026-09-15",
+  "note": "F20 对策:发布组合机器可读锁定。CI 强制:本文件 version 必须与两处 design-system.version.json 一致;试点 SHA 由 check-release-lock.mjs --remote 在发布时以 git ls-remote 网络核验并留证台账。试点内容变更必须先更新本文件并在台账记录原因。"
+}

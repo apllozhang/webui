@@ -190,9 +190,11 @@ async function checkBrowser() {
   record("ASSET-HTTP", "核心资产全部 HTTP 200", assetFail.length === 0, { bad: badResponses.slice(0, 6) });
   record("CONSOLE", "控制台零未解释错误", consoleErrors.length === 0, { errors: consoleErrors.slice(0, 6) });
 
-  // M6-R2(R5 发现):字体预算覆盖规范站(内容页基线实测 894KB → 校准 950KB;RC 目标见台账 R4-04)
+  // 签收后(终审前置项 2):性能双门禁 = 绝对上限 1100KB + 相对增长 ≤ perf-baseline ×1.10
   const specFontKB = Math.round(fontBytesSpec / 1024);
-  record("FONT-BUDGET", "首屏字体传输 ≤1100KB(M6-F 校准门禁;双环境实测 Edge 894 / CI-chrome 973,RC 目标 ≤350 见台账)", specFontKB <= 1100, { fontKB: specFontKB });
+  const baselineSpec = JSON.parse(fs.readFileSync(path.join(HERE, "..", "perf-baseline.json"), "utf8")).targets["spec-site"];
+  const relLimitSpec = Math.round(baselineSpec * 1.10);
+  record("FONT-BUDGET", `首屏字体传输 ≤1100KB 且 ≤基线+10%(${baselineSpec}→${relLimitSpec}KB)`, specFontKB <= 1100 && specFontKB <= relLimitSpec, { fontKB: specFontKB, baseline: baselineSpec, relLimit: relLimitSpec });
 
   // 基线截图（320 + 1440）
   const shotDir = path.join(HERE, "artifacts");

@@ -16,6 +16,9 @@
     "rules:check": "node scan-rules.mjs --check",
     "exceptions:check": "node check-exceptions.mjs",
     "pilot:tokens:check": "node pilot-tokens-check.mjs",
+    "font:cov": "node font-coverage-check.mjs",
+    "lock:check": "node check-release-lock.mjs",
+    "lock:check:remote": "node check-release-lock.mjs --remote",
     "verify:colresize": "node verify-colresize.mjs",
     "font:check": "node font-chain-check.mjs <label> <url>"
   }

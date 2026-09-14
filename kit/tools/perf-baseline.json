@@ -1,0 +1,11 @@
+{
+  "approved-at": "2026-09-15",
+  "approved-by": "6.0.0-rc 三方签收(349e02d)",
+  "note": "性能双门禁之相对基线:实测值不得超过 targets 值 ×1.10。绝对上限写在门禁代码(spec 1100KB / kit 各 750KB)。禁止以提高基线或上限解决失败——任何调整须在 docs/release/v6-readiness.md 记录原因与新证据。测量环境差异(Chrome 分片组合 vs Edge)已知,spec-site 基线取 CI Chrome 实测 973KB;kit 三项暂取 Edge 实测,待首个 CI 实测后一次性校准并留证。",
+  "targets": {
+    "spec-site": 973,
+    "kit-react": 586,
+    "kit-alpine": 677,
+    "kit-static": 538
+  }
+}

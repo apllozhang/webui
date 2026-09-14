@@ -58,3 +58,13 @@ font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;  /* 代�
 | FND-TYPE-002 | **排版角色与 HTML 语义分层（v5.4，必须）**：视觉尺寸由"角色"决定，HTML 标签只保证语义层级（h1→h2→h3 连续，不得跳级）。同一 HTML 标签可承载不同视觉角色： |
 | FND-TYPE-003 | - **标题强调色**：标题可用 `--ale-purple-700`（深紫）替代近黑，是 TSSKB 清爽风格的关键（建议）；正文与辅助文字保持中性色（必须）。 |
 <!-- END:must-registry -->
+
+
+<!-- M6-RC/终审裁决增补(2026-09-15):字体方案定版政策 -->
+
+## FND-TYPE-PLAN:字体分发方案定版(A/C 双轨)
+
+- **动态业务系统默认方案 A**(unicode-range 分片,400/700):内容不可穷举,新文字自动覆盖,不依赖构建期字库;当前 Kit 四入口与规范站采用。
+- **方案 C**(按文本子集,`build_fonts_text.py` + `fonts-text-corpus.txt`)仅用于**文本可穷举的静态页面**;启用 C 的页面必须通过 `npm run font:cov` 字符覆盖门禁——构建产物出现子集未包含字符即 FAIL(禁止上线后回落系统字体造成混排)。
+- 对比与切换入口:规范站 `/fonts-compare.html`(A/C 同屏 + 实时传输量)。
+- **不允许为追求 ≤350KB 传输指标牺牲中文字体一致性**(终审明示);350KB 作为长期优化目标而非发布门槛。

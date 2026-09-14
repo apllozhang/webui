@@ -71,7 +71,7 @@ if (offenders.size) {
     ? `处置:改用 v6 令牌;确需保留 → design-exceptions.yml 登记(rule=FND-COLOR-004)或加入白名单(需理由)。`
     : `处置(REPORT 模式,baseline 已记录于 pilot-tokens.config.json;M6-R2 收敛后该项目 enforce=true):`);
   if (enforce) process.exit(1);
-  console.log(`REPORT  ${offenders.size} 种裸值留待迁移(命中率 ${rate}% 为信息项非阻断;RC 阈值 ≥95% 纳入 enforce 后才硬卡)`);
+  console.log(`REPORT  ${offenders.size} 种裸值留待迁移(命中率 ${rate}% 为迁移观测指标,非阻断(6.1 目标 ≥95%);RC 阈值 ≥95% 纳入 enforce 后才硬卡)`);
   process.exit(0);
 }
-console.log(`PASS  颜色零未授权裸值(enforce=${proj.enforce === true};命中率 ${rate}% 为信息项非阻断)`);
+console.log(`PASS  颜色零未授权裸值(enforce=${proj.enforce === true};命中率 ${rate}% 为迁移观测指标,非阻断(6.1 目标 ≥95%))`);

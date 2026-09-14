@@ -1,6 +1,6 @@
 {
   "url": "http://10.10.10.218:8095/",
-  "time": "2026-09-14T11:50:55.293Z",
+  "time": "2026-09-14T23:14:08.493Z",
   "checks": [
     {
       "id": "HUB-RENDER",
@@ -56,10 +56,13 @@
     },
     {
       "id": "HUB-FONT-BUDGET",
-      "name": "HUB 首屏字体传输 ≤750KB(M6-F 校准门禁)",
+      "name": "HUB 首屏字体 ≤750KB 且 ≤基线+10%(undefined→750KB)",
       "pass": true,
       "detail": {
         "fontKB": 0,
+        "relLimit": 750,
+        "jsKB": 0,
+        "cssKB": 0,
         "na": true
       }
     },
@@ -117,10 +120,14 @@
     },
     {
       "id": "REACT-FONT-BUDGET",
-      "name": "REACT 首屏字体传输 ≤750KB(M6-F 校准门禁)",
+      "name": "REACT 首屏字体 ≤750KB 且 ≤基线+10%(586→645KB)",
       "pass": true,
       "detail": {
         "fontKB": 586,
+        "baseline": 586,
+        "relLimit": 645,
+        "jsKB": 0,
+        "cssKB": 0,
         "na": false
       }
     },
@@ -265,10 +272,14 @@
     },
     {
       "id": "ALPINE-FONT-BUDGET",
-      "name": "ALPINE 首屏字体传输 ≤750KB(M6-F 校准门禁)",
+      "name": "ALPINE 首屏字体 ≤750KB 且 ≤基线+10%(677→745KB)",
       "pass": true,
       "detail": {
         "fontKB": 677,
+        "baseline": 677,
+        "relLimit": 745,
+        "jsKB": 0,
+        "cssKB": 0,
         "na": false
       }
     },
@@ -343,10 +354,14 @@
     },
     {
       "id": "STATIC-FONT-BUDGET",
-      "name": "STATIC 首屏字体传输 ≤750KB(M6-F 校准门禁)",
+      "name": "STATIC 首屏字体 ≤750KB 且 ≤基线+10%(538→592KB)",
       "pass": true,
       "detail": {
         "fontKB": 538,
+        "baseline": 538,
+        "relLimit": 592,
+        "jsKB": 0,
+        "cssKB": 0,
         "na": false
       }
     },
