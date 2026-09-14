@@ -1,6 +1,6 @@
 {
   "url": "http://10.10.10.218:8091/",
-  "time": "2026-09-14T04:54:08.668Z",
+  "time": "2026-09-14T09:40:10.985Z",
   "checks": [
     {
       "id": "VER",
@@ -114,6 +114,14 @@
       "pass": true,
       "detail": {
         "errors": []
+      }
+    },
+    {
+      "id": "FONT-BUDGET",
+      "name": "首屏字体传输 ≤950KB(M6-F 校准门禁,基线 894)",
+      "pass": true,
+      "detail": {
+        "fontKB": 894
       }
     }
   ],

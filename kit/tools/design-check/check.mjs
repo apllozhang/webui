@@ -95,7 +95,11 @@ async function checkBrowser() {
   const page = await browser.newPage();
   const badResponses = [];
   const consoleErrors = [];
-  page.on("response", (r) => { if (r.status() >= 400) badResponses.push({ url: r.url(), status: r.status() }); });
+  let fontBytesSpec = 0;
+  page.on("response", (r) => {
+    if (r.status() >= 400) badResponses.push({ url: r.url(), status: r.status() });
+    if (/\.woff2?\b/i.test(r.url())) fontBytesSpec += Number(r.headers()["content-length"] || 0);
+  });
   page.on("requestfailed", (r) => badResponses.push({ url: r.url(), error: "requestfailed" }));
   page.on("console", (m) => { if (m.type() === "error") consoleErrors.push(m.text().slice(0, 160)); });
 
@@ -185,6 +189,10 @@ async function checkBrowser() {
   const assetFail = badResponses.filter((b) => /\.(css|js|png|woff2?)($|\?)/.test(b.url));
   record("ASSET-HTTP", "核心资产全部 HTTP 200", assetFail.length === 0, { bad: badResponses.slice(0, 6) });
   record("CONSOLE", "控制台零未解释错误", consoleErrors.length === 0, { errors: consoleErrors.slice(0, 6) });
+
+  // M6-R2(R5 发现):字体预算覆盖规范站(内容页基线实测 894KB → 校准 950KB;RC 目标见台账 R4-04)
+  const specFontKB = Math.round(fontBytesSpec / 1024);
+  record("FONT-BUDGET", "首屏字体传输 ≤950KB(M6-F 校准门禁,基线 894)", specFontKB <= 950, { fontKB: specFontKB });
 
   // 基线截图（320 + 1440）
   const shotDir = path.join(HERE, "artifacts");

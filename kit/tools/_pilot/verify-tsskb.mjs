@@ -55,6 +55,9 @@ for (const rel of pages) {
   await new Promise((r) => setTimeout(r, 500));
   const ovf768 = await page.evaluate(() => ({ sw: document.documentElement.scrollWidth, cw: document.documentElement.clientWidth }));
   rec("OVF768", ovf768.sw <= ovf768.cw, ovf768); // M6-R1/R4-01 类:768 平板档
+const fontBytes = await page.evaluate(() => performance.getEntriesByType("resource").filter((r) => /\.woff2?\b/i.test(r.name)).reduce((s, r) => s + (r.transferSize || 0), 0));
+const fontKB = Math.round(fontBytes / 1024);
+rec("FONT-BUDGET", fontKB <= 950, { fontKB, budget: 950 }); // M6-R2/R5:字体预算覆盖试点(内容页基线 893-932)
   await page.screenshot({ path: path.join(OUT, `${id}-320.png`), fullPage: false });
   await page.setViewport({ width: 1440, height: 900 });
   await new Promise((r) => setTimeout(r, 400));

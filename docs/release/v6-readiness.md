@@ -11,8 +11,8 @@
 |---|---|---|---|---|---|---|
 | R4-01 | P1 | NVCI 768px 破版(scrollWidth 865,唯一断点 760px 漏 768 档) | nvci-lite 试点 | M6-A | check-kit OVF768×4 + verify-nvci OVF768 | **fixed(M6-R1,90d2e7e)** |
 | R4-02 | P1 | 三试点未接入自托管 Noto(字体请求 0) | 三试点 | M6-A | _font_check.mjs(请求+200+FontFaceSet+字形命中) | **fixed(M6-R1,e42baaa/e3c1d18/4040391,三试点 FONT-CHAIN PASS)** |
-| R4-03 | P1 | 试点页面层硬编码色值/近似尺寸 | 三试点 | M6-A/R2 | pilot:tokens-check enforce:三试点全部 PASS(dancpl 0 裸值;nvci 26→3 白名单;tsskb 15→7 白名单,均带理由) | **fixed(M6-R2,a38081c/578f259)** |
-| R4-04 | P1 | 性能预算未建立:主库字体 2,315,396B;dan-cpl 主 JS gzip 882.09kB | 主库+dan-cpl | M6-C | FONT-BUDGET 门禁上线(校准 750KB);**真 unicode-range 分片上线:实测 538-677KB(-72%)**;剩:RC 目标 ≤350KB(去 500 字重/按文本子集)与 dan-cpl JS 拆账 | partial(M6-R2 大头已落) |
+| R4-03 | P1 | 试点页面层硬编码色值/近似尺寸 | 三试点 | M6-A/R2 | pilot:tokens-check enforce:**新鲜克隆态三试点全 PASS**(dancpl 0;nvci 3/tsskb 7 白名单带理由)。注:R5 曾证伪"全部 PASS"——dan-cpl 修复当时未提交(93df64b 补交,F20) | **fixed(M6-R2+R5 补丁,克隆态出证)** |
+| R4-04 | P1 | 性能预算未建立:主库字体 2,315,396B;dan-cpl 主 JS gzip 882.09kB | 主库+dan-cpl | M6-C | FONT-BUDGET 门禁上线并**扩展覆盖全部交付面**(Kit 750KB;规范站 950KB 基线 894;试点 950/450/750)。真分片实测:Kit 538-677KB、规范站 894、tsskb 893-932、nvci 389。剩:RC ≤350KB 冲刺与 dan-cpl JS 拆账 | partial(M6-RC) |
 | R4-05 | P2 | R18 交互断言未覆盖键盘链 | 主库门禁 | M6-B | 第一批 5 断言上线(排序/分页/勾选/列宽/focus-visible)+ OVF768;check-kit 34 项 | **fixed(M6-R1)** |
 | R4-06 | P2 | 命中区未做粗指针实测(NVCI 34×34 等) | 骨架+试点 | M6-B 二批 | pointer:coarse hit-test | open |
 | R4-07 | P2 | 台账语义:未区分 not-applicable/exception;review-by 未绑里程碑 | 主库治理 | M6-A | schema v2 上线(kind 必填 + milestone ≤+45d + 分类计数) | **fixed(M6-R1)** |
@@ -39,6 +39,8 @@
 
 - F18(新):验收断言的覆盖面必须 ≥ 验收声明的覆盖面。案例:两断点声明(320/1440)漏 768;查令牌变量解析≠查字体请求;"bridge 全覆盖"≠页面零硬编码。
 - F19(新):门禁"形式通过"须区分语义类别(台账 not-applicable vs exception;对比度 PASS/SKIP/EXEMPT 三分类即先例)。
+- F20(新,R5 发现):**"已修复"必须以推送后的仓库状态为证,本地工作树验证不算数。** 案例:dan-cpl bridge.css 修复在工作树验证 PASS 但未提交,导致第五轮"三试点全部 PASS"声明被评估方以 GitHub 克隆证伪。对策:凡声明修复,先 `git status` 确认干净、必要时新鲜克隆复验(pilot-tokens-check 现以 _fresh 克隆态出证)。
+- F21(新,R5 发现):**性能门禁必须覆盖全部交付面**(Kit/规范站/试点),否则内容页(spec 894KB/tsskb 893KB)超预算门禁不红。FONT-BUDGET 已扩至规范站(check.mjs,950KB 校准)与三试点验证器(950/450/750)。
 
 ## 四-M6R2、EXC-2026-0006 已关闭(M6-R2)
 
