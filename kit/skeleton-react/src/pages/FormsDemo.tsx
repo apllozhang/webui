@@ -74,7 +74,7 @@ export default function FormsDemo() {
         </fieldset>
         <div className="mb-4 flex flex-col gap-1">
           <Switch checked={notify} onChange={(v) => { setNotify(v); setDirty(true); }} label="接收通知" />
-          <Checkbox id="demo-agree" ariaRequired={true}
+          <Checkbox id="demo-agree" ariaRequired={true} invalid={!!agreeError}
                     describedBy={agreeError ? "demo-agree-error" : undefined}
                     checked={agree} onChange={(v) => { setAgree(v); setDirty(true); }}
                     label="我已阅读并同意条款（必选）" />

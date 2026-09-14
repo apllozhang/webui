@@ -83,6 +83,7 @@ async function ixTheme(page) {
 }
 
 // N2：必选同意纳入提交契约——未勾选提交无成功 Toast 且出现同意错误；勾选后成功
+// R20 扩展：错误态 #demo-agree 必须 aria-invalid="true"（断言增强，条目数不变）
 async function ixAgreeSubmit(page) {
   await page.goto(BASE + "react/#/forms", { waitUntil: "networkidle2", timeout: 30000 });
   await sleep(1200);
@@ -93,15 +94,19 @@ async function ixAgreeSubmit(page) {
   await clickCreate();
   await sleep(350);
   const afterFail = await page.evaluate(() => document.body.innerText);
+  const agreeInvalid = await page.evaluate(() =>
+    document.getElementById("demo-agree")?.getAttribute("aria-invalid"));
   await page.click("#demo-agree");
   await clickCreate();
   await sleep(350);
   const afterOk = await page.evaluate(() => document.body.innerText);
   return {
-    pass: afterFail.includes("必须先阅读并同意条款") && !afterFail.includes("已创建") && afterOk.includes("已创建"),
+    pass: afterFail.includes("必须先阅读并同意条款") && !afterFail.includes("已创建")
+      && afterOk.includes("已创建") && agreeInvalid === "true",
     failShown: afterFail.includes("必须先阅读并同意条款"),
     successToastOnFail: afterFail.includes("已创建"),
     successAfterAgree: afterOk.includes("已创建"),
+    agreeAriaInvalidOnError: agreeInvalid,
   };
 }
 

@@ -30,15 +30,16 @@ export function Radio({ name, value, checked, onChange, label }: {
   );
 }
 
-export function Checkbox({ checked, onChange, label, id, ariaRequired, describedBy }: {
+export function Checkbox({ checked, onChange, label, id, ariaRequired, describedBy, invalid }: {
   checked: boolean; onChange: (v: boolean) => void; label: string;
-  id?: string; ariaRequired?: boolean; describedBy?: string;
+  id?: string; ariaRequired?: boolean; describedBy?: string; invalid?: boolean;
 }) {
   return (
     <label className="inline-flex min-h-[44px] cursor-pointer items-center gap-2 text-sm">
       <input type="checkbox" id={id} checked={checked} onChange={(e) => onChange(e.target.checked)}
              aria-required={ariaRequired ? true : undefined}
-             aria-describedby={describedBy} />
+             aria-describedby={describedBy}
+             aria-invalid={invalid ? true : undefined} />
       <span>{label}</span>
     </label>
   );
