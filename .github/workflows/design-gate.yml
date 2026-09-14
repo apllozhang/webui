@@ -117,9 +117,40 @@ jobs:
           CONCLUSION="${{ job.status }}"
           RUN_URL="https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
           mkdir -p .github
-          printf '{\n  "run_id": %s,\n  "conclusion": "%s",\n  "sha": "%s",\n  "event": "%s",\n  "time": "%s",\n  "url": "%s"\n}\n' \
-            "${{ github.run_id }}" "$CONCLUSION" "${{ github.sha }}" "${{ github.event_name }}" \
-            "$(date -u +%Y-%m-%dT%H:%M:%SZ)" "$RUN_URL" > .github/ci-state.json
+
+          # M6-RC/终审裁决:失败时自报死因(失败步骤 + 日志尾部)进 ci-state.json——私有仓无外部 token 也能读
+          FAILED_STEPS="[]"; LOG_TAIL=""
+          if [ "$CONCLUSION" != "success" ]; then
+            JOB_ID="$(curl -sf -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+              "https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/jobs?per_page=1" \
+              | python3 -c "import sys,json;print(json.load(sys.stdin)['jobs'][0]['id'])")"
+            if [ -n "$JOB_ID" ]; then
+              FAILED_STEPS="$(curl -sf -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+                "https://api.github.com/repos/${{ github.repository }}/actions/jobs/${JOB_ID}" \
+                | python3 -c "import sys,json;j=json.load(sys.stdin);print(json.dumps([s['name'] for s in j.get('steps',[]) if s.get('conclusion')=='failure']))")"
+              curl -sfL -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+                "https://api.github.com/repos/${{ github.repository }}/actions/jobs/${JOB_ID}/logs" > /tmp/job.log
+              LOG_TAIL="$(grep -v npm notice /tmp/job.log | tail -c 4000)"
+            fi
+          fi
+          export FAILED_STEPS LOG_TAIL
+          python3 - <<'PYEOF'
+          import json, os
+          state = {
+            "run_id": int("${{ github.run_id }}"),
+            "conclusion": "${{ job.status }}",
+            "sha": "${{ github.sha }}",
+            "event": "${{ github.event_name }}",
+            "time": __import__("datetime").datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
+            "url": "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}",
+          }
+          if os.environ.get("FAILED_STEPS") and os.environ["FAILED_STEPS"] != "[]":
+            state["failed_steps"] = json.loads(os.environ["FAILED_STEPS"])
+          tail = os.environ.get("LOG_TAIL", "")
+          if tail:
+            state["log_tail"] = tail[-3500:]
+          open(".github/ci-state.json", "w").write(json.dumps(state, ensure_ascii=False, indent=2) + "\n")
+          PYEOF
           git config user.name "ale-webui-ci"
           git config user.email "ci@users.noreply.github.com"
           git add .github/ci-state.json

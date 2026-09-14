@@ -62,6 +62,7 @@
       const mark = performance.now();
       const link = document.createElement("link");
       link.rel = "stylesheet";
+      link.setAttribute("data-dyn", "1"); /* R5:动态加载的样式同样打标记,清除按钮才能移除 */
       link.href = BASE_FONTS + (scheme === "A" ? "noto.css?v=" + Date.now() : "noto-text.css?v=" + Date.now());
       document.head.appendChild(link);
       await document.fonts.ready;
@@ -82,7 +83,7 @@
       for (const b of document.querySelectorAll("button")) b.classList.remove("active");
       document.getElementById("state").textContent = "已重置";
     }
-    for (const l of document.querySelectorAll("head link[href*='noto']")) l.setAttribute("data-dyn", "1");
+    for (const l of document.querySelectorAll("head link[href*='noto']")) l.setAttribute("data-dyn", "1"); // 首屏静态引用也可被清除
     document.getElementById("loadA").onclick = () => load("A");
     document.getElementById("loadC").onclick = () => load("C");
     document.getElementById("clear").onclick = reset;
