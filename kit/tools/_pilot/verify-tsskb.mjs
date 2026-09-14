@@ -51,6 +51,10 @@ for (const rel of pages) {
   await new Promise((r) => setTimeout(r, 400));
   const ovf = await page.evaluate(() => ({ sw: document.documentElement.scrollWidth, cw: document.documentElement.clientWidth }));
   rec(`${id}-OVF320`, ovf.sw <= ovf.cw, ovf);
+  await page.setViewport({ width: 768, height: 900 });
+  await new Promise((r) => setTimeout(r, 500));
+  const ovf768 = await page.evaluate(() => ({ sw: document.documentElement.scrollWidth, cw: document.documentElement.clientWidth }));
+  rec("OVF768", ovf768.sw <= ovf768.cw, ovf768); // M6-R1/R4-01 类:768 平板档
   await page.screenshot({ path: path.join(OUT, `${id}-320.png`), fullPage: false });
   await page.setViewport({ width: 1440, height: 900 });
   await new Promise((r) => setTimeout(r, 400));

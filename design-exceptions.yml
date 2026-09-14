@@ -3,6 +3,7 @@
 # 规则 ID 必须出自 docs/v6/** 的规则注册表（rules:check 同源）
 exceptions:
   - id: EXC-2026-0001
+    kind: not-applicable # R4-07 schema v2
     rule: FND-COLOR-005
     project: ale-webui-kit
     reason: |-
@@ -15,6 +16,7 @@ exceptions:
     created: 2026-09-14
     review-by: 2026-12-31
   - id: EXC-2026-0002
+    kind: not-applicable # R4-07 schema v2
     rule: FND-COLOR-005
     project: ale-webui-kit
     reason: |-
@@ -26,6 +28,7 @@ exceptions:
     created: 2026-09-14
     review-by: 2026-12-31
   - id: EXC-2026-0003
+    kind: not-applicable # R4-07 schema v2
     rule: FND-COLOR-005
     project: ale-webui-kit
     reason: |-
@@ -37,6 +40,7 @@ exceptions:
     created: 2026-09-14
     review-by: 2026-12-31
   - id: EXC-2026-0004
+    kind: not-applicable # R4-07 schema v2
     rule: FND-COLOR-004
     project: ale-webui-kit
     reason: |-
@@ -49,6 +53,7 @@ exceptions:
     created: 2026-09-14
     review-by: 2026-12-31
   - id: EXC-2026-0005
+    kind: exception # R4-07 schema v2
     rule: FND-COLOR-004
     project: ale-dan-cpl-system
     reason: |-
@@ -58,8 +63,10 @@ exceptions:
     impact: quotation-status-badges
     mitigation: 徽章均带文字标签（颜色不单独传达状态，FND-COLOR-005 满足）；M6 前切换到 v6 状态角色并删除本条
     created: 2026-09-14
-    review-by: 2026-12-31
+    review-by: 2026-10-14 # R4-07:里程碑阻断项绑定 M6 窗口(创建日 +30d),不随年度宽松
+    milestone: M6
   - id: EXC-2026-0006
+    kind: exception # R4-07 schema v2
     rule: FND-COLOR-002
     project: nvci-lite
     reason: |-
@@ -69,4 +76,5 @@ exceptions:
     impact: nvci-neutral-surface-only
     mitigation: 不承载状态语义（仅底色分区）；M6 提案 status-neutral-bg 角色化后移除本条
     created: 2026-09-14
-    review-by: 2026-12-31
+    review-by: 2026-10-14 # R4-07:里程碑阻断项绑定 M6 窗口(创建日 +30d),不随年度宽松
+    milestone: M6

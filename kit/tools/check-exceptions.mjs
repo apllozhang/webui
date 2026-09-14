@@ -51,6 +51,7 @@ if (!fs.existsSync(FILE)) {
   const today = new Date().toISOString().slice(0, 10);
   entries.forEach((e, i) => {
     const at = `#${i + 1}${e?.id ? `(${e.id})` : ""}`;
+    if (!["not-applicable", "exception"].includes(e.kind)) errors.push(`${at} 缺/非法 kind(R4-07 schema v2: not-applicable 或 exception)`);
     if (!e.id) errors.push(`${at} 缺 id`);
     else {
       if (!/^EXC-\d{4}-\d{4}$/.test(e.id)) errors.push(`${at} id 不符合 EXC-YYYY-NNNN`);
@@ -65,6 +66,11 @@ if (!fs.existsSync(FILE)) {
       const d = String(e.reviewBy ?? e["review-by"]);
       if (!/^\d{4}-\d{2}-\d{2}$/.test(d) || Number.isNaN(Date.parse(d))) errors.push(`${at} review-by 非法日期: ${d}`);
       else if (d < today) errors.push(`${at} 复审已过期（review-by=${d}），例外自动失效，须重新登记`);
+      // R4-07: 绑定里程碑的例外, review-by 不得晚于今天+45d(防止"年度宽松期"架空里程碑)
+      if (e.milestone) {
+        const limit = new Date(Date.now() + 45 * 864e5).toISOString().slice(0, 10);
+        if (d > limit) errors.push(`${at} 里程碑(${e.milestone})绑定例外的 review-by=${d} 超出窗口(>${limit})`);
+      }
     }
     if (!e.reason || !String(e.reason).trim()) errors.push(`${at} 缺 reason`);
     if (!e.project) errors.push(`${at} 缺 project`);
@@ -72,7 +78,9 @@ if (!fs.existsSync(FILE)) {
   });
 }
 
-console.log(`design-exceptions.yml：${entries.length} 条例外；规则 ID 注册表 ${ruleIds.size} 条`);
+const na = entries.filter((e) => e.kind === "not-applicable").length;
+const ex = entries.filter((e) => e.kind === "exception").length;
+console.log(`design-exceptions.yml：${entries.length} 条例外(not-applicable ${na} / exception ${ex})；规则 ID 注册表 ${ruleIds.size} 条`);
 if (errors.length) {
   console.error("exceptions:check FAILED:");
   for (const e of errors) console.error("  - " + e);

@@ -165,3 +165,9 @@ BEGIN/END 标记区间为生成区，禁止手改——改动请进 tokens/*.jso
 | FND-TOKEN-001 | ## 6. 三层设计令牌（必须） |
 | FND-TOKEN-002 | BEGIN/END 标记区间为生成区，禁止手改——改动请进 tokens/*.json 后重建。 |
 <!-- END:must-registry -->
+
+
+<!-- M6-R1 试点回流增补(2026-09-14,来源:M5 三项目试点实践;台账:docs/release/v6-readiness.md) -->
+## FND-SURFACE-NEUTRAL:中性分区底色角色(试点回流,nvci EXC-2026-0006 前置)
+
+非状态语义的底色区分(如分区/侧栏底)提案 status-neutral-bg 角色化:亮/暗双值入 semantic 层。落地后删除 EXC-2026-0006。过渡期允许 vendored 本地值,但不得承载状态语义。

@@ -1,9 +1,10 @@
 // ============================================================
-// ALE WebUI — design:check 增补：Kit 站四入口门禁（R10）
+// ALE WebUI — design:check 增补：Kit 站四入口门禁（R10 + M6-R1/R4-05 扩展）
 // 覆盖 8095 Kit 站的 Hub + /react/ + /alpine/ + /static/：
-//   空白页 / 破图(≥400 与请求失败) / 空 title / 控制台错误 / 320 根级溢出（各 5 项）
-//   + R18 交互断言 5 项：React 必选同意契约、抽屉焦点圈闭/归还、
-//     Alpine/Static 主题单击切换（N1 回归）、Static 面包屑目的地（N5 回归）—— 任一即红
+//   空白页 / 破图 / 空 title / 控制台错误 / 320 与 768 根级溢出（各 6 项）
+//   + R18 交互断言：必选同意契约、抽屉焦点、主题单击、面包屑目的地
+//   + M6-R1 键盘链断言（R4-05 第一批）：键盘排序 / 键盘分页 / 键盘勾选 /
+//     键盘列宽 / focus-visible —— 任一即红
 // 用法：
 //   node check-kit.mjs                       # 默认 http://10.20.30.203:8095/（部署的 Kit 站，需 VPN）
 //   KIT_URL=http://127.0.0.1:8766/ node check-kit.mjs   # CI：对本地装配目录（KIT_URL 优先级最高）
@@ -144,6 +145,94 @@ async function ixBreadcrumb(page) {
   return { pass: /\/static\/index\.html$/.test(dest), dest };
 }
 
+/* ── M6-R1/R4-05 第一批键盘链断言(评估方 §5 草案转化;实现已在,缺的是 CI 保护) ── */
+async function ixKeyboardSort(page) {
+  await page.goto(BASE + "react/", { waitUntil: "networkidle2", timeout: 30000 });
+  await sleep(1200);
+  const before = await page.evaluate(() => ({
+    sort: document.querySelector("table.data thead th[aria-sort]")?.getAttribute("aria-sort"),
+    firstRow: document.querySelector("table.data tbody tr td:nth-child(3)")?.textContent.trim(),
+  }));
+  await page.evaluate(() => document.querySelector("table.data thead .sort-btn").focus());
+  await page.keyboard.press("Enter");
+  await sleep(450);
+  const after = await page.evaluate(() => ({
+    sort: document.querySelector("table.data thead th[aria-sort='ascending'], table.data thead th[aria-sort='descending']")?.getAttribute("aria-sort"),
+    firstRow: document.querySelector("table.data tbody tr td:nth-child(3)")?.textContent.trim(),
+  }));
+  return {
+    pass: after.sort && after.sort !== "none" && before.sort !== after.sort && before.firstRow !== after.firstRow,
+    before, after,
+  };
+}
+
+async function ixKeyboardPagination(page) {
+  await page.goto(BASE + "react/", { waitUntil: "networkidle2", timeout: 30000 });
+  await sleep(1200);
+  const before = await page.evaluate(() => document.querySelector("table.data tbody tr td:nth-child(3)")?.textContent.trim());
+  await page.evaluate(() => [...document.querySelectorAll(".pg-btn")].find((b) => b.getAttribute("aria-label") === "下一页")?.focus());
+  await page.keyboard.press("Enter");
+  await sleep(450);
+  const after = await page.evaluate(() => ({
+    firstRow: document.querySelector("table.data tbody tr td:nth-child(3)")?.textContent.trim(),
+    current: [...document.querySelectorAll(".pg-btn, .pg-current, [aria-current='page']")].map((b) => b.textContent.trim()).join(","),
+  }));
+  return { pass: before !== after.firstRow, before, after: after.firstRow };
+}
+
+async function ixKeyboardSelect(page) {
+  await page.goto(BASE + "react/", { waitUntil: "networkidle2", timeout: 30000 });
+  await sleep(1200);
+  await page.evaluate(() => document.querySelector("table.data tbody input[type='checkbox']").focus());
+  await page.keyboard.press("Space");
+  await sleep(450);
+  const r = await page.evaluate(() => ({
+    checked: document.querySelector("table.data tbody input[type='checkbox']").checked,
+    rowSelected: document.querySelector("table.data tbody tr[aria-selected='true']") !== null,
+    batchBar: document.querySelector(".btn-danger") !== null,
+  }));
+  return { pass: r.checked && r.rowSelected && r.batchBar, ...r };
+}
+
+async function ixKeyboardColWidth(page) {
+  await page.goto(BASE + "react/", { waitUntil: "networkidle2", timeout: 30000 });
+  await sleep(1200);
+  await page.evaluate(() => document.querySelector("table.data .col-resizer")?.focus());
+  const width = () => page.evaluate(() => {
+    const th = document.querySelector("table.data .col-resizer").closest("th");
+    return Math.round(th.getBoundingClientRect().width);
+  });
+  // 第一次按键切换到精确模式(fill→exact 渲染宽度有跳变),增量取同模式的后续按键
+  await page.keyboard.press("ArrowRight");
+  await sleep(400);
+  const after1 = await width();
+  await page.keyboard.press("ArrowRight");
+  await sleep(400);
+  const after2 = await width();
+  const delta = after2 - after1;
+  return { pass: delta >= 8 && delta <= 12, after1, after2, delta };
+}
+
+async function ixFocusVisible(page) {
+  await page.goto(BASE + "react/", { waitUntil: "networkidle2", timeout: 30000 });
+  await sleep(1000);
+  // 键盘 Tab 走 3 步,断言落点有 ≥2px 可见 outline(规范 :focus-visible = 2px solid)
+  let ok = false; const seen = [];
+  for (let i = 0; i < 3; i++) {
+    await page.keyboard.press("Tab");
+    await sleep(120);
+    const s = await page.evaluate(() => {
+      const el = document.activeElement;
+      if (!el || el === document.body) return null;
+      const cs = getComputedStyle(el);
+      return { tag: el.tagName, w: parseFloat(cs.outlineWidth), style: cs.outlineStyle };
+    });
+    if (s) seen.push(s);
+    if (s && s.style !== "none" && s.w >= 2) { ok = true; break; }
+  }
+  return { pass: ok, seen };
+}
+
 const browser = await puppeteer.launch({
   executablePath: findBrowser(),
   headless: "new",
@@ -196,17 +285,31 @@ for (const e of ENTRIES) {
     }));
     record(`${e.id}-OVF320`, `${e.id} 320px 根级无横向溢出`, ovf.scrollW <= ovf.clientW, ovf);
 
-    for (const w of [320, 1440]) {
+    // M6-R1/R4-01 类:768 平板档纳入门禁(NVCI 破版教训——只测 320/1440 会漏中间档)
+    await page.setViewport({ width: 768, height: 900 });
+    await new Promise((r) => setTimeout(r, 400));
+    const ovf768 = await page.evaluate(() => ({
+      scrollW: document.documentElement.scrollWidth,
+      clientW: document.documentElement.clientWidth,
+    }));
+    record(`${e.id}-OVF768`, `${e.id} 768px 根级无横向溢出`, ovf768.scrollW <= ovf768.clientW, ovf768);
+
+    for (const w of [320, 768, 1440]) {
       await page.setViewport({ width: w, height: 900 });
       await new Promise((r) => setTimeout(r, 300));
       await page.screenshot({ path: path.join(shotDir, `kit-${e.id.toLowerCase()}-${w}.png`) });
     }
     await page.setViewport({ width: 1440, height: 900 });
 
-    // R18 交互断言（按入口分派）
+    // R18 交互断言（按入口分派）+ M6-R1/R4-05 第一批键盘链断言
     const IX = {
       HUB: [],
-      REACT: [["IX-AGREE", "必选同意提交契约", ixAgreeSubmit], ["IX-DRAWER", "抽屉焦点圈闭/归还", ixDrawerFocus]],
+      REACT: [["IX-AGREE", "必选同意提交契约", ixAgreeSubmit], ["IX-DRAWER", "抽屉焦点圈闭/归还", ixDrawerFocus],
+              ["IX-KBD-SORT", "键盘排序(Enter→aria-sort+行序变化)", ixKeyboardSort],
+              ["IX-KBD-PAGE", "键盘分页(Enter→数据翻页)", ixKeyboardPagination],
+              ["IX-KBD-SELECT", "键盘勾选(Space→aria-selected+批量条)", ixKeyboardSelect],
+              ["IX-KBD-COLW", "键盘列宽(ArrowRight→+10px)", ixKeyboardColWidth],
+              ["IX-FOCUS-VISIBLE", "键盘焦点可见(outline≥2px)", ixFocusVisible]],
       ALPINE: [["IX-THEME", "主题单击切换（含 localStorage 同步）", ixTheme]],
       STATIC: [["IX-THEME", "主题单击切换（含 localStorage 同步）", ixTheme], ["IX-CRUMB", "面包屑目的地不跳出 /static/", ixBreadcrumb]],
     }[e.id] ?? [];

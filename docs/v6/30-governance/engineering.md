@@ -77,4 +77,11 @@ ale-webui-kit/
 | GOV-ENG-007 | - 缓存策略：带哈希的图片资产可强缓存（≥7d）；**CSS/JS 用协商缓存（`Cache-Control: no-cache` + etag）**，禁止无哈希文件的长期强缓存（曾导致用户 1 天内拿到过期脚本）； |
 | GOV-ENG-008 | - 大列表分页/增量/虚拟化并保留键盘与读屏可用；大文件导入必须显示进度与结果摘要（成功 N 条、失败 M 条及原因）。 |
 | GOV-ENG-009 | - 全局 `mousemove/mouseup` 监听（列宽拖动）必须在拖动结束后移除；悬停浮起动画只动 `transform`，不触发重排。 |
+| GOV-ENG-010 | 存量项目接入 v6 的标准模式:①vendored kit 生成 tokens.css 为唯一色彩真源(先于项目样式加载);②项目级 bridge 层只做别名映射(旧变量 → v6 令牌),禁止定义新色值(R4-03 扫描强制);③页面层硬编码收敛以 pilot:tokens-check 把关,RC 阈值:颜色零未授权裸值、间距/圆角/阴影命中率 ≥95%;④字体链随迁移包一并交付(fonts/noto.css + woff2 + FontFaceSet 验证,R4-02 教训);⑤业务逻辑、API 合同、路由零改动。 |
 <!-- END:must-registry -->
+
+
+<!-- M6-R1 试点回流增补(2026-09-14,来源:M5 三项目试点实践;台账:docs/release/v6-readiness.md) -->
+## GOV-MIG-BRIDGE:vendored 令牌 + 项目桥接层迁移模式(试点回流,M5 三仓库实证)
+
+存量项目接入 v6 的标准模式:①vendored kit 生成 tokens.css 为唯一色彩真源(先于项目样式加载);②项目级 bridge 层只做别名映射(旧变量 → v6 令牌),禁止定义新色值(R4-03 扫描强制);③页面层硬编码收敛以 pilot:tokens-check 把关,RC 阈值:颜色零未授权裸值、间距/圆角/阴影命中率 ≥95%;④字体链随迁移包一并交付(fonts/noto.css + woff2 + FontFaceSet 验证,R4-02 教训);⑤业务逻辑、API 合同、路由零改动。

@@ -9,20 +9,20 @@
 
 | ID | 严重级 | 发现 | 归属 | 目标 | 断言固化 | 状态 |
 |---|---|---|---|---|---|---|
-| R4-01 | P1 | NVCI 768px 破版(scrollWidth 865,唯一断点 760px 漏 768 档) | nvci-lite 试点 | M6-A | 768 三档断言(第一批) | open |
-| R4-02 | P1 | 三试点未接入自托管 Noto(字体请求 0) | 三试点 | M6-A | FontFaceSet+请求+200 门禁 | open |
-| R4-03 | P1 | 试点页面层硬编码色值/近似尺寸(TSSKB content.css、NVCI styles.css、dancpl bridge #fff) | 三试点 | M6-A | pilot:tokens-check 扫描(白名单+例外) | open |
+| R4-01 | P1 | NVCI 768px 破版(scrollWidth 865,唯一断点 760px 漏 768 档) | nvci-lite 试点 | M6-A | check-kit OVF768×4 + verify-nvci OVF768 | **fixed(M6-R1,90d2e7e)** |
+| R4-02 | P1 | 三试点未接入自托管 Noto(字体请求 0) | 三试点 | M6-A | _font_check.mjs(请求+200+FontFaceSet+字形命中) | **fixed(M6-R1,e42baaa/e3c1d18/4040391,三试点 FONT-CHAIN PASS)** |
+| R4-03 | P1 | 试点页面层硬编码色值/近似尺寸 | 三试点 | M6-A/R2 | pilot:tokens-check 上线;dancpl enforce PASS;nvci 26/tsskb 15 基线 REPORT 模式 | **partial(R1 出工具+基线;迁移排 M6-R2)** |
 | R4-04 | P1 | 性能预算未建立:主库字体 2,315,396B;dan-cpl 主 JS gzip 882.09kB | 主库+dan-cpl | M6-C | 字体/JS 预算门禁 | open |
-| R4-05 | P2 | R18 交互断言未覆盖键盘链(排序/分页/批量/列宽在 React 实现良好但无 CI 保护) | 主库门禁 | M6-B | 第一批断言 6 项 | open |
+| R4-05 | P2 | R18 交互断言未覆盖键盘链 | 主库门禁 | M6-B | 第一批 5 断言上线(排序/分页/勾选/列宽/focus-visible)+ OVF768;check-kit 34 项 | **fixed(M6-R1)** |
 | R4-06 | P2 | 命中区未做粗指针实测(NVCI 34×34 等) | 骨架+试点 | M6-B 二批 | pointer:coarse hit-test | open |
-| R4-07 | P2 | 台账语义:未区分 not-applicable/exception;0005/0006 review-by 未绑 RC | 主库治理 | M6-A | exceptions:check schema v2 | open |
-| R4-08 | P2 | clean clone 台账门禁非开箱即跑(缺 yaml);node_modules 入库 | 主库工程 | M6-A | README npm ci + CI clean install | open |
-| R4-09 | P2 | dan-cpl 直接 npm install 失败(Vite7 peer 冲突),仅 pnpm | dan-cpl | M6-A | README 首屏 + guard | open |
+| R4-07 | P2 | 台账语义:未区分 not-applicable/exception;review-by 未绑里程碑 | 主库治理 | M6-A | schema v2 上线(kind 必填 + milestone ≤+45d + 分类计数) | **fixed(M6-R1)** |
+| R4-08 | P2 | clean clone 台账门禁缺 yaml;node_modules 半 vendor 态 | 主库工程 | M6-A | yaml 已入跟踪集;彻底去 vendor 化 → M6-R2 决策 | **partial** |
+| R4-09 | P2 | dan-cpl 直接 npm install 失败 | dan-cpl | M6-A | preinstall guard + README 首屏声明 | **fixed(M6-R1,f471d9e)** |
 | R4-10 | P3 | TSSKB overview 双 h1,验证器只查跳级 | TSSKB | M6-B 二批 | landmark 感知校验 | open |
 | R4-G1 | — | 弹层 Esc 栈/i18n 动态文案/主题跨入口/reduced-motion 四项断言(§5 草案后四项) | 主库门禁 | M6-B 二批 | — | open |
 | M6-V | — | 版本真源一次性切换 5.4.1→6.0.0-rc(全部"M2 迁移/进行中"标记清零) | 主库 | M6-RC | VER 门禁改为 6.0.0-rc | open |
 | M6-F | — | 字体真 unicode-range 分片(现状:chinese-simplified 整块 1.1MB×2) | 主库 | M6-C | 预算门禁(≤350kB 起步) | open |
-| M6-T | — | 试点回流 4 条款入 v6 文档(768 堆叠/徽章色板/中性底/bridge 模式) | 主库文档 | M6-B | — | open |
+| M6-T | — | 试点回流 4 条款入 v6 文档 | 主库文档 | M6-B | — | **done(M6-R1:规则注册表 60→62,零漂移)** |
 
 ## 二、已关闭项(Closed,一行核销)
 

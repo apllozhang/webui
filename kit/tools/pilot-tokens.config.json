@@ -1,0 +1,28 @@
+{
+  "note": "R4-03 扫描面配置。allowHex 仅收'确需保留且有理由'的值(须在 v6-pilot.md 注明理由);其余命中一律改令牌或登记 design-exceptions(FND-COLOR-004)。enforce=false 为报告模式(记录基线,M6-R2 收敛后翻 true)。",
+  "projects": {
+    "nvci": {
+      "scanExts": [".css", ".html"],
+      "exclude": ["css/tokens.css", "fonts/noto", "vendor/"],
+      "allowHex": [],
+      "enforce": false,
+      "baseline": "26 种裸值(styles.css 亮暗两套组件色),R4-03 主体迁移排 M6-R2,需双主题三断点视觉回归"
+    },
+    "tsskb": {
+      "scanExts": [".css", ".html"],
+      "exclude": ["static/css/tokens.css", "static/fonts/", "site/"],
+      "allowHex": [
+        { "hex": "#6b489d", "reason": "meta theme-color 内容属性无法用 CSS 变量,品牌主紫字面量(base.html)" }
+      ],
+      "enforce": false,
+      "baseline": "15 种裸值(components.css/content.css 品牌与状态色),M6-R2 改令牌"
+    },
+    "dancpl": {
+      "scanExts": [".css"],
+      "exclude": ["src/v6/tokens.css", "public/fonts/"],
+      "allowHex": [],
+      "enforce": true,
+      "baseline": "已清零(bridge --destructive-foreground 改 var(--color-on-action))"
+    }
+  }
+}
