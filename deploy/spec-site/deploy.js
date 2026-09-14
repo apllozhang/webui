@@ -65,7 +65,7 @@ function checkVersion(siteDir) {
 function pack() {
   checkVersion(path.join(SITE, "."));
   execSync(
-    `"${TAR}" -czf "${TARGZ}" -C "${SITE}" index.html css js fonts assets Dockerfile nginx.conf design-system.version.json`,
+    `"${TAR}" -czf "${TARGZ}" -C "${SITE}" index.html fonts-compare.html css js fonts assets Dockerfile nginx.conf design-system.version.json`,
     { stdio: "inherit" }
   );
   console.log("packed:", TARGZ, fs.statSync(TARGZ).size, "bytes");

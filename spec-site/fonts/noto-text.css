@@ -1,0 +1,15 @@
+/* C 方案:按文本子集(由 build_fonts_text.py 生成,勿手改;字库来源 fonts-text-corpus.txt) */
+@font-face {
+  font-family: 'Noto Sans SC';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(./noto-text/noto-text-400.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Noto Sans SC';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(./noto-text/noto-text-700.woff2) format('woff2');
+}

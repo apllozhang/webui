@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>字体方案对比 · A(unicode-range 分片)vs C(按文本子集)</title>
+  <link rel="stylesheet" href="css/tokens.css">
+  <style>
+    body { margin: 0; padding: 24px; background: var(--color-canvas); color: var(--color-text-primary);
+           font-family: "Trebuchet MS", "Noto Sans SC", sans-serif; }
+    h1 { color: var(--color-heading-accent); font-size: 1.4rem; }
+    .bar { display: flex; gap: 12px; align-items: center; margin: 14px 0 20px; flex-wrap: wrap; }
+    button { font: inherit; padding: 8px 16px; border-radius: 8px; border: 1px solid var(--color-border);
+             background: var(--color-surface); cursor: pointer; min-height: 40px; }
+    button.active { background: var(--ale-purple-600); color: #fff; border-color: var(--ale-purple-600); }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    @media (max-width: 760px) { .grid { grid-template-columns: 1fr; } }
+    .pane { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 12px; padding: 16px; }
+    .pane h2 { margin: 0 0 8px; font-size: 1.02rem; }
+    .metric { font-size: .85rem; color: var(--color-text-secondary); margin: 6px 0 12px; }
+    .metric b { color: var(--color-heading-accent); font-size: 1.15rem; }
+    .sample { border-top: 1px solid var(--color-border-soft); padding-top: 10px; line-height: 1.9; }
+    .sample .b { font-weight: 700; }
+  </style>
+</head>
+<body>
+  <h1>字体方案对比(A / C)——切换互不影响,实时量测</h1>
+  <div class="bar">
+    <button id="loadA" type="button">加载 A:unicode-range 分片(notosplit)</button>
+    <button id="loadC" type="button">加载 C:按文本子集(noto-text,131KB)</button>
+    <button id="clear" type="button">清除重置</button>
+    <span id="state" class="metric"></span>
+  </div>
+  <div class="grid">
+    <div class="pane"><h2>A 方案 · unicode-range 分片</h2>
+      <div class="metric">传输:<b id="kbA">—</b> / 请求数:<span id="rqA">—</span></div>
+      <div class="sample" id="sampleA" style="visibility:hidden">
+        <p>清晰 · 可信 · 开放 · 高效——ALE WebUI 设计规范以品牌紫为唯一强调色。</p>
+        <p class="b">粗体 700:数据表格、导航与标题使用加重字重以建立层级。</p>
+        <p>典型字符抽样:时间 2026-09-14,报价 ¥12,480,状态「已发布」;ABC abc 0123。</p>
+      </div>
+    </div>
+    <div class="pane"><h2>C 方案 · 按文本子集(fonts-text-corpus)</h2>
+      <div class="metric">传输:<b id="kbC">—</b> / 请求数:<span id="rqC">—</span></div>
+      <div class="sample" id="sampleC" style="visibility:hidden">
+        <p>清晰 · 可信 · 开放 · 高效——ALE WebUI 设计规范以品牌紫为唯一强调色。</p>
+        <p class="b">粗体 700:数据表格、导航与标题使用加重字重以建立层级。</p>
+        <p>典型字符抽样:时间 2026-09-14,报价 ¥12,480,状态「已发布」;ABC abc 0123。</p>
+      </div>
+    </div>
+  </div>
+  <p class="metric">判读要点:两侧字形应一致(同源 Noto Sans SC);差异只在传输量与请求数。超出字库的字符回落系统字体(样本内已含全量用字,不应出现回落差异)。</p>
+  <script>
+    const BASE_FONTS = "fonts/";
+    let perfSnapshot = 0;
+    function perfSince(mark) {
+      return performance.getEntriesByType("resource")
+        .filter((r) => /woff2/.test(r.name) && r.startTime >= mark)
+        .reduce((acc, r) => ({ kb: acc.kb + r.transferSize / 1024, n: acc.n + 1 }), { kb: 0, n: 0 });
+    }
+    async function load(scheme) {
+      const mark = performance.now();
+      const link = document.createElement("link");
+      link.rel = "stylesheet";
+      link.href = BASE_FONTS + (scheme === "A" ? "noto.css?v=" + Date.now() : "noto-text.css?v=" + Date.now());
+      document.head.appendChild(link);
+      await document.fonts.ready;
+      // 强制两侧字形加载(样本可见后触发实际取字)
+      document.getElementById(scheme === "A" ? "sampleA" : "sampleC").style.visibility = "visible";
+      await new Promise((r) => setTimeout(r, 600));
+      const { kb, n } = perfSince(mark);
+      document.getElementById(scheme === "A" ? "kbA" : "kbC").textContent = Math.round(kb) + "KB";
+      document.getElementById(scheme === "A" ? "rqA" : "rqC").textContent = n;
+      document.getElementById("state").textContent = "已加载 " + scheme + " 方案";
+      document.getElementById(scheme === "A" ? "loadA" : "loadC").classList.add("active");
+    }
+    function reset() {
+      for (const l of document.querySelectorAll("link[data-dyn]")) l.remove();
+      for (const id of ["kbA", "kbC"]) document.getElementById(id).textContent = "—";
+      for (const id of ["rqA", "rqC"]) document.getElementById(id).textContent = "—";
+      for (const id of ["sampleA", "sampleC"]) document.getElementById(id).style.visibility = "hidden";
+      for (const b of document.querySelectorAll("button")) b.classList.remove("active");
+      document.getElementById("state").textContent = "已重置";
+    }
+    for (const l of document.querySelectorAll("head link[href*='noto']")) l.setAttribute("data-dyn", "1");
+    document.getElementById("loadA").onclick = () => load("A");
+    document.getElementById("loadC").onclick = () => load("C");
+    document.getElementById("clear").onclick = reset;
+  </script>
+</body>
+</html>
