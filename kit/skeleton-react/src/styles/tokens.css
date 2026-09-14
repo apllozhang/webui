@@ -204,6 +204,8 @@
   --color-border-soft: #2e2939;
   --color-action: var(--ale-purple-600);
   --color-action-hover: var(--ale-purple-500);
+  --color-on-action: var(--neutral-0);
+  --color-on-action-hover: var(--neutral-0);
   --color-link: #58b7e8;
   --color-heading-accent: var(--ale-purple-40);
   --color-purple-tint: rgb(107 72 157 / 24%);
