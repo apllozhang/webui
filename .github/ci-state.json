@@ -1,8 +1,8 @@
 {
-  "run_id": 34838114916,
+  "run_id": 34839061647,
   "conclusion": "failure",
-  "sha": "493e1facc5255d5146b706bcce0cd466c6d59277",
+  "sha": "2c25916ac78e61a4833cd024ff795403b0d479e4",
   "event": "push",
-  "time": "2026-09-14T11:27:09Z",
-  "url": "https://github.com/apllozhang/webui/actions/runs/34838114916"
+  "time": "2026-09-14T11:37:19Z",
+  "url": "https://github.com/apllozhang/webui/actions/runs/34839061647"
 }
