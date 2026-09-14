@@ -1,8 +1,12 @@
 {
-  "run_id": 34851900768,
-  "conclusion": "cancelled",
-  "sha": "15b4520ce1bc93aa923500c579a074d2043b5521",
+  "run_id": 34855507284,
+  "conclusion": "failure",
+  "sha": "322ea91320ba0e6d3f08d91ec68734c1c8a08bf7",
   "event": "push",
-  "time": "2026-09-14T13:53:21Z",
-  "url": "https://github.com/apllozhang/webui/actions/runs/34851900768"
+  "time": "2026-09-14T14:26:34Z",
+  "url": "https://github.com/apllozhang/webui/actions/runs/34855507284",
+  "failed_steps": [
+    "design:check（规范站 12 项 + Kit 四入口 25 项，含 R18 交互断言）"
+  ],
+  "log_tail": ""
 }
