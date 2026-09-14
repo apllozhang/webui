@@ -1,6 +1,6 @@
 {
-  "url": "http://10.20.30.203:8095/",
-  "time": "2026-09-13T23:16:13.208Z",
+  "url": "http://10.10.10.218:8095/",
+  "time": "2026-09-14T04:21:43.977Z",
   "checks": [
     {
       "id": "HUB-RENDER",
@@ -43,6 +43,15 @@
       "detail": {
         "scrollW": 320,
         "clientW": 320
+      }
+    },
+    {
+      "id": "HUB-OVF768",
+      "name": "HUB 768px 根级无横向溢出",
+      "pass": true,
+      "detail": {
+        "scrollW": 768,
+        "clientW": 768
       }
     },
     {
@@ -89,6 +98,15 @@
       }
     },
     {
+      "id": "REACT-OVF768",
+      "name": "REACT 768px 根级无横向溢出",
+      "pass": true,
+      "detail": {
+        "scrollW": 768,
+        "clientW": 768
+      }
+    },
+    {
       "id": "REACT-IX-AGREE",
       "name": "必选同意提交契约",
       "pass": true,
@@ -96,7 +114,8 @@
         "pass": true,
         "failShown": true,
         "successToastOnFail": false,
-        "successAfterAgree": true
+        "successAfterAgree": true,
+        "agreeAriaInvalidOnError": "true"
       }
     },
     {
@@ -109,6 +128,69 @@
         "focusInPanel": true,
         "tabStillInPanel": true,
         "focusReturned": true
+      }
+    },
+    {
+      "id": "REACT-IX-KBD-SORT",
+      "name": "键盘排序(Enter→aria-sort+行序变化)",
+      "pass": true,
+      "detail": {
+        "pass": true,
+        "before": {
+          "sort": "ascending",
+          "firstRow": "网络配置手册"
+        },
+        "after": {
+          "sort": "descending",
+          "firstRow": "容量规划模型（续2）"
+        }
+      }
+    },
+    {
+      "id": "REACT-IX-KBD-PAGE",
+      "name": "键盘分页(Enter→数据翻页)",
+      "pass": true,
+      "detail": {
+        "pass": true,
+        "before": "网络配置手册",
+        "after": "系统架构图集"
+      }
+    },
+    {
+      "id": "REACT-IX-KBD-SELECT",
+      "name": "键盘勾选(Space→aria-selected+批量条)",
+      "pass": true,
+      "detail": {
+        "pass": true,
+        "checked": true,
+        "rowSelected": true,
+        "batchBar": true
+      }
+    },
+    {
+      "id": "REACT-IX-KBD-COLW",
+      "name": "键盘列宽(ArrowRight→+10px)",
+      "pass": true,
+      "detail": {
+        "pass": true,
+        "after1": 145,
+        "after2": 154,
+        "delta": 9
+      }
+    },
+    {
+      "id": "REACT-IX-FOCUS-VISIBLE",
+      "name": "键盘焦点可见(outline≥2px)",
+      "pass": true,
+      "detail": {
+        "pass": true,
+        "seen": [
+          {
+            "tag": "A",
+            "w": 2,
+            "style": "solid"
+          }
+        ]
       }
     },
     {
@@ -152,6 +234,15 @@
       "detail": {
         "scrollW": 320,
         "clientW": 320
+      }
+    },
+    {
+      "id": "ALPINE-OVF768",
+      "name": "ALPINE 768px 根级无横向溢出",
+      "pass": true,
+      "detail": {
+        "scrollW": 768,
+        "clientW": 768
       }
     },
     {
@@ -215,6 +306,15 @@
       }
     },
     {
+      "id": "STATIC-OVF768",
+      "name": "STATIC 768px 根级无横向溢出",
+      "pass": true,
+      "detail": {
+        "scrollW": 768,
+        "clientW": 768
+      }
+    },
+    {
       "id": "STATIC-IX-THEME",
       "name": "主题单击切换（含 localStorage 同步）",
       "pass": true,
@@ -237,7 +337,7 @@
       "pass": true,
       "detail": {
         "pass": true,
-        "dest": "http://10.20.30.203:8095/static/index.html"
+        "dest": "http://10.10.10.218:8095/static/index.html"
       }
     }
   ],
