@@ -1,6 +1,6 @@
 {
   "url": "http://10.10.10.218:8095/",
-  "time": "2026-09-14T04:54:18.862Z",
+  "time": "2026-09-14T10:49:13.857Z",
   "checks": [
     {
       "id": "HUB-RENDER",
@@ -374,6 +374,38 @@
       "detail": {
         "pass": true,
         "dest": "http://10.10.10.218:8095/static/index.html"
+      }
+    },
+    {
+      "id": "CROSS-REDUCED-MOTION",
+      "name": "reduced-motion 下过渡时长 ≈0(全局兜底生效)",
+      "pass": true,
+      "detail": {
+        "durations": "1e-05s"
+      }
+    },
+    {
+      "id": "CROSS-THEME-PERSIST",
+      "name": "主题跨入口持久(alpine 切暗,static/react/alpine 一致恢复)",
+      "pass": true,
+      "detail": {
+        "seq": [
+          {
+            "p": "/static/",
+            "dark": true,
+            "stored": "dark"
+          },
+          {
+            "p": "/react/",
+            "dark": true,
+            "stored": "dark"
+          },
+          {
+            "p": "/alpine/",
+            "dark": true,
+            "stored": "dark"
+          }
+        ]
       }
     }
   ],

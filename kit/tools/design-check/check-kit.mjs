@@ -342,6 +342,44 @@ for (const e of ENTRIES) {
   }
 }
 
+/* ── M6-RC 第二批断言(R4-05 §5 草案转化) ── */
+// ① reduced-motion:全局 reduce 规则把过渡压到 ≈0(规范 23 章硬性要求)
+try {
+  await page.emulateMediaFeatures([{ name: "prefers-reduced-motion", value: "reduce" }]);
+  await page.goto(BASE + "react/", { waitUntil: "networkidle2", timeout: 30000 });
+  await sleep(800);
+  const rm = await page.evaluate(() => getComputedStyle(document.body).transitionDuration);
+  const ms = String(rm).split(",").map((s) => parseFloat(s) * 1000);
+  record("CROSS-REDUCED-MOTION", "reduced-motion 下过渡时长 ≈0(全局兜底生效)", ms.length > 0 && ms.every((v) => v < 2), { durations: rm });
+  await page.emulateMediaFeatures([]).catch(() => {});
+} catch (err) {
+  record("CROSS-REDUCED-MOTION", "reduced-motion 下过渡时长 ≈0", false, { error: String(err).slice(0, 160) });
+}
+
+// ② 主题跨入口持久:alpine 切暗 → static/react/alpine 一致恢复(同一 localStorage key + html.dark)
+try {
+  await page.goto(BASE + "alpine/", { waitUntil: "networkidle2", timeout: 30000 });
+  await sleep(600);
+  await page.click("[data-theme-toggle]");
+  await sleep(500);
+  const seq = [];
+  for (const p of ["static/", "react/", "alpine/"]) {
+    await page.goto(BASE + p, { waitUntil: "networkidle2", timeout: 30000 });
+    await sleep(500);
+    seq.push(await page.evaluate(() => ({
+      p: location.pathname,
+      dark: document.documentElement.classList.contains("dark"),
+      stored: localStorage.getItem("theme"),
+    })));
+  }
+  await page.click("[data-theme-toggle]").catch(() => {});
+  await sleep(300);
+  const allDark = seq.every((s) => s.dark && s.stored === "dark");
+  record("CROSS-THEME-PERSIST", "主题跨入口持久(alpine 切暗,static/react/alpine 一致恢复)", allDark, { seq });
+} catch (err) {
+  record("CROSS-THEME-PERSIST", "主题跨入口持久", false, { error: String(err).slice(0, 160) });
+}
+
 await browser.close();
 fs.writeFileSync(path.join(shotDir, "kit-check.json"), JSON.stringify(report, null, 2));
 console.log(`\n=== check-kit ${report.pass ? "PASS" : "FAILED"} ===  报告：tools/design-check/artifacts/kit-check.json`);
