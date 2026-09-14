@@ -48,3 +48,25 @@ exceptions:
     mitigation: 前景角色化（FND-COLOR-004）：action 底色上的文字一律用 color-on-action（6.91:1 PASS）
     created: 2026-09-14
     review-by: 2026-12-31
+  - id: EXC-2026-0005
+    rule: FND-COLOR-004
+    project: ale-dan-cpl-system
+    reason: |-
+      报价列表状态徽章色为应用级常量（@shared/const QUOTATION_STATUS_COLORS），
+      未逐值对齐 v6 状态角色令牌——M5 试点批不改业务常量，先登记、M6 前对齐。
+    owner: apllozhang
+    impact: quotation-status-badges
+    mitigation: 徽章均带文字标签（颜色不单独传达状态，FND-COLOR-005 满足）；M6 前切换到 v6 状态角色并删除本条
+    created: 2026-09-14
+    review-by: 2026-12-31
+  - id: EXC-2026-0006
+    rule: FND-COLOR-002
+    project: nvci-lite
+    reason: |-
+      NVCI 专属中性底 --neutral-bg: #EFEFEA（kit 无对应中性角色令牌），
+      仅用于非状态语义的底色区分。
+    owner: apllozhang
+    impact: nvci-neutral-surface-only
+    mitigation: 不承载状态语义（仅底色分区）；M6 提案 status-neutral-bg 角色化后移除本条
+    created: 2026-09-14
+    review-by: 2026-12-31
