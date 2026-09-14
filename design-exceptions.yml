@@ -1,0 +1,50 @@
+# ALE WebUI 设计例外台账（R19，governance: docs/v6/30-governance/exceptions.md）
+# 校验：kit/tools/check-exceptions.mjs（CI 门禁）——缺 owner / 缺复审日期 / 过期 / 未知规则 ID 均 FAIL
+# 规则 ID 必须出自 docs/v6/** 的规则注册表（rules:check 同源）
+exceptions:
+  - id: EXC-2026-0001
+    rule: FND-COLOR-005
+    project: ale-webui-kit
+    reason: |-
+      对比度断言 light/status-neutral-graphic×surface(graphic) 豁免：
+      中性状态圆点为冗余图形（信息由并存文字承载，规范 15 章附录 G），
+      不适用 WCAG 1.4.11 非文本 3:1 单独断言。
+    owner: apllozhang
+    impact: light-theme-status-dot-only
+    mitigation: 颜色不单独传达状态（FND-COLOR-005），状态语义由相邻文字/图标承载
+    created: 2026-09-14
+    review-by: 2026-12-31
+  - id: EXC-2026-0002
+    rule: FND-COLOR-005
+    project: ale-webui-kit
+    reason: |-
+      对比度断言 light/status-success-graphic×surface(graphic) 豁免：
+      success 官方青 #00B2A9 白底为冗余图形（信息由并存文字承载，规范 15 章附录 G）。
+    owner: apllozhang
+    impact: light-theme-status-dot-only
+    mitigation: 颜色不单独传达状态（FND-COLOR-005），状态语义由相邻文字/图标承载
+    created: 2026-09-14
+    review-by: 2026-12-31
+  - id: EXC-2026-0003
+    rule: FND-COLOR-005
+    project: ale-webui-kit
+    reason: |-
+      对比度断言 light/status-warning-graphic×surface(graphic) 豁免：
+      warning 官方橙 #FF4500 白底为冗余图形（信息由并存文字承载，规范 15 章附录 G）。
+    owner: apllozhang
+    impact: light-theme-status-dot-only
+    mitigation: 颜色不单独传达状态（FND-COLOR-005），状态语义由相邻文字/图标承载
+    created: 2026-09-14
+    review-by: 2026-12-31
+  - id: EXC-2026-0004
+    rule: FND-COLOR-004
+    project: ale-webui-kit
+    reason: |-
+      对比度断言 dark/action×surface 豁免：
+      暗色主题 action 紫是「按钮底色」角色而非信息图形，
+      链接/文字角色由 color-link 承担（已数值 PASS，规范 15 章附录 G）。
+    owner: apllozhang
+    impact: dark-theme-action-bg-only
+    mitigation: 前景角色化（FND-COLOR-004）：action 底色上的文字一律用 color-on-action（6.91:1 PASS）
+    created: 2026-09-14
+    review-by: 2026-12-31
