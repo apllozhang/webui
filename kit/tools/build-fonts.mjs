@@ -16,7 +16,10 @@ const SRC = path.join(TOOLS, "node_modules", "@fontsource", "noto-sans-sc");
 const OUT_CSS = path.join(ROOT, "shared", "fonts", "noto.css");
 const OUT_DIR = path.join(ROOT, "shared", "fonts", "noto-split");
 
-const WEIGHTS = [400, 500, 700];
+// ⚠️ 字重策略(负责人裁决 2026-09-14,方案 A):仅 400/700,500 请求按 CSS 匹配算法回落 400。
+// 回退开关:若视觉验收不佳 → B 方案改回 [400, 500, 700](FONT-BUDGET 校准 ~600KB 门禁)
+//          或 C 方案:构建时按页面文本 text= 子集化(效果最优,构建复杂)。改后重跑本脚本 + sync-shared。
+const WEIGHTS = [400, 700];
 let cssOut = `/* ============================================================
    Noto Sans SC 自托管分片(M6-F:真 unicode-range,SIL OFL 1.1)
    由 tools/build-fonts.mjs 生成——勿手改;浏览器按需下载分片。
