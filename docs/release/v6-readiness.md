@@ -46,6 +46,10 @@
 
 `--neutral-bg` 改映射 `var(--status-neutral-bg)`(kit 已有该角色,#EFEFEA≈#efeeec),nvci 不再需要本地中性底例外。台账现余 5 条(4 not-applicable / 1 exception)。
 
+## 四-M6R2、第五轮阻断关闭与终审口径(负责人裁决,2026-09-14)
+
+第五轮两项阻断已关闭:①dan-cpl bridge 修复补交(93df64b)并以 **GitHub 新鲜克隆态**复跑三试点 enforce 全 PASS(F20 对策落地);②FONT-BUDGET 扩展覆盖规范站与三试点(校准值 950/950/450/750,实测 894/893-932/389 全 PASS)。**负责人裁决:不安排单独复核轮,两项关闭证据并入 M6-RC 终审一并核验。**
+
 ## 四、M6 放行路线(经评估方路线微调:A+B 合并)
 
 - **M6-R1(A+B 合并)**:R4-01/02/03/07/08/09 + R4-05 第一批 6 断言(键盘排序/分页/批量/列宽/focus-visible/768 三档)+ M6-T 回流条款 + pilot:tokens-check 工具。出口:门禁全绿 + 三试点验证全过 + 评估 AI 中途复评。
