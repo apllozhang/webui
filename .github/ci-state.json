@@ -1,8 +1,44 @@
 {
-  "run_id": 34860453646,
+  "run_id": 34908173628,
   "conclusion": "success",
-  "sha": "231f8213649be90b4a556e999be7e44b09747f8e",
+  "sha": "08d15b6727c32073a237a9a5fa9a88ac4366950a",
   "event": "push",
-  "time": "2026-09-14T15:13:01Z",
-  "url": "https://github.com/apllozhang/webui/actions/runs/34860453646"
+  "time": "2026-09-14T23:19:27Z",
+  "url": "https://github.com/apllozhang/webui/actions/runs/34908173628",
+  "env": {
+    "browser": "",
+    "os": "Linux 6.17.0-1022-azure",
+    "node": "v22.23.2"
+  },
+  "gate_metrics": {
+    "fontKB": {
+      "FONT-BUDGET": 973,
+      "HUB-FONT-BUDGET": 0,
+      "REACT-FONT-BUDGET": 612,
+      "ALPINE-FONT-BUDGET": 703,
+      "STATIC-FONT-BUDGET": 564
+    },
+    "js_css": {
+      "FONT-BUDGET": {
+        "jsKB": null,
+        "cssKB": null
+      },
+      "HUB-FONT-BUDGET": {
+        "jsKB": 2,
+        "cssKB": 27
+      },
+      "REACT-FONT-BUDGET": {
+        "jsKB": 274,
+        "cssKB": 213
+      },
+      "ALPINE-FONT-BUDGET": {
+        "jsKB": 61,
+        "cssKB": 188
+      },
+      "STATIC-FONT-BUDGET": {
+        "jsKB": 2,
+        "cssKB": 215
+      }
+    }
+  }
 }
