@@ -1,12 +1,23 @@
 {
-  "run_id": 34855507284,
+  "run_id": 34856795481,
   "conclusion": "failure",
-  "sha": "322ea91320ba0e6d3f08d91ec68734c1c8a08bf7",
+  "sha": "9908da0aad4222ba788b6d1d43d5101eaa95400e",
   "event": "push",
-  "time": "2026-09-14T14:26:34Z",
-  "url": "https://github.com/apllozhang/webui/actions/runs/34855507284",
+  "time": "2026-09-14T14:38:16Z",
+  "url": "https://github.com/apllozhang/webui/actions/runs/34856795481",
   "failed_steps": [
     "design:check（规范站 12 项 + Kit 四入口 25 项，含 R18 交互断言）"
   ],
-  "log_tail": ""
+  "log_tail": "",
+  "failed_items": [
+    {
+      "id": "FONT-BUDGET",
+      "name": "首屏字体传输 ≤950KB(M6-F 校准门禁,基线 894)",
+      "pass": false,
+      "detail": {
+        "fontKB": 973
+      },
+      "file": "kit/tools/design-check/artifacts/design-check.json"
+    }
+  ]
 }
