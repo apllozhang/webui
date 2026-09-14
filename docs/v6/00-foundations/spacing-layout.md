@@ -2,7 +2,7 @@
 title: 间距、圆角、阴影、布局与响应式
 id-prefix: FND-SPACE
 source: ALE-WEBUI-设计规范-v5.4.md
-status: M2 迁移（内容 = v5.4.1 基线，未新增规则）
+status: v6.0.0-rc 基线（治理版；实现与试点证据见 docs/release/v6-readiness.md）
 ---
 # 间距、圆角、阴影、布局与响应式
 

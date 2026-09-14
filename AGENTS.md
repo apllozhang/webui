@@ -5,7 +5,7 @@
 
 ## 这个工作区是什么
 
-ALE 品牌的 WebUI 设计体系（v5.4.1 基线，v6.0 治理版进行中）：
+ALE 品牌的 WebUI 设计体系（**v6.0.0-rc 治理版**，2026-09-14 起为版本真源）：
 
 ```
 ale-webui-site/          规范演示站源码（纯 HTML/CSS/JS）—— 已部署 :8091
@@ -61,7 +61,7 @@ Z: 网络盘挂载不稳定——**凭据与交付物一律存本地 D 盘，不
 
 ## 当前状态速查（M4 收尾完成，2026-09-12）
 
-- 基线 tag：`v5.4.1`（只读）；main 分支随 M4 收尾推进（HEAD 见 git log）
+- 只读基线 tag：`v5.4.1`；发布候选基线：`6.0.0-rc`（main 分支，HEAD 见 git log）
 - 已完成：M1 门禁 / M2 docs/v6 四层 / M3 Token 生成链 / M4 四链路 + **收尾六项**：
   1. **CI 化**：`.github/workflows/design-gate.yml`——push 即跑 tokens:check + tokens:contrast + design:check（12 项）；首次绿勾 run 34691219270；运行结论回写 `.github/ci-state.json` 台账 + Run Summary
   2. **示例库**：20-components 四链路代码级 ✅/❌ 对照（app-shell / data-table / form / feedback）

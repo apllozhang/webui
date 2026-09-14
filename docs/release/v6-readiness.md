@@ -20,7 +20,7 @@
 | R4-09 | P2 | dan-cpl 直接 npm install 失败 | dan-cpl | M6-A | preinstall guard + README 首屏声明 | **fixed(M6-R1,f471d9e)** |
 | R4-10 | P3 | TSSKB overview 双 h1,验证器只查跳级 | TSSKB | M6-B 二批 | verify-tsskb HIERARCHY | **fixed(M6-RC:正文首 h1 降级,overview [1,2,2,2],661 页重建)** |
 | R4-G1 | — | 弹层 Esc 栈/i18n 动态文案/主题跨入口/reduced-motion 四项断言(§5 草案后四项) | 主库门禁 | M6-B 二批 | — | open |
-| M6-V | — | 版本真源一次性切换 5.4.1→6.0.0-rc(全部"M2 迁移/进行中"标记清零) | 主库 | M6-RC | VER 门禁改为 6.0.0-rc | open |
+| M6-V | — | 版本真源一次性切换 5.4.1→6.0.0-rc | 主库 | M6-RC | VER 门禁 v6.0 线上 PASS | **done(M6-RC:双 version.json/index title/23 处 frontmatter/AGENTS/HANDOVER/kit README;全门禁绿)** |
 | M6-F | — | 字体真 unicode-range 分片(现状:chinese-simplified 整块 1.1MB×2) | 主库 | M6-C | 预算门禁(≤350kB 起步) | open |
 | M6-T | — | 试点回流 4 条款入 v6 文档 | 主库文档 | M6-B | — | **done(M6-R1:规则注册表 60→62,零漂移)** |
 

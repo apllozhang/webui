@@ -2,7 +2,7 @@
 title: 踩坑登记簿（附录 F 全文）
 id-prefix: GOV-LESSON
 source: ALE-WEBUI-设计规范-v5.4.md
-status: M2 迁移（内容 = v5.4.1 基线，未新增规则）
+status: v6.0.0-rc 基线（治理版；实现与试点证据见 docs/release/v6-readiness.md）
 ---
 # 踩坑登记簿（附录 F 全文）
 

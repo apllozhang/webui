@@ -2,7 +2,7 @@
 title: 品牌基础：气质、Logo、名称与法律
 id-prefix: FND-BRAND
 source: ALE-WEBUI-设计规范-v5.4.md
-status: M2 迁移（内容 = v5.4.1 基线，未新增规则）
+status: v6.0.0-rc 基线（治理版；实现与试点证据见 docs/release/v6-readiness.md）
 ---
 # 品牌基础：气质、Logo、名称与法律
 品牌层唯一真相：ALE Corporate Brand Guidelines（September 2025）。本文件含官方硬规则全文（附录 D）。

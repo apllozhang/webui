@@ -2,7 +2,7 @@
 title: Pattern：数据工作台
 id-prefix: PAT-AW
 source: ALE-WEBUI-设计规范-v5.4.md
-status: M2 迁移（内容 = v5.4.1 基线，未新增规则）
+status: v6.0.0-rc 基线（治理版；实现与试点证据见 docs/release/v6-readiness.md）
 ---
 # Pattern：数据工作台
 参照：ale-dan-cpl-system。工程档：React。数据表格功能包（20-components/data-table.md）为本模式标配。

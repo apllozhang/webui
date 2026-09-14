@@ -2,7 +2,7 @@
 title: Pattern：系统状态与反馈场景
 id-prefix: PAT-STATE
 source: ALE-WEBUI-设计规范-v5.4.md
-status: M2 迁移（内容 = v5.4.1 基线，未新增规则）
+status: v6.0.0-rc 基线（治理版；实现与试点证据见 docs/release/v6-readiness.md）
 ---
 # Pattern：系统状态与反馈场景
 
