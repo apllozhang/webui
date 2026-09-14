@@ -145,18 +145,7 @@ jobs:
           fi
           # 逐项门禁结果(design-check.json / kit-check.json 里 pass=false 的项)
           if [ "$CONCLUSION" != "success" ]; then
-            python3 -c "
-import json,os
-state=json.load(open('.github/ci-state.json'))
-failed=[]
-for f in ['kit/tools/design-check/artifacts/design-check.json','kit/tools/design-check/artifacts/kit-check.json']:
-    try:
-        d=json.load(open(f))
-        failed+= [c for c in d.get('checks',[]) if c.get('pass') is False]
-    except Exception as e:
-        failed.append({'file':f,'error':str(e)[:120]})
-if failed: state['failed_items']=failed
-open('.github/ci-state.json','w').write(json.dumps(state,ensure_ascii=False,indent=2)+chr(10))"
+            python3 -c "import json,os,glob;state=json.load(open('.github/ci-state.json'));failed=[dict(c,file=f) for f in glob.glob('kit/tools/design-check/artifacts/*-check.json') for c in json.load(open(f)).get('checks',[]) if c.get('pass') is False];failed and state.__setitem__('failed_items',failed);open('.github/ci-state.json','w').write(json.dumps(state,ensure_ascii=False,indent=2)+chr(10))"
           fi
           git config user.name "ale-webui-ci"
           git config user.email "ci@users.noreply.github.com"
