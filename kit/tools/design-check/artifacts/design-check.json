@@ -1,6 +1,6 @@
 {
   "url": "http://10.10.10.218:8091/",
-  "time": "2026-09-14T04:21:34.142Z",
+  "time": "2026-09-14T04:54:08.668Z",
   "checks": [
     {
       "id": "VER",
@@ -17,7 +17,8 @@
       "pass": true,
       "detail": {
         "dirs": [
-          "spec-site"
+          "spec-site",
+          "dist"
         ]
       }
     },

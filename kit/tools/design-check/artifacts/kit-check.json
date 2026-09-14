@@ -1,6 +1,6 @@
 {
   "url": "http://10.10.10.218:8095/",
-  "time": "2026-09-14T04:21:43.977Z",
+  "time": "2026-09-14T04:54:18.862Z",
   "checks": [
     {
       "id": "HUB-RENDER",
@@ -55,6 +55,15 @@
       }
     },
     {
+      "id": "HUB-FONT-BUDGET",
+      "name": "HUB 首屏字体传输 ≤750KB(M6-F 校准门禁)",
+      "pass": true,
+      "detail": {
+        "fontKB": 0,
+        "na": true
+      }
+    },
+    {
       "id": "REACT-RENDER",
       "name": "REACT 非空白渲染",
       "pass": true,
@@ -104,6 +113,15 @@
       "detail": {
         "scrollW": 768,
         "clientW": 768
+      }
+    },
+    {
+      "id": "REACT-FONT-BUDGET",
+      "name": "REACT 首屏字体传输 ≤750KB(M6-F 校准门禁)",
+      "pass": true,
+      "detail": {
+        "fontKB": 586,
+        "na": false
       }
     },
     {
@@ -246,6 +264,15 @@
       }
     },
     {
+      "id": "ALPINE-FONT-BUDGET",
+      "name": "ALPINE 首屏字体传输 ≤750KB(M6-F 校准门禁)",
+      "pass": true,
+      "detail": {
+        "fontKB": 677,
+        "na": false
+      }
+    },
+    {
       "id": "ALPINE-IX-THEME",
       "name": "主题单击切换（含 localStorage 同步）",
       "pass": true,
@@ -312,6 +339,15 @@
       "detail": {
         "scrollW": 768,
         "clientW": 768
+      }
+    },
+    {
+      "id": "STATIC-FONT-BUDGET",
+      "name": "STATIC 首屏字体传输 ≤750KB(M6-F 校准门禁)",
+      "pass": true,
+      "detail": {
+        "fontKB": 538,
+        "na": false
       }
     },
     {

@@ -4,18 +4,28 @@
     "nvci": {
       "scanExts": [".css", ".html"],
       "exclude": ["css/tokens.css", "fonts/noto", "vendor/"],
-      "allowHex": [],
-      "enforce": false,
-      "baseline": "26 种裸值(styles.css 亮暗两套组件色),R4-03 主体迁移排 M6-R2,需双主题三断点视觉回归"
+      "allowHex": [
+        { "hex": "#2e2740", "reason": "暗色主题品牌紫 tint(ale-purple-100 暗色适配;v6 无暗色品牌斜率,M6-RC 候选)" },
+        { "hex": "#9a7cc9", "reason": "暗色 ale-purple-500 适配值(同上)" },
+        { "hex": "#8465b8", "reason": "暗色 ale-purple-600 适配值(同上)" }
+      ],
+      "enforce": true,
+      "baseline": "M6-R2 迁移完成:26 种 → 0 未授权(3 种暗色品牌斜率白名单);--neutral-bg 改 var(--status-neutral-bg),EXC-2026-0006 关闭"
     },
     "tsskb": {
       "scanExts": [".css", ".html"],
       "exclude": ["static/css/tokens.css", "static/fonts/", "site/"],
       "allowHex": [
-        { "hex": "#6b489d", "reason": "meta theme-color 内容属性无法用 CSS 变量,品牌主紫字面量(base.html)" }
+        { "hex": "#6b489d", "reason": "meta theme-color 内容属性无法用 CSS 变量,品牌主紫字面量(base.html)" },
+        { "hex": "#e9e1f4", "reason": "hero 渐变上的浅紫正文伴侣色(规范站 hero 同款,无对应令牌;M6-RC 候选:kit 增 on-purple-muted 角色)" },
+        { "hex": "#eee8f5", "reason": "category-hero 文字伴侣色(同上)" },
+        { "hex": "#ddd0ef", "reason": "path-cover eyebrow 伴侣色(同上)" },
+        { "hex": "#ded1ed", "reason": "reading-links 边框伴侣色(同上)" },
+        { "hex": "#dfd2ed", "reason": "source-page 底色伴侣色(同上)" },
+        { "hex": "#231a35", "reason": "markdown 代码块深紫底(品牌深色,近 dark-surface;M6-RC 候选)" }
       ],
-      "enforce": false,
-      "baseline": "15 种裸值(components.css/content.css 品牌与状态色),M6-R2 改令牌"
+      "enforce": true,
+      "baseline": "M6-R2 迁移完成:15 种 → 0 未授权(7 种白名单均为渐变伴侣色,理由如上)"
     },
     "dancpl": {
       "scanExts": [".css"],

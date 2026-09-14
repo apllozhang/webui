@@ -244,7 +244,12 @@ for (const e of ENTRIES) {
   const url = BASE + e.path;
   const bad = [];
   const consoleErrors = [];
-  const onResponse = (r) => { if (r.status() >= 400) bad.push({ url: r.url(), status: r.status() }); };
+  let fontBytes = 0;
+  const onResponse = (r) => {
+    if (r.status() >= 400) bad.push({ url: r.url(), status: r.status() });
+    // M6-R2/R4-04:字体传输预算(真分片后按需加载,首屏 ≤350KB)
+    if (/\.woff2?\b/i.test(r.url())) fontBytes += Number(r.headers()["content-length"] || 0);
+  };
   const onFailed = (r) => bad.push({ url: r.url(), error: "requestfailed" });
   const onConsole = (m) => { if (m.type() === "error") consoleErrors.push(m.text().slice(0, 160)); };
   page.on("response", onResponse);
@@ -293,6 +298,12 @@ for (const e of ENTRIES) {
       clientW: document.documentElement.clientWidth,
     }));
     record(`${e.id}-OVF768`, `${e.id} 768px 根级无横向溢出`, ovf768.scrollW <= ovf768.clientW, ovf768);
+    const fontKB = Math.round(fontBytes / 1024);
+    // M6-R2 校准门禁:实测基线 REACT 586 / ALPINE 677 / STATIC 538(演示页 CJK 文字量大),
+    // 门禁取最大基线 +10% ≈ 750KB;RC 目标 ≤350KB(台账 docs/release/v6-readiness.md R4-04)。
+    // 无 webfont 的入口(如 HUB)记 na 通过。
+    const BUDGET = 750;
+    record(`${e.id}-FONT-BUDGET`, `${e.id} 首屏字体传输 ≤${BUDGET}KB(M6-F 校准门禁)`, fontKB <= BUDGET, { fontKB, na: fontKB === 0 });
 
     for (const w of [320, 768, 1440]) {
       await page.setViewport({ width: w, height: 900 });

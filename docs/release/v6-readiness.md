@@ -11,8 +11,8 @@
 |---|---|---|---|---|---|---|
 | R4-01 | P1 | NVCI 768px 破版(scrollWidth 865,唯一断点 760px 漏 768 档) | nvci-lite 试点 | M6-A | check-kit OVF768×4 + verify-nvci OVF768 | **fixed(M6-R1,90d2e7e)** |
 | R4-02 | P1 | 三试点未接入自托管 Noto(字体请求 0) | 三试点 | M6-A | _font_check.mjs(请求+200+FontFaceSet+字形命中) | **fixed(M6-R1,e42baaa/e3c1d18/4040391,三试点 FONT-CHAIN PASS)** |
-| R4-03 | P1 | 试点页面层硬编码色值/近似尺寸 | 三试点 | M6-A/R2 | pilot:tokens-check 上线;dancpl enforce PASS;nvci 26/tsskb 15 基线 REPORT 模式 | **partial(R1 出工具+基线;迁移排 M6-R2)** |
-| R4-04 | P1 | 性能预算未建立:主库字体 2,315,396B;dan-cpl 主 JS gzip 882.09kB | 主库+dan-cpl | M6-C | 字体/JS 预算门禁 | open |
+| R4-03 | P1 | 试点页面层硬编码色值/近似尺寸 | 三试点 | M6-A/R2 | pilot:tokens-check enforce:三试点全部 PASS(dancpl 0 裸值;nvci 26→3 白名单;tsskb 15→7 白名单,均带理由) | **fixed(M6-R2,a38081c/578f259)** |
+| R4-04 | P1 | 性能预算未建立:主库字体 2,315,396B;dan-cpl 主 JS gzip 882.09kB | 主库+dan-cpl | M6-C | FONT-BUDGET 门禁上线(校准 750KB);**真 unicode-range 分片上线:实测 538-677KB(-72%)**;剩:RC 目标 ≤350KB(去 500 字重/按文本子集)与 dan-cpl JS 拆账 | partial(M6-R2 大头已落) |
 | R4-05 | P2 | R18 交互断言未覆盖键盘链 | 主库门禁 | M6-B | 第一批 5 断言上线(排序/分页/勾选/列宽/focus-visible)+ OVF768;check-kit 34 项 | **fixed(M6-R1)** |
 | R4-06 | P2 | 命中区未做粗指针实测(NVCI 34×34 等) | 骨架+试点 | M6-B 二批 | pointer:coarse hit-test | open |
 | R4-07 | P2 | 台账语义:未区分 not-applicable/exception;review-by 未绑里程碑 | 主库治理 | M6-A | schema v2 上线(kind 必填 + milestone ≤+45d + 分类计数) | **fixed(M6-R1)** |
@@ -39,6 +39,10 @@
 
 - F18(新):验收断言的覆盖面必须 ≥ 验收声明的覆盖面。案例:两断点声明(320/1440)漏 768;查令牌变量解析≠查字体请求;"bridge 全覆盖"≠页面零硬编码。
 - F19(新):门禁"形式通过"须区分语义类别(台账 not-applicable vs exception;对比度 PASS/SKIP/EXEMPT 三分类即先例)。
+
+## 四-M6R2、EXC-2026-0006 已关闭(M6-R2)
+
+`--neutral-bg` 改映射 `var(--status-neutral-bg)`(kit 已有该角色,#EFEFEA≈#efeeec),nvci 不再需要本地中性底例外。台账现余 5 条(4 not-applicable / 1 exception)。
 
 ## 四、M6 放行路线(经评估方路线微调:A+B 合并)
 

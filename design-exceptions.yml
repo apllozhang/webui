@@ -65,16 +65,3 @@ exceptions:
     created: 2026-09-14
     review-by: 2026-10-14 # R4-07:里程碑阻断项绑定 M6 窗口(创建日 +30d),不随年度宽松
     milestone: M6
-  - id: EXC-2026-0006
-    kind: exception # R4-07 schema v2
-    rule: FND-COLOR-002
-    project: nvci-lite
-    reason: |-
-      NVCI 专属中性底 --neutral-bg: #EFEFEA（kit 无对应中性角色令牌），
-      仅用于非状态语义的底色区分。
-    owner: apllozhang
-    impact: nvci-neutral-surface-only
-    mitigation: 不承载状态语义（仅底色分区）；M6 提案 status-neutral-bg 角色化后移除本条
-    created: 2026-09-14
-    review-by: 2026-10-14 # R4-07:里程碑阻断项绑定 M6 窗口(创建日 +30d),不随年度宽松
-    milestone: M6

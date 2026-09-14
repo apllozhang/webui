@@ -71,12 +71,15 @@ function checkVersions() {
 
 /* ── 检查 2：核心静态资产存在（本地产物） ── */
 function checkAssetsLocal() {
-  const required = ["fonts/noto.css", "fonts/noto/noto-sans-sc-chinese-simplified-400-normal.woff2",
-    "fonts/noto/noto-sans-sc-chinese-simplified-700-normal.woff2",
+  const required = ["fonts/noto.css",
     "assets/ale-logo.png", "js/i18n.js", "css/tokens.css"];
   let allOk = true;
   for (const site of [...SITE_DIRS, DIST_DIR].filter(Boolean)) {
     const missing = required.filter((f) => !fs.existsSync(path.join(site, f)));
+    // M6-F:分片字体目录必须存在且非空(真 unicode-range)
+    const splitDir = path.join(site, "fonts/noto-split");
+    const slices = fs.existsSync(splitDir) ? fs.readdirSync(splitDir).filter((f) => f.endsWith(".woff2")) : [];
+    if (slices.length < 50) missing.push(`fonts/noto-split/(仅 ${slices.length} 片)`);
     if (missing.length) { allOk = false; record("ASSET-LOCAL", "核心资产存在", false, { site: path.basename(site), missing }); }
   }
   if (allOk) record("ASSET-LOCAL", "核心资产存在（全部候选目录）", true, { dirs: [...SITE_DIRS, DIST_DIR].filter(Boolean).map((d) => path.basename(d)) });
