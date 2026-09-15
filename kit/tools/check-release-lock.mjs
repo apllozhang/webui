@@ -5,7 +5,7 @@
 //   node check-release-lock.mjs --remote    # 发布模式:另加 git ls-remote 网络核验三试点 v6-pilot 分支 SHA
 // 规则:
 //   1. release-lock.json 存在且 schema 完整;
-//   2. lock.version === spec-site/design-system.version.json.version === kit/shared/.../version(6.0.0-rc);
+//   2. lock.version === spec-site/design-system.version.json.version === kit/shared/.../version(6.0.0);
 //   3. lock.rc-baseline 必须是当前 HEAD 的祖先(git merge-base --is-ancestor)——证明门禁绿的那个 SHA 在本发布线上;
 //   4. --remote:三试点 ls-remote 的 v6-pilot HEAD 必须逐字等于锁值。
 // ============================================================

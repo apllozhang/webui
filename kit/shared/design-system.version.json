@@ -1,8 +1,8 @@
 {
   "name": "ale-webui",
-  "version": "6.0.0-rc",
+  "version": "6.0.0",
   "spec": "docs/ALE-WEBUI-设计规范-v5.4.md (+ docs/v6 治理层)",
-  "released": "2026-09-14",
+  "released": "2026-09-15",
   "sites": {
     "spec-site": {
       "title": "ALE WebUI 设计规范 v6.0"

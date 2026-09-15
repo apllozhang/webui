@@ -2,7 +2,7 @@
 title: 字体与排版
 id-prefix: FND-TYPE
 source: ALE-WEBUI-设计规范-v5.4.md
-status: v6.0.0-rc 基线（治理版；实现与试点证据见 docs/release/v6-readiness.md）
+status: v6.0.0 正式基线（治理版；实现与试点证据见 docs/release/v6-readiness.md）
 ---
 # 字体与排版
 含排版角色 × HTML 语义分层（v5.4）与 Noto Sans SC 自托管规则（附录 D.5/7）。

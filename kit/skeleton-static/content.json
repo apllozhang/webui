@@ -26,7 +26,7 @@
     "title": "快速开始",
     "description": "如何使用静态骨架创建与发布内容。",
     "blocks": [
-      { "t": "p", "text": "本骨架按 ALE WebUI 设计规范 v6.0.0-rc 构建：Jinja2 模板 + 规范令牌，构建产物为纯静态文件，可直接托管到任意 Nginx / 对象存储。" },
+      { "t": "p", "text": "本骨架按 ALE WebUI 设计规范 v6.0.0 构建：Jinja2 模板 + 规范令牌，构建产物为纯静态文件，可直接托管到任意 Nginx / 对象存储。" },
       { "t": "h2", "text": "添加一篇文章" },
       { "t": "p", "text": "在 content.json 的 article 区块追加内容块（p / h2 / ul / code / note），重新运行构建即可。标题层级必须连续，不要为视觉大小跳级。" },
       { "t": "h2", "text": "启用站内搜索（Pagefind）" },

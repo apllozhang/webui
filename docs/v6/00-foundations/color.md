@@ -2,7 +2,7 @@
 title: 色彩系统
 id-prefix: FND-COLOR
 source: ALE-WEBUI-设计规范-v5.4.md
-status: v6.0.0-rc 基线（治理版；实现与试点证据见 docs/release/v6-readiness.md）
+status: v6.0.0 正式基线（治理版；实现与试点证据见 docs/release/v6-readiness.md）
 ---
 # 色彩系统
 官方品牌色 + Web 语义色 + 前景色角色（on-*）+ 状态色。配对对比度见 30-governance/testing.md 附录 G。
