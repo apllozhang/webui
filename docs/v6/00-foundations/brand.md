@@ -72,7 +72,7 @@ X:\BP 目录\Marketing Resources\ALE Brand\ALE-logos\
 
 ## 2.3 资产分发（M6-RC 增补，2026-09-15：独立文档场景）
 
-仓库 kit/shared/assets/ 下的 ale-logo.png（及 -white）是**官方 Marketing Resources 资产的核验副本**，可随项目分发。独立 HTML 文档（不在仓库/内网环境）使用 Logo 的两种合规途径：
+仓库 spec-site/assets/ 下的 ale-logo.png（及 -white）是**官方 Marketing Resources 资产的核验副本**（各骨架 assets 为同一文件的部署拷贝），可随项目分发。独立 HTML 文档（不在仓库/内网环境）使用 Logo 的两种合规途径：
 
 1. **复制官方副本**：将 ale-logo.png（或 -white）复制到文档同级目录后以 img 标签引用——不得以 CSS 渐变+文字仿制 Logo 外观；
 2. **无官方副本且无法获取时**：使用**纯文字名降级**——仅以普通文字书写 ALE 或 Alcatel-Lucent Enterprise（不加底色块、不加渐变、不做图形化包装），不呈现任何仿制 Logo。
