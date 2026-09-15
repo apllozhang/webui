@@ -78,6 +78,10 @@ TSSKB(Static 链路)/ ale-dan-cpl-system(React,仅 pnpm)/ nvci-lite(轻量)。�
 
 版本真源 = 两处 `design-system.version.json`(VER 门禁强制与 title 一致)。发布流程与判据见 `docs/release/v6-readiness.md` §六-八;6.1 待办见同文件 §七。tag 不可移动;新变更走新版本号。
 
+## 让 AI 调用本规范
+
+复制现成提示词模板(文档类/应用类/增量修改三场景 + logo 附件):**[docs/prompts/提示词样例.md](prompts/提示词样例.md)**——令牌、素材、验收三样给齐,AI 才是规范执行者。
+
 ## 找历史
 
 六轮独立评审报告、每次整改与验收、22 条教训(F1-F22)全部在 `docs/review/` 与台账里,按日期命名可直接翻。一句话索引:`docs/release/v6-readiness.md` 是现在,`docs/review/` 是怎么走到现在的。
