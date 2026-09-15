@@ -66,6 +66,10 @@ function checkVersions() {
     const expect = vj.sites["spec-site"]?.title;
     const ok = expect && html.includes(`<title>${expect}</title>`);
     record("VER", "版本一致性（title ↔ version.json）", !!ok, { expect, dir: path.basename(dir) });
+    // 版本徽章门禁:结构存在(运行时渲染,离线校验只断言锚点与 short 真源字段齐备)
+    const hasBadge = html.includes('id="ver-badge"') && html.includes("ver-badge");
+    const hasShort = typeof vj.short === "string" && /^v\d+\.\d+$/.test(vj.short);
+    record("VER-BADGE", "版本徽章存在且 short 字段合法(顶栏显眼标注)", hasBadge && hasShort, { hasBadge, short: vj.short, version: vj.version });
   }
 }
 

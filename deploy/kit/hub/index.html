@@ -18,6 +18,7 @@
       <span class="divider" aria-hidden="true"></span>
       <span>ALE WebUI Kit</span>
     </a>
+    <span class="ver-badge" id="ver-badge" title="版本号与发布日期(自动取自 design-system.version.json 真源)"></span>
   </header>
 
   <main class="page-shell">
@@ -63,6 +64,26 @@
     <p style="margin:0">© Copyright ALE International 2026 · ale-webui-kit</p>
   </footer>
 
+  <style>
+    .ver-badge { margin-left: 12px; padding: 3px 10px; border-radius: 999px;
+      background: var(--ale-purple-100, #f1ecf7); color: var(--ale-purple-700, #4f3478);
+      border: 1px solid var(--ale-purple-40, #e4d9f3); font-size: .78rem; font-weight: 700; white-space: nowrap; }
+    @media (max-width: 560px) { .ver-badge .ver-date { display: none; } }
+  </style>
+  <script>
+    /* 版本徽章:运行时取真源渲染(迭代只改 design-system.version.json) */
+    fetch("design-system.version.json", { cache: "no-cache" })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (vj) {
+        if (!vj) return;
+        var s = vj.short || ("v" + String(vj.version).split(".").slice(0, 2).join("."));
+        var b = document.getElementById("ver-badge");
+        if (b) { b.innerHTML = '<span class="ver-short"></span><span class="ver-date"></span>';
+          b.querySelector(".ver-short").textContent = s;
+          b.querySelector(".ver-date").textContent = vj.released ? " · " + vj.released : ""; }
+      })
+      .catch(function () {});
+  </script>
   <script src="alpine/assets/js/theme.js"></script>
   <script>ALETheme.init();</script>
 </body>

@@ -1,6 +1,6 @@
 {
   "url": "http://10.10.10.218:8091/",
-  "time": "2026-09-15T01:03:35.829Z",
+  "time": "2026-09-15T01:42:46.787Z",
   "checks": [
     {
       "id": "VER",
@@ -9,6 +9,16 @@
       "detail": {
         "expect": "ALE WebUI 设计规范 v6.0",
         "dir": "spec-site"
+      }
+    },
+    {
+      "id": "VER-BADGE",
+      "name": "版本徽章存在且 short 字段合法(顶栏显眼标注)",
+      "pass": true,
+      "detail": {
+        "hasBadge": true,
+        "short": "v6.0",
+        "version": "6.0.0"
       }
     },
     {

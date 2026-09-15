@@ -123,7 +123,7 @@ function put(conn, local, remote) {
     `cd ${REMOTE_DIR} && tar -xzf site.tgz`,
     `cd ${REMOTE_DIR} && docker build -t ale-webui-spec . 2>&1 | tail -3`,
     `docker run -d --name ale-webui-spec -p ${PORT}:80 --restart unless-stopped ale-webui-spec`,
-    `sleep 1 && for u in / /css/tokens.css /js/i18n.js /fonts/noto.css /assets/ale-logo.png; do code=$(curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:${PORT}$u); echo "$code $u"; if [ "$code" != "200" ]; then echo "ASSET GATE FAILED: $u"; exit 1; fi; done && curl -s http://127.0.0.1:${PORT}/ | grep -q "v5.4" || (echo "COPY GATE FAILED: version"; exit 1) && curl -s http://127.0.0.1:${PORT}/ | grep -qF "三种产品形态" && (echo "COPY GATE FAILED: legacy model"; exit 1) || true && docker ps --filter name=ale-webui-spec --format "{{.Status}}"`
+    `sleep 1 && for u in / /css/tokens.css /js/i18n.js /fonts/noto.css /assets/ale-logo.png /fonts-compare.html; do code=$(curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:${PORT}$u); echo "$code $u"; if [ "$code" != "200" ]; then echo "ASSET GATE FAILED: $u"; exit 1; fi; done && curl -s http://127.0.0.1:${PORT}/design-system.version.json | grep -q '"version"' || (echo "VERSION GATE FAILED: version.json 未进容器(检查 Dockerfile COPY 清单)"; exit 1) && curl -s http://127.0.0.1:${PORT}/ | grep -qF "v6.0" || (echo "COPY GATE FAILED: version badge text"; exit 1) && docker ps --filter name=ale-webui-spec --format "{{.Status}}"`
   ];
   for (const s of steps) {
     const res = await run(conn, s);

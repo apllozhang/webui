@@ -213,6 +213,21 @@
   });
 
   /* ── 启动 ── */
+  /* 版本徽章:运行时取 design-system.version.json 真源渲染(迭代只改 JSON,徽章自动跟随) */
+  fetch("design-system.version.json", { cache: "no-cache" })
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (vj) {
+      if (!vj) return;
+      var short_ = vj.short || ("v" + vj.version.split(".").slice(0, 2).join("."));
+      var badge = document.getElementById("ver-badge");
+      if (badge) badge.innerHTML = '<span class="ver-short"></span><span class="ver-date"></span>';
+      if (badge) {
+        badge.querySelector(".ver-short").textContent = short_;
+        badge.querySelector(".ver-date").textContent = vj.released ? " · " + vj.released : "";
+      }
+    })
+    .catch(function () { /* 真源不可达时徽章留空,不阻塞页面 */ });
+
   i18n.apply();
   if (!localStorage.getItem("lang")) {
     document.documentElement.lang = "zh-CN";

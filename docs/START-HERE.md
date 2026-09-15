@@ -81,3 +81,15 @@ TSSKB(Static 链路)/ ale-dan-cpl-system(React,仅 pnpm)/ nvci-lite(轻量)。�
 ## 找历史
 
 六轮独立评审报告、每次整改与验收、22 条教训(F1-F22)全部在 `docs/review/` 与台账里,按日期命名可直接翻。一句话索引:`docs/release/v6-readiness.md` 是现在,`docs/review/` 是怎么走到现在的。
+
+
+## 版本标识与迭代(维护者必读)
+
+顶栏版本徽章(`v6.0 · 2026-09-15`)由**运行时读取 `design-system.version.json` 真源**渲染——迭代时只改真源,徽章自动跟随,无需改 HTML/JS。
+
+**发新版本只需三步**:
+1. 改 `spec-site/design-system.version.json` 与 `kit/shared/design-system.version.json`:`version`(语义化)、`released`(发布日期)、`short`(徽章短号,如 `v6.1`);站点 title 同步(VER 门禁强制 title ↔ version.json 一致);
+2. 同步 `deploy/kit/hub/design-system.version.json`(Hub 徽章真源)与 `release-lock.json` 的 `version`;
+3. 跑 `npm run design:check`(含 `VER` 与 `VER-BADGE` 断言)→ 提交 → CI 绿 → 打新 tag。
+
+门禁保障:徽章缺失或 `short` 非法 → `VER-BADGE` FAIL;title 与真源不一致 → `VER` FAIL;规范站部署另有 `VERSION GATE`(校验 version.json 真进容器且返回 JSON,防 nginx 回退吞掉)。窄屏(≤560px)自动只显示版本短号,避免顶栏溢出(OVF-320 门禁守护)。

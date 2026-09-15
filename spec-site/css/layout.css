@@ -35,6 +35,11 @@
 :root.dark .brand .logo-color { display: none; }
 :root.dark .brand .logo-white { display: block; }
 .brand .divider { width: 1px; height: 22px; background: var(--color-border); }
+.ver-badge { padding: 3px 10px; border: 1px solid var(--ale-purple-40); border-radius: 999px;
+  background: var(--ale-purple-100); color: var(--ale-purple-700);
+  font-size: .78rem; font-weight: 700; letter-spacing: .02em; white-space: nowrap; }
+@media (max-width: 560px) { .ver-badge .ver-date { display: none; } }
+:root.dark .ver-badge { background: transparent; border-color: var(--ale-purple-500); color: var(--dark-ale-purple-500, var(--ale-purple-500)); }
 .brand span { font-size: .95rem; letter-spacing: .01em; }
 
 .primary-nav { display: flex; align-items: stretch; align-self: stretch; gap: .1rem; margin-left: auto; }

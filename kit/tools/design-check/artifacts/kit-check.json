@@ -1,14 +1,14 @@
 {
   "url": "http://10.10.10.218:8095/",
-  "time": "2026-09-15T01:03:46.157Z",
+  "time": "2026-09-15T01:42:58.839Z",
   "checks": [
     {
       "id": "HUB-RENDER",
       "name": "HUB 非空白渲染",
       "pass": true,
       "detail": {
-        "textLen": 537,
-        "els": 30,
+        "textLen": 552,
+        "els": 35,
         "rootChildren": null
       }
     },
