@@ -1,6 +1,6 @@
 {
   "url": "http://10.10.10.218:8091/",
-  "time": "2026-09-14T23:15:38.157Z",
+  "time": "2026-09-15T01:03:35.829Z",
   "checks": [
     {
       "id": "VER",
@@ -129,7 +129,7 @@
   ],
   "pass": true,
   "screenshots": [
-    "D:\\AIWork\\ZCode\\Vibe Coding\\WEBUI\\_repo_stage\\kit\\tools\\design-check\\artifacts\\baseline-320.png",
-    "D:\\AIWork\\ZCode\\Vibe Coding\\WEBUI\\_repo_stage\\kit\\tools\\design-check\\artifacts\\baseline-1440.png"
+    "D:\\AIWork\\ZCode\\Vibe Coding\\WEBUI\\webui\\kit\\tools\\design-check\\artifacts\\baseline-320.png",
+    "D:\\AIWork\\ZCode\\Vibe Coding\\WEBUI\\webui\\kit\\tools\\design-check\\artifacts\\baseline-1440.png"
   ]
 }

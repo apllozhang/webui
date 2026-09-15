@@ -98,6 +98,10 @@ jobs:
         working-directory: kit/tools
         run: npm run tokens:contrast
 
+      - name: rules:check（规则注册表零漂移——发布后补位:曾因不在 CI 而漏检一次 +1 漂移）
+        working-directory: kit/tools
+        run: npm run rules:check
+
       - name: design:check（规范站 12 项 + Kit 四入口 25 项，含 R18 交互断言）
         working-directory: kit/tools
         env:

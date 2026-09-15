@@ -1,6 +1,6 @@
 {
   "url": "http://10.10.10.218:8095/",
-  "time": "2026-09-14T23:14:08.493Z",
+  "time": "2026-09-15T01:03:46.157Z",
   "checks": [
     {
       "id": "HUB-RENDER",
@@ -120,12 +120,12 @@
     },
     {
       "id": "REACT-FONT-BUDGET",
-      "name": "REACT 首屏字体 ≤750KB 且 ≤基线+10%(586→645KB)",
+      "name": "REACT 首屏字体 ≤750KB 且 ≤基线+10%(612→673KB)",
       "pass": true,
       "detail": {
         "fontKB": 586,
-        "baseline": 586,
-        "relLimit": 645,
+        "baseline": 612,
+        "relLimit": 673,
         "jsKB": 0,
         "cssKB": 0,
         "na": false
@@ -272,12 +272,12 @@
     },
     {
       "id": "ALPINE-FONT-BUDGET",
-      "name": "ALPINE 首屏字体 ≤750KB 且 ≤基线+10%(677→745KB)",
+      "name": "ALPINE 首屏字体 ≤750KB 且 ≤基线+10%(703→773KB)",
       "pass": true,
       "detail": {
         "fontKB": 677,
-        "baseline": 677,
-        "relLimit": 745,
+        "baseline": 703,
+        "relLimit": 773,
         "jsKB": 0,
         "cssKB": 0,
         "na": false
@@ -354,12 +354,12 @@
     },
     {
       "id": "STATIC-FONT-BUDGET",
-      "name": "STATIC 首屏字体 ≤750KB 且 ≤基线+10%(538→592KB)",
+      "name": "STATIC 首屏字体 ≤750KB 且 ≤基线+10%(564→620KB)",
       "pass": true,
       "detail": {
         "fontKB": 538,
-        "baseline": 538,
-        "relLimit": 592,
+        "baseline": 564,
+        "relLimit": 620,
         "jsKB": 0,
         "cssKB": 0,
         "na": false
