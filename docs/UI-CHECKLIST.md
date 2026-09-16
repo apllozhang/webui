@@ -20,6 +20,8 @@ npm run rules:check       # 规则注册表零漂移
 
 ## 一、数据表格(凡出现 table/数据列表的页面,全部必做)
 
+> 改造已有业务站时,另有 **13 项细版清单**:docs/v6/20-components/data-table.md「业务站落地检查清单」(防抖搜索/千分位/紧凑分页/`?v=` 防缓存等实战项);过程案例见 docs/review/2026-09-16-8088-competitor-web-v6-整改案例.md(F23-F25)。
+
 | # | 必做项 | 要求 | 参考出处 | 门禁 ID |
 |---|--------|------|----------|---------|
 | T1 | 列宽拖拽 | 表头拖拽手柄调整列宽;"拖过即切精确像素模式"(fixed 表格+min-width:100% 会全表联动,坑 F14) | spec-site `#table` 演示;docs/v6/20-components `data-table` | `IX-KBD-COLW` |
@@ -71,7 +73,7 @@ npm run rules:check       # 规则注册表零漂移
 
 | # | 必做项 | 要求 | 出处 | 门禁 ID |
 |---|--------|------|------|---------|
-| B1 | 官方 Logo | 用 `spec-site/assets/ale-logo(-white).png`,亮暗跟随;**禁止 CSS 渐变+文字仿制**(商标,brand.md §2.1/§2.4) | docs/v6/00-foundations `brand.md` | `ASSET` |
+| B1 | 官方 Logo | 用 `spec-site/assets/ale-logo(-white).png`,亮暗跟随(浅底彩标/深底反白);高度按场景分档:文档顶栏 30px、业务站侧栏 34px,同一页面内保持一致;**禁止 CSS 渐变+文字仿制**(商标,brand.md §2.1/§2.4) | docs/v6/00-foundations `brand.md` | `ASSET` |
 | B2 | 商标行 | 页脚:The Alcatel-Lucent name and logo are trademarks of Nokia used under license by ALE. | 同上 | 人工自查 |
 | B3 | 版本徽章 | 与 `design-system.version.json` 真源一致,迭代同步更新 | spec-site 实现 | `VER` |
 | B4 | 字体合规 | 中文自托管 Noto Sans SC(SIL OFL),禁三方 CDN;总量守字体双门禁 | FND-TYPE-001 | `FONT-BUDGET` |

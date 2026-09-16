@@ -2,7 +2,7 @@
 
 用户要求"调用 WEBUI 规范/按规范做 XX"但信息不全时,**先问后做**:出示三问(场景/环境/版本素材,全文见 docs/prompts/提示词样例.md §0),按路由表匹配模板一/二/三或试点流程。禁止在缺素材(如 Logo)或缺版本号时直接动手。
 
-**改造已有业务站 UI**（非新建骨架）时：必须先读 `docs/v6/00-foundations/brand.md`、`spec-site/css/tokens.css`（或 kit 生成 tokens）与目标组件规范；列表按 `20-components/data-table.md`「业务站落地检查清单」交付；禁止凭印象调色；新旧对照用独立 legacy 整页。教训 F23–F25；案例 `docs/review/2026-09-16-8088-competitor-web-v6-整改案例.md`。
+**改造已有业务站 UI**（非新建骨架）时：必须先读 `docs/v6/00-foundations/brand.md`、`spec-site/css/tokens.css`（或 kit 生成 tokens）与目标组件规范；列表按 `20-components/data-table.md`「业务站落地检查清单」交付，交付口径与自查表见 `docs/UI-CHECKLIST.md`；禁止凭印象调色；新旧对照用独立 legacy 整页。教训 F23–F25；案例 `docs/review/2026-09-16-8088-competitor-web-v6-整改案例.md`。
 
 # AGENTS.md — AI 协作上下文入口（本工作区）
 

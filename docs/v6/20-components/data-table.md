@@ -87,6 +87,7 @@ Pagination: 每页 N | 第 x–y 共 z | « ‹ 1 2 … n › »
 ## 业务站落地检查清单（改造已有系统时逐项勾选）
 
 > 案例与教训：`docs/review/2026-09-16-8088-competitor-web-v6-整改案例.md`（F23–F25）。
+> 交付口径（跨组件最低集 + 机器证据要求）：`docs/UI-CHECKLIST.md`——本清单是表格的细版，两者配合使用。
 
 | # | 检查项 | 通过标准 |
 |---|---|---|
@@ -111,4 +112,7 @@ Pagination: 每页 N | 第 x–y 共 z | « ‹ 1 2 … n › »
 |---|---|
 | CMP-TABLE-001 | ## 交互行为（必须） |
 | CMP-TABLE-002 | - 列宽：手柄 `role="separator"` + `tabindex=0` + 方向键 ±10（Shift ±1）；控件必须 `position:relative`（F13 铁律）； |
+| CMP-TABLE-003 | \| 6 \| 分页 \| 「每页 10/20/50」+「第 x–y 条，共 z 条」+ «‹ 1 … n ›»；每页下拉 **紧凑**（约 32×高），禁止被全局 `select{width:100%}` 拉通栏 \| |
+| CMP-TABLE-004 | \| 8 \| 状态 \| 「圆点 + 文字」双编码徽章，禁止纯色点 \| |
+| CMP-TABLE-005 | \| 13 \| 对照旧 UI \| 独立 `legacy.html` 整页（HTML+CSS+JS 成对），禁止同页只切 CSS \| |
 <!-- END:must-registry -->
