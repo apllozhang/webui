@@ -48,6 +48,10 @@ _*.py / _*.mjs           历次整改的操作脚本（操作记录，可读可�
 8. JSX 标签内禁止行内 `//` 注释（会被当文本渲染，F15）；按钮类必须 `font: inherit`（F11）
 9. 320px 网格列写法：`minmax(min(Npx,100%),1fr)`（F10）
 
+## UI 调整交付定义（DoD）——外部 AI 开发必读
+
+对任何页面做 UI 调整，交付前必须三件事：① 对照 **`docs/UI-CHECKLIST.md`** 组件×交互矩阵逐项实现（表格列宽拖拽/分页/查询/升降序排序、暗亮切换+刷新持久化、Esc 关弹层这类运行时交互最容易漏）；② 附 `cd kit/tools && npm run design:check` 的 ALL PASS 输出；③ 把 CHECKLIST 文末「交付自查表」勾选后贴进交付说明。**没有机器证据 = 未完成**；禁止用改阈值/删断言/skip 让门禁变绿（F21/F22）。
+
 ## 环境差异（多机协作记录，v6.0 移交复核时确认）
 
 接手方（Git Bash / C:\Users\tinal）与原工作区（cmd / C:\Users\Administrator）环境不同，以下按机器记录：
