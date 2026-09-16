@@ -30,6 +30,9 @@ status: v6.0.0 正式基线（治理版；实现与试点证据见 docs/release/
 | F13 | **点击导航链接实际触发主题/语言切换（上线后用户发现）** | 热区扩展 `.icon-btn::before { position:absolute; inset:0 }` 时控件缺 `position:relative`，伪元素相对定位祖先 `.topbar` 铺满整个顶栏，形成全栏透明热区层 | **铁律：任何用伪元素做热区/状态层的控件，必须同时显式声明 `position:relative`**（已补入 9 章/11.1 实现代码）；发布前 hit-test 抽查：`elementFromPoint(链接中心)` 必须命中链接自身 |
 | F16 | 文本门禁在 Windows autocrlf 检出上假报漂移（`rules:check` 报 23 文件 DRIFT，同一命令在 CI 为绿；M5-0.1） | scan-rules.mjs 读文件未做 EOL 规范化：autocrlf 检出为 CRLF，重建的 LF 注册区段与 CRLF 原文逐字节比对必不一致 | 文本门禁读文件一律先做 EOL 规范化（`\r\n`→`\n`）再比对/写回；仓库以 `.gitattributes` 锁 `*.md eol=lf` 根治 |
 | F17 | 生成链产物未被下游真实消费验证过：preset 字体栈生成为非法 JS（裸 `sans-serif`/`Consolas` 标识符），M4-6 sync-shared 用生成版覆盖手写版后 skeleton-react 构建才暴露 | build-tokens.mjs 的 fontFamily 生成用恒等 map（本意是加引号），M3 起即坏；生成链从未跑过一次真实下游构建 | 生成物要有至少一次下游真实消费验证（构建/渲染）；fontFamily 改为字符串形式（JSON.stringify），泛型名保持非引号的 CSS 语义 |
+| F23 | **改造已有业务站时先「凭印象调紫」，未读令牌真源与组件规范**（8088 竞品站案例） | 手写近似色/字号，与 `spec-site/css/tokens.css`、`data-table.md` 不一致，被用户/评审打回返工 | **改业务 UI 的第一步：读 brand.md + tokens 真源 + 目标链路组件规范**；禁止第二套 hex/字体栈；14A 列表按能力表逐项交付，禁止只交视觉壳。案例：`docs/review/2026-09-16-8088-competitor-web-v6-整改案例.md` |
+| F24 | **「新旧 UI 对照」只切 CSS 导致旧版炸版** | HTML 已换成 v6 结构（toolbar/14A 分页/搜索 SVG），旧 CSS 类名与尺寸约束对不上 | 对照验收必须 **整页成对**（旧 HTML+CSS+JS 独立入口，如 `/legacy.html`），禁止同页只 `disabled` 切换 stylesheet |
+| F25 | **静态资源引用与上传文件名不一致；全局 `select{width:100%}` 误伤分页** | `legacy.html` 引 `app.legacy.js` 实传 `legacy-app.js` → 导航 404；`select:not(#vendor-filter){width:100%}` 把「每页」下拉拉通栏 | 部署清单与 HTML `src` 同源并 curl 门禁；表单级 100% 宽度必须限定在 `dialog`/表单容器；分页/工具栏控件单独紧凑尺寸（≤32px 高） |
 
 ## 规则 ID 注册表（本文件 Must 条款）
 

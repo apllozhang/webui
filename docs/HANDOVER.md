@@ -184,6 +184,9 @@ Date Picker/Tree/Combobox、图表封装、Figma Variables 同步、五档截图
 | 通用 | **工作区↔stage 双副本** | push 前必同步，否则线上有仓库没有 |
 | F16 | **门禁可移植性（EOL）** | 文本门禁读文件先规范化 EOL（autocrlf 检出 CRLF 会让 LF 基准的 `--check` 假报 DRIFT）；`.gitattributes` 锁 `*.md eol=lf` 根治 |
 | F17 | **生成链产物未做下游消费验证** | preset 字体栈生成为非法 JS（M3 起），M4-6 sync 覆盖手写版后 React 骨架构建才暴露 | 生成物至少做一次下游真实消费验证（构建/渲染）；fontFamily 已改字符串形式 |
+| F23 | **改业务站先读真源** | 8088 竞品站凭印象调紫，与 tokens/data-table 规范不一致被返工 | 先读 brand + tokens + 目标组件规范；14A 按能力表交付，禁止只做视觉壳 |
+| F24 | **新旧 UI 对照整页成对** | 同页只切 CSS，旧样式对不上新 HTML，整页炸版 | 独立 legacy 页（HTML+CSS+JS 成对） |
+| F25 | **部署文件名一致 + 禁止全局 select 通栏** | `app.legacy.js` 引用与上传名不一致致导航 404；`select{width:100%}` 拉爆分页 | 资源清单=curl 门禁；表单 100% 宽限定 dialog；分页控件紧凑档 |
 
 ## 9. 风险与依赖
 

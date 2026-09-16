@@ -37,7 +37,7 @@ npm run design:check        # 全量设计门禁(规范站+Kit 四入口;需本�
 | `spec-site/` | 规范演示站(8091) |
 | `deploy/` | 部署脚本(kit + spec-site) |
 | `release-lock.json` | 发布组合锁定(三试点 SHA) |
-| `AGENTS.md` / `docs/HANDOVER.md` | 协作规则 / 交接史与教训 F1-F22 |
+| `AGENTS.md` / `docs/HANDOVER.md` | 协作规则 / 交接史与教训 F1-F25 |
 
 ## 门禁速查(都在 `kit/tools` 下执行)
 
@@ -82,9 +82,11 @@ TSSKB(Static 链路)/ ale-dan-cpl-system(React,仅 pnpm)/ nvci-lite(轻量)。�
 
 复制现成提示词模板(文档类/应用类/增量修改三场景 + logo 附件):**[docs/prompts/提示词样例.md](prompts/提示词样例.md)**——令牌、素材、验收三样给齐,AI 才是规范执行者。
 
+**改造已有业务站（非新建骨架）时**,额外要求 AI：先读 `brand.md` + `tokens.css` + 目标组件规范（如 `data-table.md`），按该文「业务站落地检查清单」交付；新旧 UI 对照用整页 legacy 入口。教训见 F23–F25 与 `docs/review/2026-09-16-8088-competitor-web-v6-整改案例.md`。
+
 ## 找历史
 
-六轮独立评审报告、每次整改与验收、22 条教训(F1-F22)全部在 `docs/review/` 与台账里,按日期命名可直接翻。一句话索引:`docs/release/v6-readiness.md` 是现在,`docs/review/` 是怎么走到现在的。
+六轮独立评审报告、每次整改与验收、25 条教训(F1-F25)全部在 `docs/review/` 与台账里,按日期命名可直接翻。一句话索引:`docs/release/v6-readiness.md` 是现在,`docs/review/` 是怎么走到现在的。**改造已有业务站**先读 F23–F25 与 `docs/review/2026-09-16-8088-competitor-web-v6-整改案例.md`。
 
 
 ## 版本标识与迭代(维护者必读)
